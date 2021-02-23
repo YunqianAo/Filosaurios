@@ -1,2 +1,3 @@
 # Filosaurios
-Grupo7
+Group 7 - We are here to make a better world!
+
