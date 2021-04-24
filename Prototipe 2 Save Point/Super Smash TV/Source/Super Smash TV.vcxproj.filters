@@ -38,6 +38,9 @@
     <Filter Include="Source Files\Modules\ModuleTextures">
       <UniqueIdentifier>{b6bd7fd6-7f4a-4d4d-8371-4465e3f8c508}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Modules\ModuleCollisions">
+      <UniqueIdentifier>{67e02ad1-af55-4032-aee3-353fd4d174f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -85,6 +88,12 @@
     <ClInclude Include="ModuleTextures.h">
       <Filter>Source Files\Modules\ModuleTextures</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleCollisions.h">
+      <Filter>Source Files\Modules\ModuleCollisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Source Files\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -125,6 +134,12 @@
     </ClCompile>
     <ClCompile Include="ModuleTextures.cpp">
       <Filter>Source Files\Modules\ModuleTextures</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleCollisions.cpp">
+      <Filter>Source Files\Modules\ModuleCollisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
