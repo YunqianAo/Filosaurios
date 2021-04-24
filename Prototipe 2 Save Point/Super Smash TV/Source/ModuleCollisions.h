@@ -1,5 +1,5 @@
-#ifndef __MODULECOLLISIONS_H__
-#define __MODULECOLLISIONS_H__
+#ifndef __MODULE_COLLISIONS_H__
+#define __MODULE_COLLISIONS_H__
 
 #define MAX_COLLIDERS 50
 
@@ -19,15 +19,15 @@ public:
 	// Called at the beginning of the application loop
 	// Removes all colliders pending to delete
 	// Checks for new collisions and calls its listeners
-	UpdateResult PreUpdate();
+	update_status PreUpdate();
 
 	// Called at the middle of the application loop
 	// Switches the debug mode on/off
-	UpdateResult Update();
+	update_status Update();
 
 	// Called at the end of the application loop
 	// Draw all colliders (if debug mode is enabled)
-	UpdateResult PostUpdate();
+	update_status PostUpdate();
 
 	// Removes all existing colliders
 	bool CleanUp();
@@ -47,7 +47,7 @@ private:
 	bool matrix[Collider::Type::MAX][Collider::Type::MAX];
 
 	// Simple debugging flag to draw all colliders
-	bool debug = true;
+	bool debug = false;
 };
 
-#endif // __MODULECOLLISIONS_H__
+#endif // __MODULE_COLLISIONS_H__
