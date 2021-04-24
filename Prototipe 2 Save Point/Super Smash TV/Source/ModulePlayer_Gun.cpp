@@ -59,7 +59,7 @@ bool ModulePlayer_Gun::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Sprites/Characters/Player2.png");
+	texture = App->textures->Load("Sprites/Characters/Player.png");
 
 	currentAnimation = &gun_idle;
 

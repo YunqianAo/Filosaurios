@@ -80,7 +80,7 @@ bool ModulePlayer_Leg::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Sprites/Characters/Player2.png");
+	texture = App->textures->Load("Sprites/Characters/Player.png");
 
 	currentAnimation = &legs_idle;
 
