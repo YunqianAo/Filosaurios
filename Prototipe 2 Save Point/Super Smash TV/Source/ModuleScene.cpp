@@ -23,7 +23,7 @@ bool ModuleScene::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Sprites/Mapa/Map_A_1.png");
+	bgTexture = App->textures->Load("Sprites/Mapa/Map.png");
 
 	return ret;
 }
@@ -39,7 +39,7 @@ update_status ModuleScene::Update()
 update_status ModuleScene::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(bgTexture, 0, 0, NULL);
+	App->render->Blit(bgTexture, -256, -255, NULL);
 
 	return update_status::UPDATE_CONTINUE;
 }
