@@ -13,8 +13,7 @@ void Collider::SetPos(int x, int y)
 
 bool Collider::Intersects(const SDL_Rect& r) const
 {
-	// L6: TODO 1: Check if there is an overlap
-	// between argument "r" and property "rect"
+	
 
 	return false;
 }

@@ -7,8 +7,10 @@
 #include "ModulePlayer_Legs.h"
 #include "ModulePlayer_Gun.h"
 
+
 #include "ModuleScene.h"
 #include "ModuleParticles.h"
+#include "ModuleCollisions.h"
 #include "ModuleRender.h"
 
 Application::Application()
@@ -26,7 +28,10 @@ Application::Application()
 
 
 	modules[6] = particles = new ModuleParticles();
-	modules[7] = render = new ModuleRender();
+
+	modules[7] = collisions = new ModuleCollisions();
+
+	modules[8] = render = new ModuleRender();
 }
 
 Application::~Application()

@@ -46,8 +46,8 @@ private:
 	// If set two false, collider 1 will ignore collider 2
 	bool matrix[Collider::Type::MAX][Collider::Type::MAX];
 
-	// Simple debugging flag to draw all colliders
-	bool debug = false;
+	// true show colaiders, false dosent show them
+	bool debug = true;
 };
 
 #endif // __MODULE_COLLISIONS_H__

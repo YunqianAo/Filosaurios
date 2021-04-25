@@ -55,7 +55,7 @@ update_status ModuleRender::PreUpdate()
 
 update_status ModuleRender::Update()
 {
-	if (camera.x < 0) camera.x = 0;
+	// if (camera.x < 0) camera.x = 0;
 
 	
 	//Handle positive vertical movement
