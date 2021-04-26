@@ -10,7 +10,7 @@
 #include "SDL/include/SDL_scancode.h"
 
 
-ModulePlayer_Gun::ModulePlayer_Gun()
+ModulePlayer_Gun::ModulePlayer_Gun(bool startEnabled) : Module(startEnabled)
 {
 	// move down and idle
 	gun_idle.PushBack({ 0, 64, 32, 32 });

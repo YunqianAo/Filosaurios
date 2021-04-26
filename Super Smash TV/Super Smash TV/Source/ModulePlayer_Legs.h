@@ -12,7 +12,7 @@ class ModulePlayer_Leg : public Module
 {
 public:
 	// Constructor
-	ModulePlayer_Leg();
+	ModulePlayer_Leg(bool startEnabled);
 
 	// Destructor
 	~ModulePlayer_Leg();

@@ -9,7 +9,7 @@
 #include "SDL/include/SDL_render.h"
 #include "SDL/include/SDL_scancode.h"
 
-ModuleRender::ModuleRender() : Module()
+ModuleRender::ModuleRender(bool startEnabled) : Module(startEnabled)
 {
 
 }
@@ -57,7 +57,7 @@ update_status ModuleRender::Update()
 {
 	// if (camera.x < 0) camera.x = 0;
 
-	
+
 	//Handle positive vertical movement
 	if (App->input->keys[SDL_SCANCODE_I] == KEY_REPEAT)
 		camera.y -= cameraSpeed;
@@ -68,7 +68,6 @@ update_status ModuleRender::Update()
 
 	if (App->input->keys[SDL_SCANCODE_J] == KEY_REPEAT)
 		camera.x -= cameraSpeed;
-	
 
 	if (App->input->keys[SDL_SCANCODE_L] == KEY_REPEAT)
 		camera.x += cameraSpeed;
@@ -129,17 +128,20 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, f
 	return ret;
 }
 
-bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, float speed)
+bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, float speed, bool useCamera)
 {
 	bool ret = true;
 
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 	SDL_SetRenderDrawColor(renderer, r, g, b, a);
 
-	SDL_Rect dstRect{
-		(int)(-camera.x * speed) + rect.x * SCREEN_SIZE,
-		(int)(-camera.y * speed) + rect.y * SCREEN_SIZE,
-		rect.w * SCREEN_SIZE, rect.h * SCREEN_SIZE };
+	SDL_Rect dstRect{ rect.x * SCREEN_SIZE, rect.y * SCREEN_SIZE, rect.w * SCREEN_SIZE, rect.h * SCREEN_SIZE };
+
+	if (useCamera)
+	{
+		dstRect.x -= (camera.x * speed);
+		dstRect.y -= (camera.y * speed);
+	}
 
 	if (SDL_RenderFillRect(renderer, &dstRect) != 0)
 	{

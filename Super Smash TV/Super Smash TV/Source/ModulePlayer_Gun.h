@@ -12,7 +12,7 @@ class ModulePlayer_Gun : public Module
 {
 public:
 	// Constructor
-	ModulePlayer_Gun();
+	ModulePlayer_Gun(bool startEnabled);
 
 	// Destructor
 	~ModulePlayer_Gun();

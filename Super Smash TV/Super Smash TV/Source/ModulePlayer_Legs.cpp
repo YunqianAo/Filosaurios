@@ -10,7 +10,7 @@
 #include "SDL/include/SDL_scancode.h"
 
 
-ModulePlayer_Leg::ModulePlayer_Leg()
+ModulePlayer_Leg::ModulePlayer_Leg(bool startEnabled) : Module(startEnabled)
 {
 	// LEGS
 	legs_idle.PushBack({ 128, 16, 16, 16 });

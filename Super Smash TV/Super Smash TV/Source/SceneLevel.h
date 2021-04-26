@@ -1,5 +1,5 @@
-#ifndef __MODULE_SCENE_H__
-#define __MODULE_SCENE_H__
+#ifndef __SCENE_LEVEL_H__
+#define __SCENE_LEVEL_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -10,7 +10,7 @@ class SceneLevel : public Module
 {
 public:
 	//Constructor
-	SceneLevel();
+	SceneLevel(bool startEnabled);
 
 	//Destructor
 	~SceneLevel();
