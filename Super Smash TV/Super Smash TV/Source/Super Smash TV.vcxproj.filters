@@ -94,6 +94,9 @@
     <ClInclude Include="ModuleAudio.h">
       <Filter>Source Files\Modules\Core</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleEnemies.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -155,6 +158,9 @@
     </ClCompile>
     <ClCompile Include="ModuleAudio.cpp">
       <Filter>Source Files\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEnemies.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
