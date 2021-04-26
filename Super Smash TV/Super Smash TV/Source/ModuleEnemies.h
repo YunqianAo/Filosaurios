@@ -1,4 +1,4 @@
-#ifndef __MODULE_ENEMIES_H__
+/* #ifndef __MODULE_ENEMIES_H__
 #define __MODULE_ENEMIES_H__
 
 #include "Module.h"
@@ -83,3 +83,6 @@ private:
 };
 
 #endif // __MODULE_ENEMIES_H__
+
+
+*/

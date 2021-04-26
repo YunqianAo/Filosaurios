@@ -5,15 +5,13 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
+#include "ModuleCollisions.h"
 
 #include "SDL/include/SDL_scancode.h"
 
 
 ModulePlayer_Gun::ModulePlayer_Gun()
 {
-	position.x = 113;
-	position.y = 137;
-
 	// move down and idle
 	gun_idle.PushBack({ 0, 64, 32, 32 });
 
@@ -58,10 +56,13 @@ bool ModulePlayer_Gun::Start()
 	LOG("Loading GUN GUN GUN");
 
 	bool ret = true;
-
 	texture = App->textures->Load("Sprites/Characters/Player.png");
-
 	currentAnimation = &gun_idle;
+
+	position.x = 113;
+	position.y = 137;
+
+	collider = App->collisions->AddCollider({ position.x, position.y, 32, -32 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
@@ -102,31 +103,31 @@ update_status ModulePlayer_Gun::Update()
 
 
 	// Shoot bullet right
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->bullet_r, position.x+28 , position.y - 22, 0);
+		App->particles->AddParticle(App->particles->bullet_r, position.x+28 , position.y - 22, Collider::Type::PLAYER_SHOT);
 		currentAnimation = &gun_r_shoot;
 	}
 
 	// Shoot bullet left
-	if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->bullet_l, position.x - 4, position.y-22, 0);
+		App->particles->AddParticle(App->particles->bullet_l, position.x - 4, position.y-22, Collider::Type::PLAYER_SHOT);
 		currentAnimation = &gun_l_shoot;
 	}
 
 	// Shoot bullet up
-	if (App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->bullet_up, position.x+14, position.y - 34, 0);
+		App->particles->AddParticle(App->particles->bullet_up, position.x+14, position.y - 34, Collider::Type::PLAYER_SHOT);
 		currentAnimation = &gun_up_shoot;
 				
 	}
 
 	// Shoot bullet down
-	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->bullet_down, position.x+16, position.y - 13, 0);
+		App->particles->AddParticle(App->particles->bullet_down, position.x+16, position.y - 13, Collider::Type::PLAYER_SHOT);
 		currentAnimation = &gun_down_shoot;
 	}
 
@@ -143,6 +144,8 @@ update_status ModulePlayer_Gun::Update()
 
 		currentAnimation = &gun_idle;
 
+	collider->SetPos(position.x, position.y);
+
 	currentAnimation->Update();
 
 	return update_status::UPDATE_CONTINUE;
@@ -155,4 +158,9 @@ update_status ModulePlayer_Gun::PostUpdate()
 	App->render->Blit(texture, position.x, position.y - rect.h, &rect);
 
 	return update_status::UPDATE_CONTINUE;
+}
+
+void ModulePlayer_Gun::OnCollision(Collider* c1, Collider* c2)
+{
+
 }

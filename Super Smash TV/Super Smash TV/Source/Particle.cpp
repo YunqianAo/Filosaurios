@@ -1,6 +1,6 @@
 #include "Particle.h"
 
-#include "SDL/include/SDL_timer.h"
+#include "Collider.h"
 
 Particle::Particle()
 {
@@ -9,9 +9,15 @@ Particle::Particle()
 }
 
 Particle::Particle(const Particle& p) : anim(p.anim), position(p.position), speed(p.speed),
-frameCount(p.frameCount), lifetime(p.lifetime)
+										frameCount(p.frameCount), lifetime(p.lifetime)
 {
 
+}
+
+Particle::~Particle()
+{
+	if (collider != nullptr)
+		collider->pendingToDelete = true;
 }
 
 bool Particle::Update()
@@ -40,6 +46,9 @@ bool Particle::Update()
 		// Update the position in the screen
 		position.x += speed.x;
 		position.y += speed.y;
+
+		if (collider != nullptr)
+			collider->SetPos(position.x, position.y);
 	}
 
 	return ret;

@@ -5,7 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
 
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
+
 
 ModuleScene::ModuleScene()
 {

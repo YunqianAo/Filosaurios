@@ -5,15 +5,13 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
+#include "ModuleCollisions.h"
 
 #include "SDL/include/SDL_scancode.h"
 
 
 ModulePlayer_Leg::ModulePlayer_Leg()
 {
-	position.x = 121;
-	position.y = 137;
-
 	// LEGS
 	legs_idle.PushBack({ 128, 16, 16, 16 });
 
@@ -81,8 +79,13 @@ bool ModulePlayer_Leg::Start()
 	bool ret = true;
 
 	texture = App->textures->Load("Sprites/Characters/Player.png");
-
 	currentAnimation = &legs_idle;
+	position.x = 121;
+	position.y = 137;	
+
+	collider = App->collisions->AddCollider({ 5, 0, 16, -16 }, Collider::Type::PLAYER, this);
+
+	
 
 	return ret;
 }
@@ -160,7 +163,10 @@ update_status ModulePlayer_Leg::Update()
 
 		currentAnimation = &legs_idle;
 
+	collider->SetPos(position.x, position.y);
+
 	currentAnimation->Update();
+
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -171,4 +177,9 @@ update_status ModulePlayer_Leg::PostUpdate()
 	App->render->Blit(texture, position.x, position.y - rect.h, &rect);
 
 	return update_status::UPDATE_CONTINUE;
+}
+
+void ModulePlayer_Leg::OnCollision(Collider* c1, Collider* c2)
+{
+
 }
