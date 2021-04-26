@@ -9,9 +9,16 @@ class Module;
 class ModuleWindow;
 class ModuleInput;
 class ModuleTextures;
+/*
+class ModuleAudio;
+class SceneIntro;
+class ModuleEnemies;
+class ModuleFadeToBlack;
+class ModuleFonts;
+*/
 class ModulePlayer_Leg;
 class ModulePlayer_Gun;
-class ModuleScene;
+class SceneLevel;
 class ModuleParticles;
 class ModuleCollisions;
 class ModuleRender;
@@ -45,9 +52,17 @@ public:
 	ModuleInput* input = nullptr;
 	ModuleTextures* textures = nullptr;
 
+	/*
+	ModuleAudio* audio = nullptr;
+	SceneIntro* sceneIntro = nullptr;
+	ModuleEnemies* enemies = nullptr;
+	ModuleFadeToBlack* fade = nullptr;
+	ModuleFonts* fonts = nullptr;	
+	*/
+
 	ModulePlayer_Leg* player_leg = nullptr;
 	ModulePlayer_Gun* player_gun = nullptr;
-	ModuleScene* scene = nullptr;
+	SceneLevel* scene_level = nullptr;
 	ModuleParticles* particles = nullptr;
 
 	ModuleCollisions* collisions = nullptr;

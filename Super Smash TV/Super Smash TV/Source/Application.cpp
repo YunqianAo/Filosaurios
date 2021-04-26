@@ -6,9 +6,15 @@
 #include "ModuleTextures.h"
 #include "ModulePlayer_Legs.h"
 #include "ModulePlayer_Gun.h"
+/*
+#include "ModuleAudio.h"
+#include "SceneIntro.h"
+#include "ModuleEnemies.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleFonts.h"
+*/
 
-
-#include "ModuleScene.h"
+#include "SceneLevel.h"
 #include "ModuleParticles.h"
 #include "ModuleCollisions.h"
 #include "ModuleRender.h"
@@ -21,16 +27,18 @@ Application::Application()
 	modules[0] = window = new ModuleWindow();
 	modules[1] = input = new ModuleInput();
 	modules[2] = textures = new ModuleTextures();
+	//		modules[3] =	audio =			new ModuleAudio(true);
 
-	modules[3] = scene = new ModuleScene();
+	//		modules[4] =	sceneIntro =	new SceneIntro(true);
+	modules[3] = scene_level = new SceneLevel();
 	modules[4] = player_leg = new ModulePlayer_Leg();
 	modules[5] = player_gun = new ModulePlayer_Gun();
-
-
 	modules[6] = particles = new ModuleParticles();
+	//		modules[8] =	enemies =		new ModuleEnemies(false);
 
 	modules[7] = collisions = new ModuleCollisions();
-
+	//		modules[10] =	fade =			new ModuleFadeToBlack(true);
+	//		modules[11] = fonts = new ModuleFonts(true);
 	modules[8] = render = new ModuleRender();
 }
 

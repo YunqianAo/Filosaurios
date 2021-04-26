@@ -1,4 +1,4 @@
-#include "ModuleScene.h"
+#include "SceneLevel.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -7,18 +7,18 @@
 
 
 
-ModuleScene::ModuleScene()
+SceneLevel::SceneLevel()
 {
 
 }
 
-ModuleScene::~ModuleScene()
+SceneLevel::~SceneLevel()
 {
 
 }
 
 // Load assets
-bool ModuleScene::Start()
+bool SceneLevel::Start()
 {
 	LOG("Loading background assets");
 
@@ -117,7 +117,7 @@ bool ModuleScene::Start()
 	return ret;
 }
 
-update_status ModuleScene::Update()
+update_status SceneLevel::Update()
 {
 	App->render->camera.x += 0;
 
@@ -125,7 +125,7 @@ update_status ModuleScene::Update()
 }
 
 // Update: draw background
-update_status ModuleScene::PostUpdate()
+update_status SceneLevel::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, -256, -255, NULL);
