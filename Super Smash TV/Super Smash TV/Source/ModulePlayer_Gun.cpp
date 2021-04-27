@@ -65,7 +65,7 @@ bool ModulePlayer_Gun::Start()
 	position.x = 113;
 	position.y = 137;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 32, -32 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ 0, 0, 14, -25 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
@@ -151,7 +151,7 @@ update_status ModulePlayer_Gun::Update()
 
 		currentAnimation = &gun_idle;
 
-	collider->SetPos(position.x, position.y);
+	collider->SetPos(position.x + 9, position.y - 2);
 
 	currentAnimation->Update();
 

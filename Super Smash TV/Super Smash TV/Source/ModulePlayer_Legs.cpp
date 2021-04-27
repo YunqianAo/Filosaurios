@@ -83,7 +83,7 @@ bool ModulePlayer_Leg::Start()
 	position.x = 121;
 	position.y = 137;	
 
-	collider = App->collisions->AddCollider({ 5, 0, 16, -16 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ 0, 0, 14, -25 }, Collider::Type::PLAYER, this);
 
 	
 
@@ -163,7 +163,7 @@ update_status ModulePlayer_Leg::Update()
 
 		currentAnimation = &legs_idle;
 
-	collider->SetPos(position.x, position.y);
+	collider->SetPos(position.x + 1, position.y - 2);
 
 	currentAnimation->Update();
 
