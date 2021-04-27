@@ -6,6 +6,7 @@
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
 #include "ModuleCollisions.h"
+#include "ModuleAudio.h"
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -59,6 +60,8 @@ bool ModulePlayer_Gun::Start()
 	texture = App->textures->Load("Sprites/Characters/Player.png");
 	currentAnimation = &gun_idle;
 
+	gunFx = App->audio->LoadFx("Audio/SFX/In-Game Sounds/Weapons_Sounds/Pistol_Shot.wav");
+
 	position.x = 113;
 	position.y = 137;
 
@@ -107,6 +110,7 @@ update_status ModulePlayer_Gun::Update()
 	{
 		App->particles->AddParticle(App->particles->bullet_r, position.x+28 , position.y - 22, Collider::Type::PLAYER_SHOT);
 		currentAnimation = &gun_r_shoot;
+		App->audio->PlayFx(gunFx);
 	}
 
 	// Shoot bullet left
@@ -114,6 +118,7 @@ update_status ModulePlayer_Gun::Update()
 	{
 		App->particles->AddParticle(App->particles->bullet_l, position.x - 4, position.y-22, Collider::Type::PLAYER_SHOT);
 		currentAnimation = &gun_l_shoot;
+		App->audio->PlayFx(gunFx);
 	}
 
 	// Shoot bullet up
@@ -121,6 +126,7 @@ update_status ModulePlayer_Gun::Update()
 	{
 		App->particles->AddParticle(App->particles->bullet_up, position.x+14, position.y - 34, Collider::Type::PLAYER_SHOT);
 		currentAnimation = &gun_up_shoot;
+		App->audio->PlayFx(gunFx);
 				
 	}
 
@@ -129,6 +135,7 @@ update_status ModulePlayer_Gun::Update()
 	{
 		App->particles->AddParticle(App->particles->bullet_down, position.x+16, position.y - 13, Collider::Type::PLAYER_SHOT);
 		currentAnimation = &gun_down_shoot;
+		App->audio->PlayFx(gunFx);
 	}
 
 

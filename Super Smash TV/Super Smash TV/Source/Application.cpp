@@ -6,7 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModulePlayer_Legs.h"
 #include "ModulePlayer_Gun.h"
-//#include "ModuleAudio.h"
+#include "ModuleAudio.h"
 #include "SceneIntro.h"
 //#include "ModuleEnemies.h"
 #include "ModuleFadeToBlack.h"
@@ -26,19 +26,19 @@ Application::Application()
 	modules[0] = window = new ModuleWindow(true);
 	modules[1] = input = new ModuleInput(true);
 	modules[2] = textures = new ModuleTextures(true);
-	//		modules[3] =	audio =			new ModuleAudio(true);
+	modules[3] = audio = new ModuleAudio(true);
 
-	modules[3] = sceneIntro = new SceneIntro(true);
-	modules[4] = sceneLevel = new SceneLevel(false);
-	modules[5] = player_leg = new ModulePlayer_Leg(false);
-	modules[6] = player_gun = new ModulePlayer_Gun(false);
-	modules[7] = particles = new ModuleParticles(true);
+	modules[4] = sceneIntro = new SceneIntro(true);
+	modules[5] = sceneLevel = new SceneLevel(false);
+	modules[6] = player_leg = new ModulePlayer_Leg(false);
+	modules[7] = player_gun = new ModulePlayer_Gun(false);
+	modules[8] = particles = new ModuleParticles(true);
 	//		modules[8] =	enemies =		new ModuleEnemies(false);
 
-	modules[8] = collisions = new ModuleCollisions(true);
-	modules[9] = fade = new ModuleFadeToBlack(true);
+	modules[9] = collisions = new ModuleCollisions(true);
+	modules[10] = fade = new ModuleFadeToBlack(true);
 	//		modules[11] = fonts = new ModuleFonts(true);
-	modules[10] = render = new ModuleRender(true);
+	modules[11] = render = new ModuleRender(true);
 }
 
 Application::~Application()

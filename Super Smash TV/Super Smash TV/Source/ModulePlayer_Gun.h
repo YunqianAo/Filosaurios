@@ -63,6 +63,9 @@ public:
 
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
+
+	// Sound effects indices
+	uint gunFx = 0;
 };
 
 #endif //!__MODULE_PLAYER_GUN__#pragma once
