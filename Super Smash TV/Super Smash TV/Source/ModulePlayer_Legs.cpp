@@ -81,11 +81,11 @@ bool ModulePlayer_Leg::Start()
 	texture = App->textures->Load("Sprites/Characters/Player.png");
 	currentAnimation = &legs_idle;
 	position.x = 121;
-	position.y = 137;	
+	position.y = 135;
 
-	collider = App->collisions->AddCollider({ 0, 0, 14, -25 }, Collider::Type::PLAYER, this);
+	destroyed = false;
 
-	
+	collider = App->collisions->AddCollider({ position.x, position.y, 14, 25 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
@@ -163,7 +163,7 @@ update_status ModulePlayer_Leg::Update()
 
 		currentAnimation = &legs_idle;
 
-	collider->SetPos(position.x + 1, position.y - 2);
+	collider->SetPos(position.x+1, position.y-12);
 
 	currentAnimation->Update();
 
@@ -173,13 +173,19 @@ update_status ModulePlayer_Leg::Update()
 
 update_status ModulePlayer_Leg::PostUpdate()
 {
-	SDL_Rect rect = currentAnimation->GetCurrentFrame();
-	App->render->Blit(texture, position.x, position.y - rect.h, &rect);
+	if (!destroyed)
+	{
+		SDL_Rect rect = currentAnimation->GetCurrentFrame();
+		App->render->Blit(texture, position.x, position.y, &rect);
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }
 
 void ModulePlayer_Leg::OnCollision(Collider* c1, Collider* c2)
 {
-
+	if (c1->type == Collider::Type::PLAYER && destroyed == false)
+	{
+		destroyed = true;
+	}
 }

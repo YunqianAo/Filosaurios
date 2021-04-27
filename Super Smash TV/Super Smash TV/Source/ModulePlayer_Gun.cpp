@@ -63,9 +63,11 @@ bool ModulePlayer_Gun::Start()
 	gunFx = App->audio->LoadFx("Audio/SFX/In-Game Sounds/Weapons_Sounds/Pistol_Shot.wav");
 
 	position.x = 113;
-	position.y = 137;
+	position.y = 118;
 
-	collider = App->collisions->AddCollider({ 0, 0, 14, -25 }, Collider::Type::PLAYER, this);
+	destroyed = false;
+
+	collider = App->collisions->AddCollider({ position.x, position.y, 14, -25 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
@@ -108,7 +110,7 @@ update_status ModulePlayer_Gun::Update()
 	// Shoot bullet right
 	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->bullet_r, position.x+28 , position.y - 22, Collider::Type::PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->bullet_r, position.x+28 , position.y+10, Collider::Type::PLAYER_SHOT);
 		currentAnimation = &gun_r_shoot;
 		App->audio->PlayFx(gunFx);
 	}
@@ -116,7 +118,7 @@ update_status ModulePlayer_Gun::Update()
 	// Shoot bullet left
 	if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->bullet_l, position.x - 4, position.y-22, Collider::Type::PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->bullet_l, position.x - 4, position.y+10, Collider::Type::PLAYER_SHOT);
 		currentAnimation = &gun_l_shoot;
 		App->audio->PlayFx(gunFx);
 	}
@@ -124,7 +126,7 @@ update_status ModulePlayer_Gun::Update()
 	// Shoot bullet up
 	if (App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->bullet_up, position.x+14, position.y - 34, Collider::Type::PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->bullet_up, position.x+14, position.y, Collider::Type::PLAYER_SHOT);
 		currentAnimation = &gun_up_shoot;
 		App->audio->PlayFx(gunFx);
 				
@@ -133,7 +135,7 @@ update_status ModulePlayer_Gun::Update()
 	// Shoot bullet down
 	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->bullet_down, position.x+16, position.y - 13, Collider::Type::PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->bullet_down, position.x+16, position.y+20, Collider::Type::PLAYER_SHOT);
 		currentAnimation = &gun_down_shoot;
 		App->audio->PlayFx(gunFx);
 	}
@@ -151,7 +153,7 @@ update_status ModulePlayer_Gun::Update()
 
 		currentAnimation = &gun_idle;
 
-	collider->SetPos(position.x + 9, position.y - 2);
+	collider->SetPos(position.x + 9, position.y +30);
 
 	currentAnimation->Update();
 
@@ -161,13 +163,22 @@ update_status ModulePlayer_Gun::Update()
 
 update_status ModulePlayer_Gun::PostUpdate()
 {
-	SDL_Rect rect = currentAnimation->GetCurrentFrame();
-	App->render->Blit(texture, position.x, position.y - rect.h, &rect);
+	if (!destroyed)
+	{
+		SDL_Rect rect = currentAnimation->GetCurrentFrame();
+		App->render->Blit(texture, position.x, position.y, &rect);
+	}
+
 
 	return update_status::UPDATE_CONTINUE;
 }
 
 void ModulePlayer_Gun::OnCollision(Collider* c1, Collider* c2)
 {
+	if (c1->type == Collider::Type::PLAYER && destroyed == false)
+	{
+		destroyed = true;
+	}
+
 
 }
