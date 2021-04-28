@@ -35,12 +35,11 @@ public:
 	// Adds a new collider to the list
 	Collider* AddCollider(SDL_Rect rect, Collider::Type type, Module* listener = nullptr);
 
-	// Draws all existing colliders with some transparency
-	void DebugDraw();
-	
 	// Removes the collider memory and removes it from the colliders array
 	void RemoveCollider(Collider* collider);
 
+	// Draws all existing colliders with some transparency
+	void DebugDraw();
 
 private:
 	// All existing colliders in the scene
