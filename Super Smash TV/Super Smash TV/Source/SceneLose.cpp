@@ -24,7 +24,7 @@ bool SceneLose::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Sprites/Intro/Intro_1.png");
+	bgTexture = App->textures->Load("Sprites/Post_Game/Credits_2.png");
 	//App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
 
 	App->render->camera.x = 0;
