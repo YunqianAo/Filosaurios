@@ -126,11 +126,6 @@ bool SceneLevel::Start()
 update_status SceneLevel::Update()
 {
 	App->render->camera.x += 0;
-
-	if (App->player_gun->destroyed == true)
-	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneLose, 90);
-	}
 	
 	return update_status::UPDATE_CONTINUE;
 }
@@ -142,4 +137,12 @@ update_status SceneLevel::PostUpdate()
 	App->render->Blit(bgTexture, -256, -255, NULL);
 
 	return update_status::UPDATE_CONTINUE;
+}
+
+bool SceneLevel::CleanUp()
+{
+	App->player_gun->Disable();
+	App->player_leg->Disable();
+
+	return true;
 }
