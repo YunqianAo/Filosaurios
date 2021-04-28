@@ -88,3 +88,29 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 
 	return texture;
 }
+
+void ModuleTextures::Unload(SDL_Texture* texture)
+{
+	bool ret = false;
+
+	if (texture != nullptr)
+	{
+		for (int i = 0; i < MAX_TEXTURES; ++i)
+		{
+			if (textures[i] == texture)
+			{
+				textures[i] = nullptr;
+				ret = true;
+				break;
+			}
+		}
+		SDL_DestroyTexture(texture);
+	}
+
+
+}
+
+void ModuleTextures::GetTextureSize(const SDL_Texture* texture, uint& width, uint& height) const
+{
+	SDL_QueryTexture((SDL_Texture*)texture, NULL, NULL, (int*)&width, (int*)&height);
+}

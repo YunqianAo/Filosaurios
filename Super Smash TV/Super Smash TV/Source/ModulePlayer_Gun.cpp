@@ -8,6 +8,8 @@
 #include "ModuleCollisions.h"
 #include "ModuleAudio.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleFonts.h"
+#include <stdio.h>
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -179,7 +181,6 @@ update_status ModulePlayer_Gun::PostUpdate()
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
-
 
 	return update_status::UPDATE_CONTINUE;
 }

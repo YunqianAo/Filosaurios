@@ -7,7 +7,9 @@
 #include "ModulePlayer_Gun.h"
 #include "ModulePlayer_Legs.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleFonts.h"
 
+#include <stdio.h>
 
 
 SceneLevel::SceneLevel(bool startEnabled) : Module(startEnabled)
@@ -28,6 +30,9 @@ bool SceneLevel::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Sprites/Mapa/Map.png");
+
+	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
+	scoreFont = App->fonts->Load("Sprites/Characters/Numbers_And_Letters.png", lookupTable, 2);
 
 	//Map 1b
 	// X colliders
@@ -129,7 +134,9 @@ update_status SceneLevel::Update()
 {
 	App->render->camera.x += 0;
 	
+	
 	return update_status::UPDATE_CONTINUE;
+
 }
 
 // Update: draw background
@@ -137,6 +144,11 @@ update_status SceneLevel::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, -256, -255, NULL);
+
+	sprintf_s(scoreText, 10, "%7d", score);
+
+	App->fonts->BlitText(24, 47, scoreFont, scoreText);
+	App->fonts->BlitText(24, 47, scoreFont, "press start");
 
 	return update_status::UPDATE_CONTINUE;
 }

@@ -67,6 +67,11 @@ public:
 	// Sound effects indices
 	uint gunFx = 0;
 
+	// Font score index
+	uint score = 000;
+	int scoreFont = -1;
+	char scoreText[10] = { "\0" };
+
 	bool GodMode = false;
 };
 
