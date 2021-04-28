@@ -103,9 +103,6 @@
     <ClInclude Include="Path.h">
       <Filter>Source Files\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="SceneLose.h">
-      <Filter>Source Files\Modules\Gameplay</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -176,9 +173,6 @@
     </ClCompile>
     <ClCompile Include="Path.cpp">
       <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneLose.cpp">
-      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
