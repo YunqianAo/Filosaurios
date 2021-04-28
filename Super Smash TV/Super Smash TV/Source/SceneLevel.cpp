@@ -6,6 +6,7 @@
 #include "ModuleCollisions.h"
 #include "ModulePlayer_Gun.h"
 #include "ModulePlayer_Legs.h"
+#include "ModuleFadeToBlack.h"
 
 
 
@@ -125,7 +126,7 @@ bool SceneLevel::Start()
 update_status SceneLevel::Update()
 {
 	App->render->camera.x += 0;
-
+	
 	return update_status::UPDATE_CONTINUE;
 }
 
