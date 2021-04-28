@@ -20,7 +20,7 @@ class ModuleParticles;
 class ModuleCollisions;
 class ModuleFadeToBlack;
 class ModuleRender;
-
+class ModuleEnemies;
 class Application
 {
 
@@ -59,7 +59,7 @@ public:
 	//ModuleEnemies* enemies = nullptr;
 	//ModuleFonts* fonts = nullptr;	
 	ModuleFadeToBlack* fade = nullptr;
-
+	ModuleEnemies* enemies = nullptr;
 	ModuleRender* render = nullptr;
 };
 

@@ -1,4 +1,4 @@
-/* #include "ModuleEnemies.h"
+#include "ModuleEnemies.h"
 
 #include "Application.h"
 
@@ -14,8 +14,9 @@
 #define SPAWN_MARGIN 50
 
 
-ModuleEnemies::ModuleEnemies(bool startEnabled) : Module()
+ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled)
 {
+	
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
 }
@@ -183,4 +184,3 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 }
-*/
