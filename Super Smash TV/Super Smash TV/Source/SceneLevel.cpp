@@ -32,7 +32,7 @@ bool SceneLevel::Start()
 	bgTexture = App->textures->Load("Sprites/Mapa/Map.png");
 
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
-	scoreFont = App->fonts->Load("Sprites/Characters/Numbers_And_Letters.png", lookupTable, 2);
+	scoreFont = App->fonts->Load("Sprites/Effects/Font.png", lookupTable, 2);
 
 	//Map 1b
 	// X colliders
