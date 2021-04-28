@@ -7,7 +7,6 @@
 #include "ModuleParticles.h"
 #include "ModuleCollisions.h"
 #include "ModuleAudio.h"
-#include "ModuleFadeToBlack.h"
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -180,4 +179,6 @@ void ModulePlayer_Gun::OnCollision(Collider* c1, Collider* c2)
 	{
 		destroyed = true;
 	}
+
+
 }

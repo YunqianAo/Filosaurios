@@ -14,7 +14,6 @@
 
 
 #include "SceneLevel.h"
-#include "SceneLose.h"
 #include "ModuleParticles.h"
 #include "ModuleCollisions.h"
 #include "ModuleRender.h"
@@ -31,16 +30,15 @@ Application::Application()
 
 	modules[4] = sceneIntro = new SceneIntro(true);
 	modules[5] = sceneLevel = new SceneLevel(false);
-	modules[6] = sceneLose = new SceneLose(false);
-	modules[7] = player_leg = new ModulePlayer_Leg(false);
-	modules[8] = player_gun = new ModulePlayer_Gun(false);
-	modules[9] = particles = new ModuleParticles(true);
+	modules[6] = player_leg = new ModulePlayer_Leg(false);
+	modules[7] = player_gun = new ModulePlayer_Gun(false);
+	modules[8] = particles = new ModuleParticles(true);
 	//		modules[8] =	enemies =		new ModuleEnemies(false);
 
-	modules[10] = collisions = new ModuleCollisions(true);
-	modules[11] = fade = new ModuleFadeToBlack(true);
+	modules[9] = collisions = new ModuleCollisions(true);
+	modules[10] = fade = new ModuleFadeToBlack(true);
 	//		modules[11] = fonts = new ModuleFonts(true);
-	modules[12] = render = new ModuleRender(true);
+	modules[11] = render = new ModuleRender(true);
 }
 
 Application::~Application()

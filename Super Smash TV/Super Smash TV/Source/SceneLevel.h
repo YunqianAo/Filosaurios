@@ -27,9 +27,6 @@ public:
 	// Performs the render call of all the parts of the scene's background
 	update_status PostUpdate() override;
 
-	// A flag to detect when the player has been destroyed
-	bool destroyed = false;
-
 public:
 
 	// The scene sprite sheet loaded into an SDL_Texture
