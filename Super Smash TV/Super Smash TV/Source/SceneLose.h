@@ -1,19 +1,19 @@
-#ifndef __SCENE_LEVEL_H__
-#define __SCENE_LEVEL_H__
+#ifndef __SCENE_LOSE_H__
+#define __SCENE_LOSE_H__
 
 #include "Module.h"
 #include "Animation.h"
 
 struct SDL_Texture;
 
-class SceneLevel : public Module
+class SceneLose : public Module
 {
 public:
 	//Constructor
-	SceneLevel(bool startEnabled);
+	SceneLose(bool startEnabled);
 
 	//Destructor
-	~SceneLevel();
+	~SceneLose();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the map background
@@ -27,16 +27,9 @@ public:
 	// Performs the render call of all the parts of the scene's background
 	update_status PostUpdate() override;
 
-	// A flag to detect when the player has been destroyed
-	bool destroyed = false;
-
 public:
-
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
-
-	// The sprite rectangle for the ground
-	SDL_Texture* starsTexture = nullptr;
 };
 
 #endif

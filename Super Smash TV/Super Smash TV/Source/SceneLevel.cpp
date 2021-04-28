@@ -6,6 +6,7 @@
 #include "ModuleCollisions.h"
 #include "ModulePlayer_Gun.h"
 #include "ModulePlayer_Legs.h"
+#include "ModuleFadeToBlack.h"
 
 
 
@@ -126,6 +127,11 @@ update_status SceneLevel::Update()
 {
 	App->render->camera.x += 0;
 
+	if (App->player_gun->destroyed == true)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneLose, 90);
+	}
+	
 	return update_status::UPDATE_CONTINUE;
 }
 
