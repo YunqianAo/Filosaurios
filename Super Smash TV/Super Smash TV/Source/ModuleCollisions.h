@@ -37,6 +37,10 @@ public:
 
 	// Draws all existing colliders with some transparency
 	void DebugDraw();
+	
+	// Removes the collider memory and removes it from the colliders array
+	void RemoveCollider(Collider* collider);
+
 
 private:
 	// All existing colliders in the scene

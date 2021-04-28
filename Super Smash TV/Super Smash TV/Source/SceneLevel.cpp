@@ -138,3 +138,11 @@ update_status SceneLevel::PostUpdate()
 
 	return update_status::UPDATE_CONTINUE;
 }
+
+bool SceneLevel::CleanUp()
+{
+	App->player_gun->Disable();
+	App->player_leg->Disable();
+
+	return true;
+}
