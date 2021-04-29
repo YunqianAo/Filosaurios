@@ -51,7 +51,7 @@ bool SceneLevel::Start()
 
 	//Map 2b
 	// X colliders
-	App->collisions->AddCollider({ 0 + 256, 215, 104, 75 }, Collider::Type::WALL);
+	/* App->collisions->AddCollider({ 0 + 256, 215, 104, 75 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 152 + 256, 215, 104, 75 }, Collider::Type::WALL);
 
 	App->collisions->AddCollider({ 0 + 256, -39, 104, 75 }, Collider::Type::WALL);
@@ -122,6 +122,7 @@ bool SceneLevel::Start()
 	App->collisions->AddCollider({ 238 + 256 + 256, -217, 37,69 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 238 + 256 + 256, -217 + 69, 37, 37 }, Collider::Type::DOOR);
 	App->collisions->AddCollider({ 238 + 256 + 256, -217 + 106, 37, 72 }, Collider::Type::WALL);
+	*/
 
 	//Enemies ---
 	App->player_gun->Enable();

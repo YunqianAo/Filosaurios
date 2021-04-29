@@ -26,20 +26,54 @@ bool ModuleParticles::Start()
 
 	// Bullet Default
 	bullet_r.anim.PushBack({ 32, 82, 8, 3 });
-	bullet_r.speed.x = 2;
+	bullet_r.speed = iPoint(2, 0);
 	bullet_r.lifetime = 180;
 
 	bullet_l.anim.PushBack({ 0, 82, 8, 3 });
-	bullet_l.speed.x = -2;
+	bullet_l.speed = iPoint(-2, 0);
 	bullet_l.lifetime = 180;
 
 	bullet_up.anim.PushBack({ 18, 80, 3, 8 });
-	bullet_up.speed.y = -2;
+	bullet_up.speed = iPoint(0, -2);
 	bullet_up.lifetime = 180;
 
 	bullet_down.anim.PushBack({ 51, 80, 3, 8 });
-	bullet_down.speed.y = 2;
+	bullet_down.speed = iPoint(0, 2);
 	bullet_down.lifetime = 180;
+
+	// shotgun bullet
+	shotgun_1.anim.PushBack({ 9, 113, 5, 5 });
+	shotgun_1.speed = iPoint(0, -2);
+	shotgun_1.lifetime = 180;
+
+	shotgun_2.anim.PushBack({ 9, 113, 5, 5 });
+	shotgun_2.speed = iPoint(2, -2);
+	shotgun_2.lifetime = 180;
+
+	shotgun_3.anim.PushBack({ 9, 113, 5, 5 });
+	shotgun_3.speed = iPoint(2, 0);
+	shotgun_3.lifetime = 180;
+
+	shotgun_4.anim.PushBack({ 9, 113, 5, 5 });
+	shotgun_4.speed = iPoint(2, 2);
+	shotgun_4.lifetime = 180;
+
+	shotgun_5.anim.PushBack({ 9, 113, 5, 5 });
+	shotgun_5.speed = iPoint(0, 2);
+	shotgun_5.lifetime = 180;
+
+	shotgun_6.anim.PushBack({ 9, 113, 5, 5 });
+	shotgun_6.speed = iPoint(-2, 2);
+	shotgun_6.lifetime = 180;
+
+	shotgun_7.anim.PushBack({ 9, 113, 5, 5 });
+	shotgun_7.speed = iPoint(-2, 0);
+	shotgun_7.lifetime = 180;
+
+	shotgun_8.anim.PushBack({ 9, 113, 5, 5 });
+	shotgun_8.speed = iPoint(-2, -2);
+	shotgun_8.lifetime = 180;
+
 
 	
 

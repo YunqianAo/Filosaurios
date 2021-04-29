@@ -67,6 +67,15 @@ public:
 	Particle bullet_up;
 	Particle bullet_down;
 
+	Particle shotgun_1;
+	Particle shotgun_2;
+	Particle shotgun_3;
+	Particle shotgun_4;
+	Particle shotgun_5;
+	Particle shotgun_6;
+	Particle shotgun_7;
+	Particle shotgun_8;
+
 	Particle inv;
 };
 
