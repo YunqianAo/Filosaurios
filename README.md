@@ -43,3 +43,7 @@ If "SDL2" not found:
 4. At "Work Directory" substitute with:
 
 5. $(SolutionDir)/$(SolutionName)/Resources
+
+## License
+
+This project is licensed under an unmodified MIT license, which is an OSI-certified license that allows static linking with closed source software. Check [LICENSE](https://github.com/YunqianAo/Filosaurios/blob/main/LICENSE) for further details.
