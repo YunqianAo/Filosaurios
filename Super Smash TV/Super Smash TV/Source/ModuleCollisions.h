@@ -50,7 +50,7 @@ private:
 	bool matrix[Collider::Type::MAX][Collider::Type::MAX];
 
 	// true show colaiders, false dosent show them
-	bool debug = true;
+	bool debug = false;
 };
 
 #endif // __MODULE_COLLISIONS_H__

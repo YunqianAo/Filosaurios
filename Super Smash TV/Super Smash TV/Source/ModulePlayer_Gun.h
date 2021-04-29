@@ -58,6 +58,15 @@ public:
 	Animation gun_l_shoot;
 	Animation gun_r_shoot;
 
+	Animation ShootGun_down;
+	Animation ShootGun_up;
+	Animation ShootGun_l;
+	Animation ShootGun_r;
+	Animation ShootGun_up_shoot;
+	Animation ShootGun_down_shoot;
+	Animation ShootGun_l_shoot;
+	Animation ShootGun_r_shoot;
+
 	// The player's collider
 	Collider* collider = nullptr;
 
@@ -67,12 +76,9 @@ public:
 	// Sound effects indices
 	uint gunFx = 0;
 
-	// Font score index
-	uint score = 000;
-	int scoreFont = -1;
-	char scoreText[10] = { "\0" };
-
 	bool GodMode = false;
+
+	bool ShootGun = false;
 };
 
 #endif //!__MODULE_PLAYER_GUN__#pragma once
