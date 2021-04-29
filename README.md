@@ -29,3 +29,17 @@
 * Enric Arxer - Github: [Luxary-92](https://github.com/Luxary-92)
 * Sergio Corona - Github: [Seregero00](https://github.com/seregero00)
 * Yunqian Ao - Github: [Yunqian Ao](https://github.com/YunqianAo)
+
+## Notes
+
+If "SDL2" not found: 
+
+1. Right click in: Super Smash TV
+
+2. Properties
+
+3. Depuration 
+
+4. At "Work Directory" substitute with:
+
+5. $(SolutionDir)/$(SolutionName)/Resources
