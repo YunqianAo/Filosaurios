@@ -162,12 +162,7 @@ update_status ModulePlayer_Leg::Update()
 
 	}
 
-	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
-	{
-		if (destroyed == false) {
-			destroyed = true;
-		}
-	}
+
 
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE
@@ -202,9 +197,16 @@ update_status ModulePlayer_Leg::PostUpdate()
 
 void ModulePlayer_Leg::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == Collider::Type::PLAYER && destroyed == false && GodMode == false )
+	if (c2->type == Collider::Type::WALL && destroyed == false && GodMode == false)
 	{
 		App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLose, 90);
+		destroyed = true;
+
+	}
+
+	if (c2->type == Collider::Type::DOOR && destroyed == false)
+	{
+		App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneWin, 90);
 		destroyed = true;
 	}
 

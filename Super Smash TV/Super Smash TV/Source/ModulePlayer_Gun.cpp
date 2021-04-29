@@ -333,11 +333,17 @@ update_status ModulePlayer_Gun::PostUpdate()
 
 void ModulePlayer_Gun::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == Collider::Type::PLAYER && destroyed == false && GodMode == false)
+	if (c2->type == Collider::Type::WALL && destroyed == false && GodMode == false)
 	{
 		App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLose, 90);
 		destroyed = true;
+
 	}
 
+	if (c2->type == Collider::Type::DOOR && destroyed == false)
+	{
+		App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneWin, 90);
+		destroyed = true;
+	}
 
 }

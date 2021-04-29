@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 14
+#define NUM_MODULES 15
 
 class Module;
 class ModuleWindow;
@@ -16,6 +16,7 @@ class ModulePlayer_Leg;
 class ModulePlayer_Gun;
 class SceneLevel;
 class SceneLose;
+class SceneWin;
 class ModuleParticles;
 class ModuleCollisions;
 class ModuleFadeToBlack;
@@ -55,6 +56,7 @@ public:
 	SceneIntro* sceneIntro = nullptr;
 	SceneLevel* sceneLevel = nullptr;
 	SceneLose* sceneLose = nullptr;
+	SceneWin* sceneWin = nullptr;
 	ModuleParticles* particles = nullptr;
 	ModuleCollisions* collisions = nullptr;
 	ModuleFonts* fonts = nullptr;	

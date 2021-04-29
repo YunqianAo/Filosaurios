@@ -12,7 +12,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 
-
+#include "SceneWin.h"
 #include "SceneLevel.h"
 #include "SceneLose.h"
 #include "ModuleParticles.h"
@@ -32,15 +32,16 @@ Application::Application()
 	modules[4] = sceneIntro = new SceneIntro(true);
 	modules[5] = sceneLevel = new SceneLevel(false);
 	modules[6] = sceneLose = new SceneLose(false);
-	modules[7] = player_leg = new ModulePlayer_Leg(false);
-	modules[8] = player_gun = new ModulePlayer_Gun(false);
-	modules[9] = particles = new ModuleParticles(true);
+	modules[7] = sceneWin = new SceneWin(false);
+	modules[8] = player_leg = new ModulePlayer_Leg(false);
+	modules[9] = player_gun = new ModulePlayer_Gun(false);
+	modules[10] = particles = new ModuleParticles(true);
 	//		modules[8] =	enemies =		new ModuleEnemies(false);
 
-	modules[10] = collisions = new ModuleCollisions(true);
-	modules[11] = fade = new ModuleFadeToBlack(true);
-	modules[12] = fonts = new ModuleFonts(true);
-	modules[13] = render = new ModuleRender(true);
+	modules[11] = collisions = new ModuleCollisions(true);
+	modules[12] = fade = new ModuleFadeToBlack(true);
+	modules[13] = fonts = new ModuleFonts(true);
+	modules[14] = render = new ModuleRender(true);
 }
 
 Application::~Application()

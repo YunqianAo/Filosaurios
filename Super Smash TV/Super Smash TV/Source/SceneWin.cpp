@@ -1,4 +1,4 @@
-#include "SceneLose.h"
+#include "SceneWin.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -7,24 +7,24 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 
-SceneLose::SceneLose(bool startEnabled) : Module(startEnabled)
+SceneWin::SceneWin(bool startEnabled) : Module(startEnabled)
 {
 
 }
 
-SceneLose::~SceneLose()
+SceneWin::~SceneWin()
 {
 
 }
 
 // Load assets
-bool SceneLose::Start()
+bool SceneWin::Start()
 {
 	LOG("Loading background assets");
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Sprites/Post_Game/Credits_2.png");
+	bgTexture = App->textures->Load("Sprites/Post_Game/Credits.png");
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -32,7 +32,7 @@ bool SceneLose::Start()
 	return ret;
 }
 
-update_status SceneLose::Update()
+update_status SceneWin::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
@@ -43,7 +43,7 @@ update_status SceneLose::Update()
 }
 
 // Update: draw background
-update_status SceneLose::PostUpdate()
+update_status SceneWin::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
