@@ -162,6 +162,13 @@ update_status ModulePlayer_Leg::Update()
 
 	}
 
+	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
+	{
+		if (destroyed == false) {
+			destroyed = true;
+		}
+	}
+
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE

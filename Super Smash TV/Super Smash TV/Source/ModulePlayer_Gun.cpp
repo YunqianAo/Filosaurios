@@ -289,6 +289,14 @@ update_status ModulePlayer_Gun::Update()
 
 	}
 
+	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
+	{
+		if (destroyed == false) {
+			App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLose, 90);
+			destroyed = true;
+		}
+	}
+
 	if (App->input->keys[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN)
 	{
 		if (ShootGun == false) {
