@@ -31,11 +31,11 @@ bool SceneLevel::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Sprites/Mapa/Map.png");
-	App->audio->PlayMusic("Audio/Music/Circuit_Theme 01.ogg", 1.0f);
+	bgTexture = App->textures->Load("Resources/Sprites/Mapa/Map.png");
+	App->audio->PlayMusic("Resources/Audio/Music/Circuit_Theme 01.ogg", 1.0f);
 
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
-	scoreFont = App->fonts->Load("Sprites/Effects/Font.png", lookupTable, 2);
+	scoreFont = App->fonts->Load("Resources/Sprites/Effects/Font.png", lookupTable, 2);
 
 	//Map 1b
 	// X colliders

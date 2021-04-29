@@ -89,10 +89,10 @@ bool ModulePlayer_Gun::Start()
 	LOG("Loading GUN GUN GUN");
 
 	bool ret = true;
-	texture = App->textures->Load("Sprites/Characters/Player.png");
+	texture = App->textures->Load("Resources/Sprites/Characters/Player.png");
 	currentAnimation = &gun_idle;
 
-	gunFx = App->audio->LoadFx("Audio/SFX/In-Game Sounds/Weapons_Sounds/Pistol_Shot.wav");
+	gunFx = App->audio->LoadFx("Resources/Audio/SFX/In-Game Sounds/Weapons_Sounds/Pistol_Shot.wav");
 
 	position.x = 113;
 	position.y = 118;

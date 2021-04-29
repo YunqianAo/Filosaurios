@@ -22,7 +22,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture = App->textures->Load("Sprites/effects/particles.png");
+	texture = App->textures->Load("Resources/Sprites/effects/particles.png");
 
 	// Bullet Default
 	bullet_r.anim.PushBack({ 32, 82, 8, 3 });

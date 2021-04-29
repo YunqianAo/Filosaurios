@@ -24,7 +24,7 @@ bool SceneWin::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Sprites/Post_Game/Credits.png");
+	bgTexture = App->textures->Load("Resources/Sprites/Post_Game/Credits.png");
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;

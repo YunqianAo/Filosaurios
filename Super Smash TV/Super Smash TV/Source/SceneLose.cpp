@@ -24,7 +24,7 @@ bool SceneLose::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Sprites/Post_Game/Credits_2.png");
+	bgTexture = App->textures->Load("Resources/Sprites/Post_Game/Credits_2.png");
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
