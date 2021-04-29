@@ -8,6 +8,7 @@
 #include "ModulePlayer_Legs.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "ModuleAudio.h"
 
 #include <stdio.h>
 
@@ -30,6 +31,7 @@ bool SceneLevel::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Sprites/Mapa/Map.png");
+	App->audio->PlayMusic("Audio/Music/Circuit_Theme 01.ogg", 1.0f);
 
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
 	scoreFont = App->fonts->Load("Sprites/Effects/Font.png", lookupTable, 2);
