@@ -8,6 +8,7 @@
 #include "ModulePlayer_Legs.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "ModuleEnemies.h"
 #include "ModuleAudio.h"
 
 #include <stdio.h>
@@ -126,9 +127,10 @@ bool SceneLevel::Start()
 	App->collisions->AddCollider({ 238 + 256 + 256, -217 + 106, 37, 72 }, Collider::Type::WALL);
 	*/
 
-	//Enemies ---
 	App->player_gun->Enable();
 	App->player_leg->Enable();
+
+	App->enemies->AddEnemy(Enemy_Type::RED, 29, 165);
 
 	return ret;
 }
@@ -160,6 +162,7 @@ bool SceneLevel::CleanUp()
 {
 	App->player_gun->Disable();
 	App->player_leg->Disable();
+	App->enemies->Disable();
 
 	return true;
 }

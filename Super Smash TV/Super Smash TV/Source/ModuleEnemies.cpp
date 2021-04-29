@@ -28,8 +28,7 @@ ModuleEnemies::~ModuleEnemies()
 
 bool ModuleEnemies::Start()
 {
-	texture = App->textures->Load("green_e.png");
-	texture = App->textures->Load("pink_e.png");
+	texture = App->textures->Load("red.png");
 
 	return true;
 }
@@ -158,7 +157,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 		{
 			switch (info.type)
 			{
-			case Enemy_Type::REDBIRD:
+			case Enemy_Type::RED:
 				enemies[i] = new Enemy_Red(info.x, info.y);
 				break;
 			case Enemy_Type::BROWNSHIP:

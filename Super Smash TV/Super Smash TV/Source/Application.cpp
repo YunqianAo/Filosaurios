@@ -8,7 +8,7 @@
 #include "ModulePlayer_Gun.h"
 #include "ModuleAudio.h"
 #include "SceneIntro.h"
-//#include "ModuleEnemies.h"
+#include "ModuleEnemies.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 
@@ -36,12 +36,12 @@ Application::Application()
 	modules[8] = player_leg = new ModulePlayer_Leg(false);
 	modules[9] = player_gun = new ModulePlayer_Gun(false);
 	modules[10] = particles = new ModuleParticles(true);
-	//		modules[8] =	enemies =		new ModuleEnemies(false);
+	modules[11] =	enemies = new ModuleEnemies(true);
 
-	modules[11] = collisions = new ModuleCollisions(true);
-	modules[12] = fade = new ModuleFadeToBlack(true);
-	modules[13] = fonts = new ModuleFonts(true);
-	modules[14] = render = new ModuleRender(true);
+	modules[12] = collisions = new ModuleCollisions(true);
+	modules[13] = fade = new ModuleFadeToBlack(true);
+	modules[14] = fonts = new ModuleFonts(true);
+	modules[15] = render = new ModuleRender(true);
 }
 
 Application::~Application()

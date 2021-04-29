@@ -5,23 +5,38 @@
 
 Enemy_Red::Enemy_Red(int x, int y) : Enemy(x, y)
 {
-	flyAnim.PushBack({ 0,0,13,15 });
-	flyAnim.PushBack({ 17,0,13,15 });
-	flyAnim.PushBack({ 32,0,14,15 });
+	red_up.PushBack({ 16,16,16,16 });
+	red_up.PushBack({ 32,16,16,16 });
+	red_up.PushBack({ 48,16,16,16 });
+	red_up.speed = 0.2f;
 
-	flyAnim.speed = 0.2f;
+	red_down.PushBack({ 64,16,16,16 });
+	red_down.PushBack({ 80,16,16,16 });	
+	red_down.speed = 0.2f;
 
-	currentAnim = &flyAnim;
+	red_r.PushBack({ 16,0,16,16 });
+	red_r.PushBack({ 32,0,16,16 });
+	red_r.PushBack({ 48,0,16,16 });
+	red_r.speed = 0.2f;
 
-	collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	red_l.PushBack({ 16,16,16,16 });
+	red_l.PushBack({ 32,16,16,16 });
+	red_l.PushBack({ 48,16,16,16 });
+	red_l .speed = 0.2f;
+
+	path.PushBack({ -0.3f, 0.0f }, 150, &red_r);
+	path.PushBack({ 0.0f, -0.3f }, 150, &red_down);
+	path.PushBack({ 1.2f, 0.0f }, 150, &red_l);
+	path.PushBack({ 0.0f, 1.2f }, 150, &red_up);
+
+	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_Red::Update()
 {
-	waveRatio += waveRatioSpeed;
-
-	position.y = spawnPos.y + (waveHeight * sinf(waveRatio));
-	position.x -= 1;
+	path.Update();
+	position = spawnPos + path.GetRelativePosition();
+	currentAnim = path.GetCurrentAnimation();
 
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
