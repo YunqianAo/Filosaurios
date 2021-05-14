@@ -28,8 +28,8 @@ ModuleEnemies::~ModuleEnemies()
 
 bool ModuleEnemies::Start()
 {
-	texture = App->textures->Load("red.png");
-
+	texture = App->textures->Load("pink_e.png");
+	texture = App->textures->Load("green_e.png");
 	return true;
 }
 
