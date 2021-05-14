@@ -1,17 +1,17 @@
 #pragma once
-#ifndef __ENEMY_REDBIRD_H__
-#define __ENEMY_REDBIRD_H__
+#ifndef __ENEMY_PINK_H__
+#define __ENEMY_PINK_H__
 
 #include "Enemy.h"
 #include "Path.h"
 
-class Enemy_Red : public Enemy
+class Enemy_Pink : public Enemy
 {
 public:
 
 	// Constructor (x y coordinates in the world)
 	// Creates animation data and the collider
-	Enemy_Red(int x, int y);
+	Enemy_Pink(int x, int y);
 
 	// The enemy is going to perform a sinusoidal movement
 	void Update() override;
@@ -23,11 +23,11 @@ private:
 
 
 	// The enemy animation
-	Animation red_up;
-	Animation red_down;
-	Animation red_l;
-	Animation red_r;
+	Animation pink_up;
+	Animation pink_down;
+	Animation pink_l;
+	Animation pink_r;
 
 };
 
-#endif // __ENEMY_REDBIRD_H__
+#endif // __ENEMY_PINK_H__

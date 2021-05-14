@@ -78,8 +78,8 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Enemy_Blue.h" />
-    <ClInclude Include="Enemy_Red.h" />
+    <ClInclude Include="Enemy_Green.h" />
+    <ClInclude Include="Enemy_Pink.h" />
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleCollisions.h" />
     <ClInclude Include="ModuleEnemies.h" />
@@ -107,8 +107,8 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Enemy_Blue.cpp" />
-    <ClCompile Include="Enemy_Red.cpp" />
+    <ClCompile Include="Enemy_Green.cpp" />
+    <ClCompile Include="Enemy_Pink.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleCollisions.cpp" />

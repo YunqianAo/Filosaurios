@@ -130,7 +130,7 @@ bool SceneLevel::Start()
 	App->player_gun->Enable();
 	App->player_leg->Enable();
 
-	App->enemies->AddEnemy(Enemy_Type::RED, 29, 165);
+	App->enemies->AddEnemy(Enemy_Type::PINK, 29, 165);
 
 	return ret;
 }

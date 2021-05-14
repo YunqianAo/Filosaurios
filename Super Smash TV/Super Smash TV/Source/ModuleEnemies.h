@@ -8,8 +8,8 @@
 enum class Enemy_Type
 {
 	NO_TYPE,
-	RED,
-	BROWNSHIP,
+	PINK,
+	GREEN,
 	MECH,
 };
 
