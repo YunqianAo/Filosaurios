@@ -9,6 +9,7 @@
 #include "Enemy.h"
 #include "Enemy_Pink.h"
 #include "Enemy_Green.h"
+#include "Enemy_Red.h"
 
 
 #define SPAWN_MARGIN 50
@@ -30,6 +31,7 @@ bool ModuleEnemies::Start()
 {
 	texture = App->textures->Load("pink_e.png");
 	texture = App->textures->Load("green_e.png");
+	texture = App->textures->Load("red.png");
 	return true;
 }
 
@@ -163,7 +165,9 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 			case Enemy_Type::GREEN:
 				enemies[i] = new Enemy_Green(info.x, info.y);
 				break;
-			
+			case Enemy_Type::RED:
+				enemies[i] = new Enemy_Red(info.x, info.y);
+				break;
 			}
 			enemies[i]->texture = texture;
 			enemies[i]->destroyedFx = enemyDestroyedFx;

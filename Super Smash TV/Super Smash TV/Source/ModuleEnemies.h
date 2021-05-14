@@ -10,7 +10,8 @@ enum class Enemy_Type
 	NO_TYPE,
 	PINK,
 	GREEN,
-	MECH,
+	RED,
+	
 };
 
 struct EnemySpawnpoint

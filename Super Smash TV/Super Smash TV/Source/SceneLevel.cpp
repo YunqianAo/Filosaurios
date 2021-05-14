@@ -132,6 +132,7 @@ bool SceneLevel::Start()
 
 	App->enemies->AddEnemy(Enemy_Type::PINK, 29, 165);
 	App->enemies->AddEnemy(Enemy_Type::GREEN, 29, 165);
+	App->enemies->AddEnemy(Enemy_Type::RED, 29, 165);
 	return ret;
 }
 
