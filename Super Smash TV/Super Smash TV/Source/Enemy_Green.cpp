@@ -5,23 +5,20 @@
 
 Enemy_Green::Enemy_Green(int x, int y) : Enemy(x, y)
 {
-	green_up.PushBack({ 16,16,16,16 });
-	green_up.PushBack({ 32,16,16,16 });
-	green_up.PushBack({ 48,16,16,16 });
+	green_up.PushBack({ 2,48,11,15 });
+	green_up.PushBack({ 17,48,13,15 });
 	green_up.speed = 0.2f;
 
-	green_down.PushBack({ 64,16,16,16 });
-	green_down.PushBack({ 80,16,16,16 });
+	green_down.PushBack({ 2,48,11,15 });
+	green_down.PushBack({ 17,48,13,15 });
 	green_down.speed = 0.2f;
 
-	green_r.PushBack({ 16,0,16,16 });
-	green_r.PushBack({ 32,0,16,16 });
-	green_r.PushBack({ 48,0,16,16 });
+	green_r.PushBack({ 1,17,14,14 });
+	green_r.PushBack({ 16,16,15,14 });
 	green_r.speed = 0.2f;
 
-	green_l.PushBack({ 16,16,16,16 });
-	green_l.PushBack({ 32,16,16,16 });
-	green_l.PushBack({ 48,16,16,16 });
+	green_l.PushBack({ 0,80,15,95 });
+	green_l.PushBack({ 16,81,14,14 });
 	green_l.speed = 0.2f;
 
 	path.PushBack({ -0.3f, 0.0f }, 150, &green_r);

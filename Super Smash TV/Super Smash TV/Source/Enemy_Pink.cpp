@@ -5,24 +5,21 @@
 
 Enemy_Pink::Enemy_Pink(int x, int y) : Enemy(x, y)
 {
-	pink_up.PushBack({ 16,16,16,16 });
-	pink_up.PushBack({ 32,16,16,16 });
-	pink_up.PushBack({ 48,16,16,16 });
+	pink_up.PushBack({ 2,48,11,15 });
+	pink_up.PushBack({ 17,48,13,15 });
 	pink_up.speed = 0.2f;
 
-	pink_down.PushBack({ 64,16,16,16 });
-	pink_down.PushBack({ 80,16,16,16 });	
+	pink_down.PushBack({ 2,48,11,15 });
+	pink_down.PushBack({ 17,48,13,15 });
 	pink_down.speed = 0.2f;
 
-	pink_r.PushBack({ 16,0,16,16 });
-	pink_r.PushBack({ 32,0,16,16 });
-	pink_r.PushBack({ 48,0,16,16 });
+	pink_r.PushBack({ 1,17,14,14 });
+	pink_r.PushBack({ 16,16,15,14 });
 	pink_r.speed = 0.2f;
 
-	pink_l.PushBack({ 16,16,16,16 });
-	pink_l.PushBack({ 32,16,16,16 });
-	pink_l.PushBack({ 48,16,16,16 });
-	pink_l .speed = 0.2f;
+	pink_l.PushBack({ 0,80,15,95 });
+	pink_l.PushBack({ 16,81,14,14 });
+	pink_l.speed = 0.2f;
 
 	path.PushBack({ -0.3f, 0.0f }, 150, &pink_r);
 	path.PushBack({ 0.0f, -0.3f }, 150, &pink_down);
