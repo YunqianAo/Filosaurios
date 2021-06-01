@@ -9,6 +9,7 @@
 Enemy::Enemy(int x, int y) : position(x, y)
 {
 	spawnPos = position;
+	this->position = position;
 }
 
 Enemy::~Enemy()
@@ -39,10 +40,12 @@ void Enemy::Draw()
 
 void Enemy::OnCollision(Collider* collider)
 {
-	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+	if (collider->type==Collider::Type::PLAYER_SHOT) {
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+		SetToDelete();
+	}
 
-
-	SetToDelete();
+	
 }
 
 void Enemy::SetToDelete()

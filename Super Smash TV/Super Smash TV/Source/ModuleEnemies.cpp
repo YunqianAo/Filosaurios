@@ -97,7 +97,7 @@ bool ModuleEnemies::CleanUp()
 bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
 {
 	bool ret = false;
-
+	
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (spawnQueue[i].type == Enemy_Type::NO_TYPE)

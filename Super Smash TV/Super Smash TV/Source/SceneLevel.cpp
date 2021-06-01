@@ -36,7 +36,7 @@ bool SceneLevel::Start()
 
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
 	scoreFont = App->fonts->Load("Resources/Sprites/Effects/Font.png", lookupTable, 2);
-
+	App->enemies->AddEnemy(Enemy_Type::GREEN,100,200);
 	//Map 1b
 	// X colliders
 	App->collisions->AddCollider({ 0, 215, 256, 75 }, Collider::Type::WALL);
