@@ -38,12 +38,13 @@ void Enemy::Draw()
 		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
 }
 
-void Enemy::OnCollision(Collider* collider)
+void Enemy::OnCollision(Collider* collider1, Collider* collider2)
 {
 	if (collider->type==Collider::Type::PLAYER_SHOT) {
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 		SetToDelete();
 	}
+	if(collider2=)
 
 	
 }
