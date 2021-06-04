@@ -19,119 +19,112 @@ using namespace std;
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
 	// Idle animation - just one sprite
+	legs_down_idle.PushBack({ 128, 16, 16, 16 });
+	legs_up_idle.PushBack({ 192, 16, 16, 16 });
+	legs_l_idle.PushBack({ 208, 16, 16, 16 });
+	legs_r_idle.PushBack({ 160, 16, 16, 16 });
 
-	idleDAnim.PushBack({ 128, 32, 16, 16 });
-	idleURAnim.PushBack({ 144, 32, 16, 16 });
-	idleLRAnim.PushBack({ 160, 32, 16, 16 });
-	idleULAnim.PushBack({ 176, 32, 16, 16 });
-	idleUAnim.PushBack({ 192, 32, 16, 16 });
 	//nome cames
 
 	// Move upwards
-	downAnim.Empty();
-	downAnim.PushBack({ 0, 32, 16, 16 });
-	downAnim.PushBack({ 16, 32, 16, 16 });
-	downAnim.PushBack({ 32, 32, 16, 16 });
-	downAnim.PushBack({ 48, 32, 16, 16 });
-	downAnim.PushBack({ 64, 32, 16, 16 });
-	downAnim.PushBack({ 80, 32, 16, 16 });
-	downAnim.loop = true;
-	downAnim.speed = 0.1f;
+	legs_down.PushBack({ 0, 0, 16, 16 });//    1	
+	legs_down.PushBack({ 16, 0, 16, 16 });//   2	
+	legs_down.PushBack({ 32, 0, 16, 16 });//   3	
+	legs_down.PushBack({ 48, 0, 16, 16 });//   4	
+	legs_down.PushBack({ 64, 0, 16, 16 });//   5	
+	legs_down.PushBack({ 80, 0, 16, 16 });//   6
+	legs_down.PushBack({ 96, 0, 16, 16 });//   7	
+	legs_down.PushBack({ 112, 0, 16, 16 });//  8	
 
+	legs_down.loop = true;
+	legs_down.speed = 0.08f;
 
-	upAnim.PushBack({ 0, 0, 16, 16 });
-	upAnim.PushBack({ 16, 0, 16, 16 });
-	upAnim.PushBack({ 32, 0, 16, 16 });
-	upAnim.PushBack({ 48, 0, 16, 16 });
-	upAnim.PushBack({ 64, 0, 16, 16 });
-	upAnim.PushBack({ 80, 0, 16, 16 });
-	upAnim.PushBack({ 96, 0, 16, 16 });
-	upAnim.loop = true;
-	upAnim.speed = 0.1f;
+	legs_up.PushBack({ 0, 16, 16, 16 });//    1	
+	legs_up.PushBack({ 16, 16, 16, 16 });//   2	
+	legs_up.PushBack({ 32, 16, 16, 16 });//   3	
+	legs_up.PushBack({ 48, 16, 16, 16 });//   4	
+	legs_up.PushBack({ 64, 16, 16, 16 });//   5	
+	legs_up.PushBack({ 80, 16, 16, 16 });//   6	
+	legs_up.loop = true;
+	legs_up.speed = 0.08f;
 
 	//Move rigth 
-	rigthAnim.PushBack({ 0, 16, 16, 16 });
-	rigthAnim.PushBack({ 16, 16, 16, 16 });
-	rigthAnim.PushBack({ 32, 16, 16, 16 });
-	rigthAnim.PushBack({ 48, 16, 16, 16 });
-	rigthAnim.PushBack({ 64, 16, 16, 16 });
-	rigthAnim.PushBack({ 80, 16, 16, 16 });
-	rigthAnim.PushBack({ 96, 16, 16, 16 });
-	rigthAnim.loop = true;
-	rigthAnim.speed = 0.1f;
 
-	//Move left
+	legs_r.PushBack({ 0, 48, 16, 16 });//    1	
+	legs_r.PushBack({ 16, 48, 16, 16 });//   2	
+	legs_r.PushBack({ 32, 48, 16, 16 });//   3	
+	legs_r.PushBack({ 48, 48, 16, 16 });//   4	
+	legs_r.PushBack({ 64, 48, 16, 16 });//   5	
+	legs_r.PushBack({ 80, 48, 16, 16 });//   6
+	legs_r.PushBack({ 96, 48, 16, 16 });//   7
+	legs_r.loop = true;
+	legs_r.speed = 0.08f;
 
-	leftAnim.PushBack({ 0, 208, 16, 16 });
-	leftAnim.PushBack({ 16, 208, 16, 16 });
-	leftAnim.PushBack({ 32, 208, 16, 16 });
-	leftAnim.PushBack({ 48, 208, 16, 16 });
-	leftAnim.PushBack({ 64, 208, 16, 16 });
-	leftAnim.PushBack({ 80, 208, 16, 16 });
-	leftAnim.PushBack({ 96, 208, 16, 16 });
-	leftAnim.loop = true;
-	leftAnim.speed = 0.1f;
+	legs_l.PushBack({ 96, 32, 16, 16 });//   7
+	legs_l.PushBack({ 80, 32, 16, 16 });//   6
+	legs_l.PushBack({ 64, 32, 16, 16 });//   5
+	legs_l.PushBack({ 48, 32, 16, 16 });//   4
+	legs_l.PushBack({ 32, 32, 16, 16 });//   3	
+	legs_l.PushBack({ 16, 32, 16, 16 });//   2	
+	legs_l.PushBack({ 0, 32, 16, 16 });//    1		
+	legs_l.loop = true;
+	legs_l.speed = 0.08f;
 
-	//Diagonal Secundaria
+	// 2
+	legs_2.PushBack({ 128, 32 + 16, 16, 16 });//    1	
+	legs_2.PushBack({ 128 + 16, 32 + 16, 16, 16 });//   2	
+	legs_2.PushBack({ 128 + 16 + 16, 32 + 16, 16, 16 });//   3	
+	legs_2.PushBack({ 128 + 16 + 16 + 16, 32 + 16, 16, 16 });//   4	
+	legs_2.PushBack({ 128 + 16 + 16 + 16 + 16, 32 + 16, 16, 16 });//   5	
+	legs_2.loop = true;
+	legs_2.speed = 0.08f;
 
-	diagonalSAnim.PushBack({ 128, 0, 16, 16 });
-	diagonalSAnim.PushBack({ 144, 0, 16, 16 });
-	diagonalSAnim.PushBack({ 160, 0, 16, 16 });
-	diagonalSAnim.PushBack({ 176, 0, 16, 16 });
-	diagonalSAnim.PushBack({ 192, 0, 16, 16 });
-	diagonalSAnim.PushBack({ 208, 0, 16, 16 });
-	diagonalSAnim.loop = true;
-	diagonalSAnim.speed = 0.1f;
+	// 4
+	legs_4.PushBack({ 0, 48, 16, 16 });//    1	
+	legs_4.PushBack({ 16, 48, 16, 16 });//   2	
+	legs_4.PushBack({ 32, 48, 16, 16 });//   3	
+	legs_4.PushBack({ 48, 48, 16, 16 });//   4	
+	legs_4.PushBack({ 64, 48, 16, 16 });//   5	
+	legs_4.PushBack({ 80, 48, 16, 16 });//   6
+	legs_4.PushBack({ 96, 48, 16, 16 });//   7
+	legs_4.loop = true;
+	legs_4.speed = 0.08f;
 
-	//Diagonal Principal
+	// 6
+	legs_6.PushBack({ 96, 32, 16, 16 });//   7
+	legs_6.PushBack({ 80, 32, 16, 16 });//   6
+	legs_6.PushBack({ 64, 32, 16, 16 });//   5
+	legs_6.PushBack({ 48, 32, 16, 16 });//   4
+	legs_6.PushBack({ 32, 32, 16, 16 });//   3	
+	legs_6.PushBack({ 16, 32, 16, 16 });//   2	
+	legs_6.PushBack({ 0, 32, 16, 16 });//    1		
+	legs_6.loop = true;
+	legs_6.speed = 0.08f;
 
-	diagonalPAnim.PushBack({ 128, 16, 16, 16 });
-	diagonalPAnim.PushBack({ 144, 16, 16, 16 });
-	diagonalPAnim.PushBack({ 160, 16, 16, 16 });
-	diagonalPAnim.PushBack({ 176, 16, 16, 16 });
-	diagonalPAnim.PushBack({ 192, 16, 16, 16 });
-	diagonalPAnim.PushBack({ 208, 16, 16, 16 });
-	diagonalPAnim.PushBack({ 224, 16, 16, 16 });
-	diagonalPAnim.loop = true;
-	diagonalPAnim.speed = 0.1f;
-
-	//Diagonal Secundaria Reverse
-
-	diagonalSRAnim.PushBack({ 0, 224, 16, 16 });
-	diagonalSRAnim.PushBack({ 16, 224, 16, 16 });
-	diagonalSRAnim.PushBack({ 32, 224, 16, 16 });
-	diagonalSRAnim.PushBack({ 48, 224, 16, 16 });
-	diagonalSRAnim.PushBack({ 64, 224, 16, 16 });
-	diagonalSRAnim.PushBack({ 80, 224, 16, 16 });
-	diagonalSRAnim.loop = true;
-	diagonalSRAnim.speed = 0.1f;
-
-	//Diagonal Principal Reverse
-
-	diagonalPRAnim.PushBack({ 0, 240, 16, 16 });
-	diagonalPRAnim.PushBack({ 16, 240, 16, 16 });
-	diagonalPRAnim.PushBack({ 32, 240, 16, 16 });
-	diagonalPRAnim.PushBack({ 48, 240, 16, 16 });
-	diagonalPRAnim.PushBack({ 64, 240, 16, 16 });
-	diagonalPRAnim.PushBack({ 80, 240, 16, 16 });
-	diagonalPRAnim.PushBack({ 96, 240, 16, 16 });
-	diagonalPRAnim.loop = true;
-	diagonalPRAnim.speed = 0.1f;
+	// 8
+	legs_8.PushBack({ 128 + 16 + 16 + 16 + 16, 32, 16, 16 });//   5	
+	legs_8.PushBack({ 128 + 16 + 16 + 16, 32, 16, 16 });//   4	
+	legs_8.PushBack({ 128 + 16 + 16, 32, 16, 16 });//   3
+	legs_8.PushBack({ 128 + 16, 32, 16, 16 });//   2
+	legs_8.PushBack({ 128, 32, 16, 16 });//    1	
+	legs_8.loop = true;
+	legs_8.speed = 0.08f;
 
 
-	//ANIMACIONS TOP HOME
+	//ANIMACIONS GUN
 
 	gun_down.PushBack({ 0, 64, 32, 32 });
 	gun_up.PushBack({ 96, 64, 32, 32 });
 	gun_l.PushBack({ 32, 64, 32, 32 });
 	gun_r.PushBack({ 64, 64, 32, 32 });
 
-	topURAnim.PushBack({ 96, 48, 32, 32 });
-	topULAnim.PushBack({ 176, 208, 32, 32 });
-	topDRAnim.PushBack({ 32, 48, 32, 32 });
-	topDLAnim.PushBack({ 112, 208, 32, 32 });
+	gun_2.PushBack({ 0, 160, 32, 32 });
+	gun_4.PushBack({ 64, 160, 32, 32 });
+	gun_6.PushBack({ 96, 160, 32, 32 });
+	gun_8.PushBack({ 32, 160, 32, 32 });
 
-	//ANIMACIONS DISPARANT TOP HOME
+
+	//ANIMACIONS GUN SHOT
 
 	gun_down_shoot.PushBack({ 128, 64, 32, 32 });
 	gun_down_shoot.PushBack({ 160, 64, 32, 32 });
@@ -147,19 +140,64 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	gun_r_shoot.PushBack({ 96, 96, 32, 32 });
 	gun_r_shoot.loop = true;
 	gun_r_shoot.speed = 0.1f;
-
 	
-
 	gun_up_shoot.PushBack({ 192, 64, 32, 32 });
 	gun_up_shoot.PushBack({ 224, 64, 32, 32 });
 	gun_up_shoot.loop = true;
 	gun_up_shoot.speed = 0.1f;
 
 	// Diagonals
-	shootDRAnim.PushBack({ 192, 48, 32, 32 });
-	shootDLAnim.PushBack({ 256, 48, 32, 32 });
-	shootURAnim.PushBack({ 0, 80, 32, 32 });
-	shootULAnim.PushBack({ 256, 80, 32, 32 });
+	gun_2_shoot.PushBack({ 0, 96, 32, 32 });
+	gun_2_shoot.PushBack({ 32, 96, 32, 32 });
+	gun_2_shoot.loop = true;
+	gun_2_shoot.speed = 0.1f;
+
+	gun_4_shoot.PushBack({ 128, 96, 32, 32 });
+	gun_4_shoot.PushBack({ 160, 96, 32, 32 });
+	gun_4_shoot.loop = true;
+	gun_4_shoot.speed = 0.1f;
+
+	gun_6_shoot.PushBack({ 0, 128, 32, 32 });
+	gun_6_shoot.PushBack({ 32, 128, 32, 32 });
+	gun_6_shoot.loop = true;
+	gun_6_shoot.speed = 0.1f;
+
+	gun_8_shoot.PushBack({ 128, 128, 32, 32 });
+	gun_8_shoot.PushBack({ 160, 128, 32, 32 });
+	gun_8_shoot.loop = true;
+	gun_8_shoot.speed = 0.1f;
+
+	// Shoot Gun 
+	ShootGun_down.PushBack({ 128, 64 + 96, 32, 32 });
+
+	ShootGun_up.PushBack({ 224, 64 + 96, 32, 32 });
+
+	ShootGun_l.PushBack({ 64, 128 + 96, 32, 32 });
+
+	ShootGun_r.PushBack({ 64, 96 + 96, 32, 32 });
+
+	ShootGun_up_shoot.PushBack({ 192, 64 + 96, 32, 32 });
+	ShootGun_up_shoot.PushBack({ 224, 64 + 96, 32, 32 });
+	ShootGun_up_shoot.loop = true;
+	ShootGun_up_shoot.speed = 0.1f;
+
+	ShootGun_down_shoot.PushBack({ 128, 64 + 96, 32, 32 });
+	ShootGun_down_shoot.PushBack({ 160, 64 + 96, 32, 32 });
+	ShootGun_down_shoot.loop = true;
+	ShootGun_down_shoot.speed = 0.1f;
+
+	// Shoot left
+	ShootGun_l_shoot.PushBack({ 64, 128 + 96, 32, 32 });
+	ShootGun_l_shoot.PushBack({ 96, 128 + 96, 32, 32 });
+	ShootGun_l_shoot.loop = true;
+	ShootGun_l_shoot.speed = 0.1f;
+
+	// Shoot right
+	ShootGun_r_shoot.PushBack({ 64, 96 + 96, 32, 32 });
+	ShootGun_r_shoot.PushBack({ 96, 96 + 96, 32, 32 });
+	ShootGun_r_shoot.loop = true;
+	ShootGun_r_shoot.speed = 0.1f;
+
 }
 
 ModulePlayer::~ModulePlayer()
@@ -174,7 +212,7 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 	texture = App->textures->Load("Resources/Sprites/Characters/Player.png");
-	currentAnimation = &idleUAnim;
+	currentLegsAnimation = &legs_down_idle;
 	currentTopAnimation = &gun_down;
 
 	//textureDoorTop = App->textures->Load("Assets/SpritesSSTV/EditSpritesSSTV_Portes.png");
@@ -198,7 +236,7 @@ bool ModulePlayer::Start()
 
 	destroyed = false;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 14, -25 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 15, 25 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
@@ -231,26 +269,38 @@ update_status ModulePlayer::Update()
 
 			if ((App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) || pad.left_y < 0.0f || pad.up) { //LEFT UP
 				diagonal = true;
-				if (currentAnimation != &diagonalPRAnim)
+				if (currentLegsAnimation != &legs_8)
 				{
-					diagonalPRAnim.Reset();
-					currentAnimation = &diagonalPRAnim;
+					currentLegsAnimation = &legs_8;
 
 					if (shooting == false) {
-						topULAnim.Reset();
-						currentTopAnimation = &topULAnim;
+						if (bandera_trip && cont_Tripel > 0)
+						{
+
+						}
+						else
+						{
+
+							currentTopAnimation = &gun_8;
+						}
 					}
 				}
 			}
 
-			if ((currentAnimation != &leftAnim) && (diagonal == false)) //ANIMACIÓ LEFT
+			if ((currentLegsAnimation != &legs_l) && (diagonal == false)) //ANIMACIÓ LEFT
 			{
-				leftAnim.Reset();
-				currentAnimation = &leftAnim;
+				currentLegsAnimation = &legs_l;
 
 				if (shooting == false) {
-					gun_l.Reset();
-					currentTopAnimation = &gun_l;
+					if (bandera_trip && cont_Tripel > 0)
+					{
+
+					}
+					else
+					{
+
+						currentTopAnimation = &gun_l;
+					}
 				}
 			}
 		}
@@ -262,26 +312,38 @@ update_status ModulePlayer::Update()
 
 			if ((App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) || pad.left_y > 0.0f || pad.down) { //DOWN RIGHT
 				diagonal = true;
-				if (currentAnimation != &diagonalPAnim)
+				if (currentLegsAnimation != &legs_4)
 				{
-					diagonalPAnim.Reset();
-					currentAnimation = &diagonalPAnim;
+					currentLegsAnimation = &legs_4;
 
 					if (shooting == false) {
-						topDRAnim.Reset();
-						currentTopAnimation = &topDRAnim;
+						if (bandera_trip && cont_Tripel > 0)
+						{
+
+						}
+						else
+						{
+
+							currentTopAnimation = &gun_4;
+						}
 					}
 				}
 			}
 
-			if (currentAnimation != &rigthAnim && (diagonal == false))
+			if (currentLegsAnimation != &legs_r && (diagonal == false))
 			{
-				rigthAnim.Reset();
-				currentAnimation = &rigthAnim;
+				currentLegsAnimation = &legs_r;
 
 				if (shooting == false) {
-					gun_r.Reset();
-					currentTopAnimation = &gun_r;
+					if (bandera_trip && cont_Tripel > 0)
+					{
+
+					}
+					else
+					{
+
+						currentTopAnimation = &gun_r;
+					}
 				}
 			}
 		}
@@ -298,26 +360,38 @@ update_status ModulePlayer::Update()
 
 			if ((App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) || pad.left_x < 0.0f || pad.left) { //DOWN LEFT
 				diagonal = true;
-				if (currentAnimation != &diagonalSRAnim)
+				if (currentLegsAnimation != &legs_6)
 				{
-					diagonalSRAnim.Reset();
-					currentAnimation = &diagonalSRAnim;
+					currentLegsAnimation = &legs_6;
 
 					if (shooting == false) {
-						topDLAnim.Reset();
-						currentTopAnimation = &topDLAnim;
+						if (bandera_trip && cont_Tripel > 0)
+						{
+
+						}
+						else
+						{
+
+							currentTopAnimation = &gun_6;
+						}
 					}
 				}
 			}
 
-			if (currentAnimation != &downAnim && (diagonal == false))
+			if (currentLegsAnimation != &legs_down && (diagonal == false))
 			{
-				downAnim.Reset();
-				currentAnimation = &downAnim;
+				currentLegsAnimation = &legs_down;
 
 				if (shooting == false) {
-					gun_down.Reset();
-					currentTopAnimation = &gun_down;
+					if (bandera_trip && cont_Tripel > 0)
+					{
+
+					}
+					else
+					{
+
+						currentTopAnimation = &gun_down;
+					}
 				}
 			}
 		}
@@ -329,26 +403,38 @@ update_status ModulePlayer::Update()
 
 			if ((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) || pad.left_x > 0.0f || pad.right) { // UP RIGHT
 				diagonal = true;
-				if (currentAnimation != &diagonalSAnim)
+				if (currentLegsAnimation != &legs_2)
 				{
-					diagonalSAnim.Reset();
-					currentAnimation = &diagonalSAnim;
+					currentLegsAnimation = &legs_2;
 
 					if (shooting == false) {
-						topURAnim.Reset();
-						currentTopAnimation = &topURAnim;
+						if (bandera_trip && cont_Tripel > 0)
+						{
+
+						}
+						else
+						{
+
+							currentTopAnimation = &gun_2;
+						}
 					}
 				}
 			}
 
-			if (currentAnimation != &upAnim && (diagonal == false))
+			if (currentLegsAnimation != &legs_up && (diagonal == false))
 			{
-				upAnim.Reset();
-				currentAnimation = &upAnim;
+				currentLegsAnimation = &legs_up;
 
 				if (shooting == false) {
-					gun_up.Reset();
-					currentTopAnimation = &gun_up;
+					if (bandera_trip && cont_Tripel > 0)
+					{
+
+					}
+					else
+					{
+
+						currentTopAnimation = &gun_up;
+					}
 				}
 			}
 		}
@@ -366,26 +452,38 @@ update_status ModulePlayer::Update()
 
 			if ((App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) || pad.left_y < 0.0f) { //LEFT UP
 				diagonal = true;
-				if (currentAnimation != &diagonalPRAnim)
+				if (currentLegsAnimation != &legs_8)
 				{
-					diagonalPRAnim.Reset();
-					currentAnimation = &diagonalPRAnim;
+					currentLegsAnimation = &legs_8;
 
 					if (shooting == false) {
-						topULAnim.Reset();
-						currentTopAnimation = &topULAnim;
+						if (bandera_trip && cont_Tripel > 0)
+						{
+
+						}
+						else
+						{
+
+							currentTopAnimation = &gun_8;
+						}
 					}
 				}
 			}
 
-			if ((currentAnimation != &leftAnim) && (diagonal == false)) //ANIMACIÓ LEFT
+			if ((currentLegsAnimation != &legs_l) && (diagonal == false)) //ANIMACIÓ LEFT
 			{
-				leftAnim.Reset();
-				currentAnimation = &leftAnim;
+				currentLegsAnimation = &legs_l;
 
 				if (shooting == false) {
-					gun_l.Reset();
-					currentTopAnimation = &gun_l;
+					if (bandera_trip && cont_Tripel > 0)
+					{
+
+					}
+					else
+					{
+
+						currentTopAnimation = &gun_l;
+					}
 				}
 			}
 		}
@@ -397,26 +495,38 @@ update_status ModulePlayer::Update()
 
 			if ((App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) || pad.left_y > 0.0f) { //DOWN RIGHT
 				diagonal = true;
-				if (currentAnimation != &diagonalPAnim)
+				if (currentLegsAnimation != &legs_4)
 				{
-					diagonalPAnim.Reset();
-					currentAnimation = &diagonalPAnim;
+					currentLegsAnimation = &legs_4;
 
 					if (shooting == false) {
-						topDRAnim.Reset();
-						currentTopAnimation = &topDRAnim;
+						if (bandera_trip && cont_Tripel > 0)
+						{
+
+						}
+						else
+						{
+
+							currentTopAnimation = &gun_4;
+						}
 					}
 				}
 			}
 
-			if (currentAnimation != &rigthAnim && (diagonal == false))
+			if (currentLegsAnimation != &legs_r && (diagonal == false))
 			{
-				rigthAnim.Reset();
-				currentAnimation = &rigthAnim;
+				currentLegsAnimation = &legs_r;
 
 				if (shooting == false) {
-					gun_r.Reset();
-					currentTopAnimation = &gun_r;
+					if (bandera_trip && cont_Tripel > 0)
+					{
+
+					}
+					else
+					{
+
+						currentTopAnimation = &gun_r;
+					}
 				}
 			}
 		}
@@ -428,26 +538,38 @@ update_status ModulePlayer::Update()
 
 			if ((App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) || pad.left_x < 0.0f) { //DOWN LEFT
 				diagonal = true;
-				if (currentAnimation != &diagonalSRAnim)
+				if (currentLegsAnimation != &legs_6)
 				{
-					diagonalSRAnim.Reset();
-					currentAnimation = &diagonalSRAnim;
+					currentLegsAnimation = &legs_6;
 
 					if (shooting == false) {
-						topDLAnim.Reset();
-						currentTopAnimation = &topDLAnim;
+						if (bandera_trip && cont_Tripel > 0)
+						{
+
+						}
+						else
+						{
+
+							currentTopAnimation = &gun_6;
+						}
 					}
 				}
 			}
 
-			if (currentAnimation != &downAnim && (diagonal == false))
+			if (currentLegsAnimation != &legs_down && (diagonal == false))
 			{
-				downAnim.Reset();
-				currentAnimation = &downAnim;
+				currentLegsAnimation = &legs_down;
 
 				if (shooting == false) {
-					gun_down.Reset();
-					currentTopAnimation = &gun_down;
+					if (bandera_trip && cont_Tripel > 0)
+					{
+
+					}
+					else
+					{
+
+						currentTopAnimation = &gun_down;
+					}
 				}
 			}
 		}
@@ -459,26 +581,39 @@ update_status ModulePlayer::Update()
 
 			if ((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) || pad.left_x > 0.0f) { // UP RIGHT
 				diagonal = true;
-				if (currentAnimation != &diagonalSAnim)
+				if (currentLegsAnimation != &legs_2)
 				{
-					diagonalSAnim.Reset();
-					currentAnimation = &diagonalSAnim;
+					currentLegsAnimation = &legs_2;
 
 					if (shooting == false) {
-						topURAnim.Reset();
-						currentTopAnimation = &topURAnim;
+						if (bandera_trip && cont_Tripel > 0)
+						{
+
+						}
+						else
+						{
+
+							currentTopAnimation = &gun_2;
+						}
 					}
 				}
 			}
 
-			if (currentAnimation != &upAnim && (diagonal == false))
+			if (currentLegsAnimation != &legs_up && (diagonal == false))
 			{
-				upAnim.Reset();
-				currentAnimation = &upAnim;
+				currentLegsAnimation = &legs_up;
 
 				if (shooting == false) {
-					gun_up.Reset();
-					currentTopAnimation = &gun_up;
+					if (bandera) {
+						if (bandera_trip && cont_Tripel > 0)
+						{
+							cont = 0;
+						}
+						else
+
+							currentTopAnimation = &gun_up;
+						}
+					
 				}
 			}
 		}
@@ -522,7 +657,7 @@ update_status ModulePlayer::Update()
 	if ((App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) || (pad.right_x > 0.0f && pad.right_y < 0.0f)) //drt, amunt
 	{
 
-		currentTopAnimation = &shootURAnim;
+		
 
 		if (bandera) {
 			if (bandera_trip && cont_Tripel > 0)
@@ -539,13 +674,14 @@ update_status ModulePlayer::Update()
 			{
 				App->particles->AddParticle(App->particles->bullet_2, position.x + 7, position.y - 12, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
+				currentTopAnimation = &gun_2_shoot;
 			}
 		}
 	}
 	else if ((App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) || (pad.right_x < 0.0f && pad.right_y < 0.0f)) //Esq, amunt
 	{
 
-		currentTopAnimation = &shootULAnim;
+		
 
 		if (bandera) {
 			if (bandera_trip && cont_Tripel > 0)
@@ -560,14 +696,12 @@ update_status ModulePlayer::Update()
 			{
 				App->particles->AddParticle(App->particles->bullet_8, position.x - 5, position.y - 10,Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
+				currentTopAnimation = &gun_8_shoot;
 			}
 		}
 	}
 	else if ((App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) || (pad.right_x < 0.0f && pad.right_y > 0.0f)) //Esq, avall
 	{
-
-		currentTopAnimation = &shootDLAnim;
-
 		if (bandera) {
 			if (bandera_trip && cont_Tripel > 0)
 			{
@@ -584,13 +718,14 @@ update_status ModulePlayer::Update()
 			{
 				App->particles->AddParticle(App->particles->bullet_6, position.x - 12, position.y + 11, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
+				currentTopAnimation = &gun_6_shoot;
 			}
 		}
 	}
 	else if ((App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) || (pad.right_x > 0.0f && pad.right_y > 0.0f)) //drt, avall
 	{
 
-		currentTopAnimation = &shootDRAnim;
+		
 
 		if (bandera) {
 			if (bandera_trip && cont_Tripel > 0)
@@ -608,13 +743,14 @@ update_status ModulePlayer::Update()
 			{
 				App->particles->AddParticle(App->particles->bullet_4, position.x + 8, position.y + 8, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
+				currentTopAnimation = &gun_4_shoot;
 			}
 		}
 	}
 	//RECTES
 	else if (App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT || pad.right_y < 0.0f || pad.y) //amunt
 	{
-		currentTopAnimation = &gun_up_shoot;
+		
 
 		if (bandera) {
 			if (bandera_trip && cont_Tripel > 0)
@@ -631,7 +767,7 @@ update_status ModulePlayer::Update()
 			{
 				App->particles->AddParticle(App->particles->bullet_up, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
-				cont = 0;
+				currentTopAnimation = &gun_up_shoot;
 			}
 		}
 
@@ -639,7 +775,7 @@ update_status ModulePlayer::Update()
 	else if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT || pad.right_x < 0.0f || pad.x) //Esq
 	{
 
-		currentTopAnimation = &gun_l_shoot;
+		
 
 		if (bandera) {
 			if (bandera_trip && cont_Tripel > 0)
@@ -656,13 +792,14 @@ update_status ModulePlayer::Update()
 			{
 				App->particles->AddParticle(App->particles->bullet_l, position.x - 4, position.y + 10, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
+				currentTopAnimation = &gun_l_shoot;
 			}
 		}
 	}
 	else if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT || pad.right_y > 0.0f || pad.a) // avall
 	{
 
-		currentTopAnimation = &gun_down_shoot;
+		
 
 		if (bandera) {
 			if (bandera_trip && cont_Tripel > 0)
@@ -679,13 +816,14 @@ update_status ModulePlayer::Update()
 			{
 				App->particles->AddParticle(App->particles->bullet_down, position.x + 16, position.y + 20, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
+				currentTopAnimation = &gun_down_shoot;
 			}
 		}
 	}
 	else if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT || pad.right_x > 0.0f || pad.b) //drt
 	{
 
-		currentTopAnimation = &gun_r_shoot;
+		
 
 		if (bandera) {
 			if (bandera_trip && cont_Tripel > 0)
@@ -703,6 +841,7 @@ update_status ModulePlayer::Update()
 
 				App->particles->AddParticle(App->particles->bullet_r, position.x + 28, position.y + 10, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
+				currentTopAnimation = &gun_r_shoot;
 			}
 		}
 	}
@@ -713,16 +852,24 @@ update_status ModulePlayer::Update()
 		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE) {
 
-		currentAnimation = &idleUAnim;
+		currentLegsAnimation = &legs_down_idle;
 		if (!shooting) {
-			currentTopAnimation = &gun_down;
+			if (bandera_trip && cont_Tripel > 0)
+			{
+
+			}
+			else
+			{
+
+				currentTopAnimation = &gun_down;
+			}
 		}
 	}
 
 	// L6: DONE 4: Update collider position to player position
 	collider->SetPos(position.x, position.y);
 
-	currentAnimation->Update();
+	currentLegsAnimation->Update();
 	currentTopAnimation->Update();
 
 	//Gestió Array de la font
@@ -746,10 +893,6 @@ update_status ModulePlayer::Update()
 
 	////F7 spawnea todos los objetos
 	//if (App->input->keys[SDL_SCANCODE_F7] == KEY_STATE::KEY_REPEAT) {
-	//	App->particles->AddParticle(App->particles->Gold, 100, 140, 6, Collider::Type::object_gold);
-	//	App->particles->AddParticle(App->particles->Silver, 235, 140, 6, Collider::Type::object_silver);
-	//	App->particles->AddParticle(App->particles->Cash, 370, 140, 6, Collider::Type::object_money);
-	//	App->particles->AddParticle(App->particles->SilverGold, 100, 190, 6, Collider::Type::object_silver_gold);
 	//	App->particles->AddParticle(App->particles->Triple, 235, 190, 6, Collider::Type::object_Triple);
 	//	App->particles->AddParticle(App->particles->vidaUp, 370, 190, 6, Collider::Type::object_Vida);
 	//}
@@ -804,24 +947,23 @@ update_status ModulePlayer::Update()
 	//	App->fade->FadeToBlack((Module*)App->sceneLevel2, (Module*)App->sceneWin, 20);
 	/*if (pad.enabled)
 	{
-		if (pad.left_x == 0.0f && pad.left_y == 0.0f) currentAnimation = &idleAnim;
+		if (pad.left_x == 0.0f && pad.left_y == 0.0f) currentLegsAnimation = &idleAnim;
 	}
 	else if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE &&
-		App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) currentAnimation = &idleAnim;*/
+		App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) currentLegsAnimation = &idleAnim;*/
 
 	collider->SetPos(position.x, position.y);
 
-	currentAnimation->Update();
+	currentLegsAnimation->Update();
 
 	return update_status::UPDATE_CONTINUE;
 }
 
 update_status ModulePlayer::PostUpdate()
 {
-	//TOTA L'IMPRESSIÓ D'SPRITES DE NOMBRES I IMMUNITAT S'HA PORTAT AL ModuleEnemies, ara ja estan en ordre.
 
-	SDL_Rect rect = currentAnimation->GetCurrentFrame();
-	App->render->Blit(texture, position.x + 2, position.y + 17, &rect, 1.5f);
+	SDL_Rect rect = currentLegsAnimation->GetCurrentFrame();
+	App->render->Blit(texture, position.x-2, position.y+10, &rect, 1.5f);
 
 	SDL_Rect rectTop = currentTopAnimation->GetCurrentFrame();
 	App->render->Blit(texture, position.x - 10, position.y - 7, &rectTop, 1.5f);

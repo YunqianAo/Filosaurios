@@ -16,7 +16,7 @@
 //{
 //	// LEGS
 //	legs_down_idle.PushBack({ 128, 16, 16, 16 });
-//	upAnim_idle.PushBack({ 192, 16, 16, 16 });
+//	legs_up_idle.PushBack({ 192, 16, 16, 16 });
 //	legs_l_idle.PushBack({ 208, 16, 16, 16 });
 //	legs_r_idle.PushBack({ 160, 16, 16, 16 });
 //

@@ -73,66 +73,45 @@ public:
 
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
-	Animation* currentAnimation = nullptr;
+	Animation* currentLegsAnimation = nullptr;
 	Animation* currentTopAnimation = nullptr;
 
 	// A set of animations
-	Animation idleUAnim;
-	Animation idleURAnim;
-	Animation idleULAnim;
-	Animation idleDAnim;
-	Animation idleLRAnim;
-	Animation upAnim;
-	Animation downAnim;
-	Animation leftAnim;
-	Animation rigthAnim;
-	Animation diagonalSAnim;
-	Animation diagonalSRAnim;
-	Animation diagonalPAnim;
-	Animation diagonalPRAnim;
 
 	Animation legs_down_idle;
-	Animation upAnim_idle;
+	Animation legs_up_idle;
 	Animation legs_l_idle;
 	Animation legs_r_idle;
 	Animation legs_up;
 	Animation legs_down;
 	Animation legs_l;
 	Animation legs_r;
-
+	Animation legs_2;
+	Animation legs_4;
+	Animation legs_6;
+	Animation legs_8;
 	
-
 	bool diagonal = false;
 	int MovKeyPressed = 0;
-
-	Animation topDownAnim; //Idle i Down
-	Animation topDRAnim;
-	Animation topDLAnim;
-	Animation topLeftAnim;
-	Animation topRightAnim;
-	Animation topURAnim;
-	Animation topULAnim;
-	Animation topUpAnim;
 
 	Animation gun_down;
 	Animation gun_up;
 	Animation gun_l;
 	Animation gun_r;
+	Animation gun_2;
+	Animation gun_4;
+	Animation gun_6;
+	Animation gun_8;
 	Animation gun_up_shoot;
 	Animation gun_down_shoot;
 	Animation gun_l_shoot;
 	Animation gun_r_shoot;
+	Animation gun_2_shoot;
+	Animation gun_4_shoot;
+	Animation gun_6_shoot;
+	Animation gun_8_shoot;
 
 	bool shooting = false;
-
-	Animation shootDownAnim;
-	Animation shootDRAnim;
-	Animation shootDLAnim;
-	Animation shootLeftAnim;
-	Animation shootRightAnim;
-	Animation shootURAnim;
-	Animation shootULAnim;
-	Animation shootUpAnim;
 
 	Animation ShootGun_down;
 	Animation ShootGun_up;
