@@ -10,6 +10,24 @@ The game is about two contestants who are in a television program where violence
 
 ![](https://static.wikia.nocookie.net/logopedia/images/e/e1/Super_Smash_T_V_%28World%29.png/revision/latest?cb=20140310140128)
 
+## WHO WE ARE?
+### Team Members
+**Yunqian Ao:**   [Yunqian Ao](https://github.com/YunqianAo)
+
+* Welcome Page & General Analysis
+
+**Sergio Corona Gómez:**   [Seregero00](https://github.com/seregero00)
+
+* Design & Audio
+
+**Enric Arxer Cortés:**    [Luxary-92](https://github.com/Luxary-92)
+
+* Art
+
+**Luis Fernández Díaz:**   [Ludef26](https://github.com/Ludef26)
+
+* UI & Design
+
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
