@@ -2,7 +2,7 @@
 
 This is our first game!
 
-##Description
+## Description
 
 The game "Super Smash TV" was created in 1990 by the Acclaim company and later transferred to the super NES and other consoles in 1991.
 
