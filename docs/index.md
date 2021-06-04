@@ -10,7 +10,7 @@ The game "Super Smash TV" was created in 1990 by the Acclaim company and later t
 
 The game is about two contestants who are in a television program where violence has taken control, they must advance through different rooms fighting against multiple enemies until they reach the final boss.
 
-![](https://static.wikia.nocookie.net/logopedia/images/e/e1/Super_Smash_T_V_%28World%29.png/revision/latest?cb=20140310140128)
+ * [](https://github.com/YunqianAo/Filosaurios/wiki/General-analysis#genre)
 
 ## WHO WE ARE?
 ### Team Members
