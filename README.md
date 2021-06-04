@@ -2,7 +2,7 @@
 
 [Filosaurios](https://github.com/YunqianAo/Filosaurios) Team has made a tribute to the original game "Super Smash TV" made by [Acclaim Company](https://es.wikipedia.org/wiki/Acclaim_Entertainment)
 
-## our game website
+## Our Game Website
 https://yunqianao.github.io/Filosaurios/
 ## Key Features 
 
