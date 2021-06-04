@@ -41,14 +41,15 @@ S - Down
 D - Right
 
 W - Up
+
 ### Shooting
 Arrow Key.Right 
 
-Arrow Key.Left 
+Arrow Key.Left  
 
-Arrow Key.Up 
+Arrow Key.Up  
 
-Arrow Key.Down
+Arrow Key.Down  
 
 
 ### Markdown
