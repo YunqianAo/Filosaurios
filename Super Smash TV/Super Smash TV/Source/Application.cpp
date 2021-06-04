@@ -4,7 +4,7 @@
 #include "ModuleWindow.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
-#include "ModulePlayer_Legs.h"
+#include "ModulePlayer.h"
 #include "ModulePlayer_Gun.h"
 #include "ModuleAudio.h"
 #include "SceneIntro.h"
@@ -33,15 +33,14 @@ Application::Application()
 	modules[5] = sceneLevel = new SceneLevel(false);
 	modules[6] = sceneLose = new SceneLose(false);
 	modules[7] = sceneWin = new SceneWin(false);
-	modules[8] = player_leg = new ModulePlayer_Leg(false);
-	modules[9] = player_gun = new ModulePlayer_Gun(false);
-	modules[10] = particles = new ModuleParticles(true);
-	modules[11] =	enemies = new ModuleEnemies(true);
+	modules[8] = player = new ModulePlayer(false);
+	modules[9] = particles = new ModuleParticles(true);
+	modules[10] =	enemies = new ModuleEnemies(true);
 
-	modules[12] = collisions = new ModuleCollisions(true);
-	modules[13] = fade = new ModuleFadeToBlack(true);
-	modules[14] = fonts = new ModuleFonts(true);
-	modules[15] = render = new ModuleRender(true);
+	modules[11] = collisions = new ModuleCollisions(true);
+	modules[12] = fade = new ModuleFadeToBlack(true);
+	modules[13] = fonts = new ModuleFonts(true);
+	modules[14] = render = new ModuleRender(true);
 }
 
 Application::~Application()

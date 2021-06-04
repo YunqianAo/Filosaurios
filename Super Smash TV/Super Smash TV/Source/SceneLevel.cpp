@@ -5,7 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
 #include "ModulePlayer_Gun.h"
-#include "ModulePlayer_Legs.h"
+#include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 #include "ModuleEnemies.h"
@@ -127,8 +127,9 @@ bool SceneLevel::Start()
 	App->collisions->AddCollider({ 238 + 256 + 256, -217 + 106, 37, 72 }, Collider::Type::WALL);
 	*/
 
-	App->player_gun->Enable();
-	App->player_leg->Enable();
+	App->player->Enable();
+	//App->player_gun->Enable();
+	
 
 	App->enemies->AddEnemy(Enemy_Type::PINK, 29, 165);
 	App->enemies->AddEnemy(Enemy_Type::GREEN, 29, 165);
@@ -161,8 +162,9 @@ update_status SceneLevel::PostUpdate()
 
 bool SceneLevel::CleanUp()
 {
-	App->player_gun->Disable();
-	App->player_leg->Disable();
+
+	App->player->Disable();
+	//App->player_gun->Disable();
 	App->enemies->Disable();
 
 	return true;

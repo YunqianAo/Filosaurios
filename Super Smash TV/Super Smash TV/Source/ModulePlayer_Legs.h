@@ -48,15 +48,15 @@ public:
 	Animation* currentAnimation = nullptr;
 
 	// A set of animations
-	Animation legs_idle;
-	Animation legs_up;
+	Animation legs_down_idle;
+	Animation upAnim;
 	Animation legs_down;
 	Animation legs_l;
 	Animation legs_r;
 
-	Animation legs_up_shoot;	
-	Animation legs_l_shoot;
-	Animation legs_r_shoot;
+	Animation upAnim_idle;	
+	Animation legs_l_idle;
+	Animation legs_r_idle;
 
 	// The player's collider
 	Collider* collider = nullptr;

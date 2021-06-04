@@ -47,6 +47,18 @@ public:
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
+	Animation* currentTopAnimation = nullptr;
+
+	// A set of animations
+	Animation legs_idle;
+	Animation upAnim;
+	Animation legs_down;
+	Animation legs_l;
+	Animation legs_r;
+
+	Animation upAnim_shoot;
+	Animation legs_l_shoot;
+	Animation legs_r_shoot;
 
 	// A set of animations
 	Animation gun_idle;

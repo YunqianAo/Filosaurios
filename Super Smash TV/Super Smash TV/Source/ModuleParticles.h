@@ -1,4 +1,4 @@
-#ifndef __MODULE_PARTICLES_H__
+	#ifndef __MODULE_PARTICLES_H__
 #define __MODULE_PARTICLES_H__
 
 #include "Module.h"
@@ -66,6 +66,10 @@ public:
 	Particle bullet_l;
 	Particle bullet_up;
 	Particle bullet_down;
+	Particle bullet_2;
+	Particle bullet_4;
+	Particle bullet_6;
+	Particle bullet_8;
 
 	Particle shotgun_1;
 	Particle shotgun_2;

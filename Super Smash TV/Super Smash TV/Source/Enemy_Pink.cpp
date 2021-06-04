@@ -29,7 +29,12 @@ Enemy_Pink::Enemy_Pink(int x, int y) : Enemy(x, y)
 	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 bool Enemy_Pink::Start() {
+	bool ret = true;
+	//redTexture = App->textures->Load("Resources/Sprites/Characters/green_e.png");
 
+	colliderPink = App->collisions->AddCollider({ 0,0,15,15 }, Collider::Type::ENEMY);
+
+	return ret;
 }
 void Enemy_Pink::Update()
 {

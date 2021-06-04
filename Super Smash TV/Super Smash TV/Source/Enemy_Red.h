@@ -11,6 +11,7 @@ public:
 
 	// Constructor (x y coordinates in the world)
 	// Creates animation data and the collider
+	SDL_Texture* redTexture = nullptr;
 	Enemy_Red(int x, int y);
 	bool Start() override;
 	// The enemy is going to perform a sinusoidal movement
@@ -27,6 +28,8 @@ private:
 	Animation red_down;
 	Animation red_l;
 	Animation red_r;
+
+	Collider* colliderred = nullptr;
 
 };
 

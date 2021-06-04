@@ -41,6 +41,22 @@ bool ModuleParticles::Start()
 	bullet_down.speed = iPoint(0, 2);
 	bullet_down.lifetime = 180;
 
+	bullet_2.anim.PushBack({ 25, 81, 6, 6 });
+	bullet_2.speed = iPoint(2, -2);
+	bullet_2.lifetime = 180;
+
+	bullet_4.anim.PushBack({ 41, 81, 6, 6});
+	bullet_4.speed = iPoint(2, 2);
+	bullet_4.lifetime = 180;
+
+	bullet_6.anim.PushBack({ 57, 81, 6, 6 });
+	bullet_6.speed = iPoint(-2, 2);
+	bullet_6.lifetime = 180;
+
+	bullet_8.anim.PushBack({ 9, 81, 6, 6 });
+	bullet_8.speed = iPoint(-2, -2);
+	bullet_8.lifetime = 180;
+
 	// shotgun bullet
 	shotgun_1.anim.PushBack({ 9, 113, 5, 5 });
 	shotgun_1.speed = iPoint(0, -2);

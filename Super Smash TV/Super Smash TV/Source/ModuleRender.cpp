@@ -25,10 +25,7 @@ bool ModuleRender::Init()
 	bool ret = true;
 	Uint32 flags = 0;
 
-	if (VSYNC == true)
-	{
-		flags |= SDL_RENDERER_PRESENTVSYNC;
-	}
+	if (VSYNC == true) flags |= SDL_RENDERER_PRESENTVSYNC;
 
 	renderer = SDL_CreateRenderer(App->window->window, -1, flags);
 
@@ -55,7 +52,6 @@ update_status ModuleRender::PreUpdate()
 
 update_status ModuleRender::Update()
 {
-	// if (camera.x < 0) camera.x = 0;
 
 	/*
 	//Handle positive vertical movement

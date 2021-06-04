@@ -86,7 +86,7 @@ ModulePlayer_Gun::ModulePlayer_Gun(bool startEnabled) : Module(startEnabled)
 
 bool ModulePlayer_Gun::Start()
 {
-	LOG("Loading GUN GUN GUN");
+	LOG("Loading player textures");
 
 	bool ret = true;
 	texture = App->textures->Load("Resources/Sprites/Characters/Player.png");
@@ -333,12 +333,11 @@ update_status ModulePlayer_Gun::PostUpdate()
 
 void ModulePlayer_Gun::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c2->type == Collider::Type::WALL && destroyed == false && GodMode == false)
-	{
-		App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLose, 90);
-		destroyed = true;
 
-	}
+	
+
+	App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLose, 90);
+	destroyed = true;
 
 	if (c2->type == Collider::Type::DOOR && destroyed == false)
 	{

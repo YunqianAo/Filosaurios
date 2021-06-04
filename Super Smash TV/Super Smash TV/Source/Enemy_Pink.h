@@ -29,6 +29,7 @@ private:
 	Animation pink_l;
 	Animation pink_r;
 
+	Collider* colliderPink = nullptr;
 };
 
 #endif // __ENEMY_PINK_H__
