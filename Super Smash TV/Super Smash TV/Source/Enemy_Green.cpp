@@ -6,7 +6,8 @@
 
 Enemy_Green::Enemy_Green(int x, int y) : Enemy(x, y)
 {
-	greenTexture = App->textures->Load("Resources/Sprites/Characters/green_e.png");
+	green_idle.PushBack({ 2,48,11,15 });
+	
 	green_up.PushBack({ 2,48,11,15 });
 	green_up.PushBack({ 17,48,13,15 });
 	green_up.speed = 0.2f;
@@ -35,6 +36,14 @@ Enemy_Green::Enemy_Green(int x, int y) : Enemy(x, y)
 	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
+bool Enemy_Green::Start() {
+	bool ret = true;
+	greenTexture = App->textures->Load("Resources/Sprites/Characters/green_e.png");
+	
+	colliderEnemyGreen = App->collisions->AddCollider({ 0,0,15,15 },Collider::Type::ENEMY);
+
+	return ret;
+}
 void Enemy_Green::Update()
 {
 	path.Update();

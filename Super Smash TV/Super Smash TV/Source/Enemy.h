@@ -21,6 +21,7 @@ public:
 	// Returns the enemy's collider
 	const Collider* GetCollider() const;
 
+	virtual bool Start();
 	// Called from inhering enemies' Udpate
 	// Updates animation and collider position
 	virtual void Update();

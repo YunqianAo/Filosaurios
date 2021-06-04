@@ -31,7 +31,9 @@ Enemy_Red::Enemy_Red(int x, int y) : Enemy(x, y)
 
 	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
+bool Enemy_Red::Start() {
 
+}
 void Enemy_Red::Update()
 {
 	path.Update();
