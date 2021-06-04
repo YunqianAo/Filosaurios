@@ -28,6 +28,24 @@ The game is about two contestants who are in a television program where violence
 
 * UI & Design
 
+## Controls
+### Initial animation:
+Space - skip animation
+### Player Movement:
+A - Left
+
+S - Down
+
+D - Right
+
+W - Up
+### Shooting
+Arrow Key.Right  
+Arrow Key.Left
+Arrow Key.Up
+Arrow Key.Down
+
+
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
