@@ -1,7 +1,7 @@
 # Super Smash TV
 
 This is our first game!
-##Logo
+## Logo
 ![](https://i.postimg.cc/0y2YRQrN/Dinosaurio-pocho.png)
 
 ## Description
