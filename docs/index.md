@@ -1,6 +1,14 @@
-## Super Smash TV
+# Super Smash TV
 
 This is our first game!
+
+##Description
+
+The game "Super Smash TV" was created in 1990 by the Acclaim company and later transferred to the super NES and other consoles in 1991.
+
+The game is about two contestants who are in a television program where violence has taken control, they must advance through different rooms fighting against multiple enemies until they reach the final boss.
+
+![](https://static.wikia.nocookie.net/logopedia/images/e/e1/Super_Smash_T_V_%28World%29.png/revision/latest?cb=20140310140128)
 
 ### Markdown
 
