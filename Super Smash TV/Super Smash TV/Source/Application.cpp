@@ -31,8 +31,8 @@ Application::Application()
 	modules[3] = audio = new ModuleAudio(true);
 
 	modules[4] = sceneIntroUPC = new SceneIntroUPC(true);
-	modules[5] = sceneIntroLogo = new SceneIntroLogo(true);
-	modules[6] = sceneIntro = new SceneIntro(true);
+	modules[5] = sceneIntroLogo = new SceneIntroLogo(false);
+	modules[6] = sceneIntro = new SceneIntro(false);
 	modules[7] = sceneLevel = new SceneLevel(false);
 	modules[8] = sceneLose = new SceneLose(false);
 	modules[9] = sceneWin = new SceneWin(false);
