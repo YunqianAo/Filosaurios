@@ -43,7 +43,7 @@ public:
 	bool bandera = true;
 
 	int cont_Tripel = 0;
-	bool bandera_trip = false;
+	bool ShootGun = false;
 	//bool bandera_GodMode = false;
 
 	// The player spritesheet loaded into an SDL_Texture
@@ -117,10 +117,21 @@ public:
 	Animation ShootGun_up;
 	Animation ShootGun_l;
 	Animation ShootGun_r;
+
+	Animation ShootGun_2;
+	Animation ShootGun_4;
+	Animation ShootGun_6;
+	Animation ShootGun_8;
+
 	Animation ShootGun_up_shoot;
 	Animation ShootGun_down_shoot;
 	Animation ShootGun_l_shoot;
 	Animation ShootGun_r_shoot;
+
+	Animation ShootGun_2_shoot;
+	Animation ShootGun_4_shoot;
+	Animation ShootGun_6_shoot;
+	Animation ShootGun_8_shoot;
 
 	// The player's collider
 	Collider* collider = nullptr;
