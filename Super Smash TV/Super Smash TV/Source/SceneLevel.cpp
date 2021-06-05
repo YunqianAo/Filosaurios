@@ -32,6 +32,10 @@ bool SceneLevel::Start()
 
 	bool ret = true;
 
+	Level_1 = true;	//detecta que estas a Level_1
+
+	levelcont++;	//mira quants cops pases per el Level_1
+
 	App->enemies->Enable();
 	App->particles->Enable();
 	App->collisions->Enable();
@@ -56,98 +60,87 @@ bool SceneLevel::Start()
 	App->collisions->AddCollider({ -18, 105, 37, 41 }, Collider::Type::DOOR);
 	App->collisions->AddCollider({ -18, 146, 37, 69 }, Collider::Type::WALL);
 
-	//Map 2b
-	// X colliders
-	/* App->collisions->AddCollider({ 0 + 256, 215, 104, 75 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 152 + 256, 215, 104, 75 }, Collider::Type::WALL);
-
-	App->collisions->AddCollider({ 0 + 256, -39, 104, 75 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 152 + 256, -39, 104, 75 }, Collider::Type::WALL);
-	// Y colliders
-	App->collisions->AddCollider({ 238 + 256, 36, 37, 69 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 238 + 256, 146, 37, 69 }, Collider::Type::WALL);
-
-	//Map 3b
-	// X colliders
-	App->collisions->AddCollider({ 0 + 256 + 256, 215, 104, 75 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 152 + 256 + 256, 215, 104, 75 }, Collider::Type::WALL);
-
-	App->collisions->AddCollider({ 0 + 256 + 256, -39, 104, 75 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 152 + 256 + 256, -39, 104, 75 }, Collider::Type::WALL);
-	// Y colliders
-	App->collisions->AddCollider({ 238 + 256 + 256, 36, 37, 69 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 238 + 256 + 256, 146, 37, 69 }, Collider::Type::WALL);
-
-	//Map Boss
-	// X colliders
-	App->collisions->AddCollider({ 0 + 256 + 256 + 256, 215, 256, 75 }, Collider::Type::WALL);
-
-	App->collisions->AddCollider({ 0 + 256 + 256 + 256, -39, 80, 75 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 80 + 256 + 256 + 256, -39, 96, 75 }, Collider::Type::DOOR);
-	App->collisions->AddCollider({ 176 + 256 + 256 + 256, -39, 80, 75 }, Collider::Type::WALL);
-	// Y colliders
-	App->collisions->AddCollider({ 238 + 256 + 256 + 256, 36, 37, 175 }, Collider::Type::WALL);
-
-	//Map c
-	// X colliders
-	App->collisions->AddCollider({ 0 + 256, 175 + 290, 256 + 256, 15 }, Collider::Type::WALL);
-
-	// Y colliders
-	App->collisions->AddCollider({ 238 + 256, 290, 37, 69 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 238 + 256, 290 + 106, 37, 69 }, Collider::Type::WALL);
-
-	App->collisions->AddCollider({ -18 + 256, 290, 37, 69 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ -18 + 256, 290 + 69, 37, 37 }, Collider::Type::DOOR);
-	App->collisions->AddCollider({ -18 + 256, 290 + 106, 37, 69 }, Collider::Type::WALL);
-
-	App->collisions->AddCollider({ 238 + 256 + 256, 290, 37,69 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 238 + 256 + 256, 290 + 69, 37, 37 }, Collider::Type::DOOR);
-	App->collisions->AddCollider({ 238 + 256 + 256, 290 + 106, 37, 69 }, Collider::Type::WALL);
+	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz", };
+	scoreFont = App->fonts->Load("Resources/Sprites/Characters/Font.png", lookupTable, 1);
 
 
-	//Map a
-	// X colliders
-
-	App->collisions->AddCollider({ 0 + 256, -256, 104, 39 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 104 + 256, -256, 48, 39 }, Collider::Type::DOOR);
-	App->collisions->AddCollider({ 152 + 256, -256, 104, 39 }, Collider::Type::WALL);
-
-	App->collisions->AddCollider({ 0 + 256 + 256, -256, 104, 39 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 104 + 256 + 256, -256, 48, 39 }, Collider::Type::DOOR);
-	App->collisions->AddCollider({ 152 + 256 + 256, -256, 104, 39 }, Collider::Type::WALL);
-
-	// Y colliders
-
-	// Y colliders  -217
-	App->collisions->AddCollider({ 238 + 256, -217, 37, 69 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 238 + 256, -217 + 106, 37, 72 }, Collider::Type::WALL);
-
-	App->collisions->AddCollider({ -18 + 256, -217, 37, 69 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ -18 + 256, -217 + 69, 37, 37 }, Collider::Type::DOOR);
-	App->collisions->AddCollider({ -18 + 256, -217 + 106, 37, 72 }, Collider::Type::WALL);
-
-	App->collisions->AddCollider({ 238 + 256 + 256, -217, 37,69 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 238 + 256 + 256, -217 + 69, 37, 37 }, Collider::Type::DOOR);
-	App->collisions->AddCollider({ 238 + 256 + 256, -217 + 106, 37, 72 }, Collider::Type::WALL);
-	*/
-
-	App->player->Enable();
-	//App->player_gun->Enable();
-	
-
-	App->enemies->AddEnemy(Enemy_Type::PINK, 29, 165);
-	App->enemies->AddEnemy(Enemy_Type::GREEN, 29, 165);
-	App->enemies->AddEnemy(Enemy_Type::RED, 29, 165);
 	return ret;
 }
 
 update_status SceneLevel::Update()
 {
-	App->render->camera.x += 0;
-	
-	
-	return update_status::UPDATE_CONTINUE;
 
+	++num;
+	if (sceneTimer < 3601)	++sceneTimer;
+
+	if (sceneTimer % 80 == 0 && sceneTimer <= 3600) {//3600frames, 6 rondes, 24 aparicions random (sceneTimer % 150)
+		randomEnemySpawn = (rand() % 10);
+
+
+		if (i == 0) { //porta de dalt
+			for (int j = 0; j < 9; ++j) {
+				portesSpawn[i][j][0] = (rand() % 80 + 210); //porta adalt X
+				portesSpawn[i][j][1] = (rand() % 30 - 20); //porta adalt Y
+			}
+		}
+
+		if (i == 1) { //porta esquerra
+			for (int j = 0; j < 9; ++j) {
+				portesSpawn[i][j][0] = (rand() % 30 - 5);
+				portesSpawn[i][j][1] = (rand() % 65 + 185);
+			}
+		}
+
+		if (i == 2) { //porta dreta
+			for (int j = 0; j < 9; ++j) {
+				portesSpawn[i][j][0] = (rand() % 30 + 500);
+				portesSpawn[i][j][1] = (rand() % 65 + 185);
+			}
+		}
+
+		if (i == 3) { //porta abaix
+			for (int j = 0; j < 9; ++j) {
+				portesSpawn[i][j][0] = (rand() % 80 + 210); //porta abaix X
+				portesSpawn[i][j][1] = (rand() % 30 + 400); //porta abaix Y
+			}
+		}
+
+
+		switch (randomEnemySpawn) {
+		case 9:
+			App->enemies->AddEnemy(Enemy_Type::GREEN, portesSpawn[i][0][0], portesSpawn[i][0][1]);
+			App->enemies->AddEnemy(Enemy_Type::GREEN, portesSpawn[i][1][0], portesSpawn[i][1][1]);
+			App->enemies->AddEnemy(Enemy_Type::GREEN, portesSpawn[i][2][0], portesSpawn[i][2][1]);
+		case 8:
+		case 7:
+			App->enemies->AddEnemy(Enemy_Type::GREEN, portesSpawn[i][3][0], portesSpawn[i][3][1]);
+			App->enemies->AddEnemy(Enemy_Type::PINK, portesSpawn[i][4][0], portesSpawn[i][4][1]);
+		case 6:
+			App->enemies->AddEnemy(Enemy_Type::GREEN, portesSpawn[i][5][0], portesSpawn[i][5][1]);
+		case 5:
+		case 4:
+		case 3:
+		case 2:
+			App->enemies->AddEnemy(Enemy_Type::GREEN, portesSpawn[i][6][0], portesSpawn[i][6][1]);
+		case 1:
+			App->enemies->AddEnemy(Enemy_Type::PINK, portesSpawn[i][7][0], portesSpawn[i][7][1]);
+		case 0:
+			App->enemies->AddEnemy(Enemy_Type::PINK, portesSpawn[i][8][0], portesSpawn[i][8][1]);
+			break;
+		}
+
+		++i;
+		if (i == 4) i = 0;
+
+	}
+	if (i == 1) mapaActual = 7;
+	else mapaActual = 0;
+
+	++exitTimer;
+	if (exitTimer > 40)
+		exitTimer = 0;
+
+	return update_status::UPDATE_CONTINUE;
 }
 
 // Update: draw background
@@ -156,11 +149,17 @@ update_status SceneLevel::PostUpdate()
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, -256, -255, NULL);
 
+	// Draw UI (score) --------------------------------------
+	sprintf_s(scoreText, 10, "%7d", score);
+	App->fonts->BlitText(23, 49, scoreFont, scoreText);
+
 	return update_status::UPDATE_CONTINUE;
 }
 
 bool SceneLevel::CleanUp()
 {
+	Level_1 = false;
+
 	App->textures->Unload(bgTexture);
 	App->player->Disable();
 	App->enemies->Disable();

@@ -13,7 +13,7 @@ public:
 	// Creates animation data and the collider
 	SDL_Texture* redTexture = nullptr;
 	Enemy_Red(int x, int y);
-	bool Start() override;
+
 	// The enemy is going to perform a sinusoidal movement
 	void Update() override;
 

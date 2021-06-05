@@ -14,7 +14,7 @@ public:
 	Enemy_Pink(int x, int y);
 
 	// The enemy is going to perform a sinusoidal movement
-	bool Start() override;
+
 	void Update() override;
 
 private:

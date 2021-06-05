@@ -10,8 +10,7 @@ enum class Enemy_Type
 	NO_TYPE,
 	PINK,
 	GREEN,
-	RED,
-	
+	RED,	
 };
 
 struct EnemySpawnpoint
@@ -35,10 +34,6 @@ public:
 	// Called when the module is activated
 	// Loads the necessary textures for the enemies
 	bool Start() override;
-
-	// Called at the beginning of the application loop
-	// Removes all enemies pending to delete
-	update_status PreUpdate() override;
 
 	// Called at the middle of the application loop
 	// Handles all enemies logic and spawning/despawning
@@ -69,7 +64,10 @@ public:
 
 	int posicioFont = 160;
 
+	int enemyNum = 0;
+
 private:
+
 	// Spawns a new enemy using the data from the queue
 	void SpawnEnemy(const EnemySpawnpoint& info);
 

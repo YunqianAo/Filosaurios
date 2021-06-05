@@ -9,7 +9,6 @@
 Enemy::Enemy(int x, int y) : position(x, y)
 {
 	spawnPos = position;
-	this->position = position;
 }
 
 Enemy::~Enemy()
@@ -23,11 +22,6 @@ const Collider* Enemy::GetCollider() const
 	return collider;
 }
 
-bool Enemy::Start() {
-	bool ret = true;
-
-	return ret;
-}
 void Enemy::Update()
 {
 	if (currentAnim != nullptr)
@@ -40,17 +34,13 @@ void Enemy::Update()
 void Enemy::Draw()
 {
 	if (currentAnim != nullptr)
-		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
+		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()), 1.5f);
 }
 
 void Enemy::OnCollision(Collider* collider)
 {
-	if (collider->type==Collider::Type::PLAYER_SHOT) {
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-		SetToDelete();
-	}
+	App->particles->AddParticle(App->particles->blood, position.x, position.y);
 
-	
 }
 
 void Enemy::SetToDelete()

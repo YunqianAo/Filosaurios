@@ -235,23 +235,8 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Resources/Sprites/Characters/Player.png");
 	currentLegsAnimation = &legs_down_idle;
 	currentTopAnimation = &gun_down;
-	
-	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
-	scoreFont = App->fonts->Load("Resources/Sprites/Characters/Font.png", lookupTable, 3);
-	
-	//textureDoorTop = App->textures->Load("Assets/SpritesSSTV/EditSpritesSSTV_Portes.png");
-
-	//textureUI = App->textures->Load("Assets/SpritesSSTV/EditSpritesSSTV_UI.png");
-
-	//textureFont = App->textures->Load("Resources/Sprites/Characters/Font.png"); //Font
-
-	//textureMort = App->textures->Load("Assets/SpritesSSTV/Game_Over.png"); //Mort
-
-	//texturePickups = App->textures->Load("Assets/SpritesSSTV/Entity_Projectiles_and_gift.png");
 
 	gunFx = App->audio->LoadFx("Resources/Audio/SFX/In-Game Sounds/Weapons_Sounds/Pistol_Shot.wav");
-
-
 
 	position.x = 121;
 	position.y = 135;
@@ -277,7 +262,7 @@ update_status ModulePlayer::Update()
 		bandera_GodMode = !bandera_GodMode;
 	}
 
-	//if (App->input->keys[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN && App->SceneLevel->lvl1) {
+	//if (App->input->keys[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN && App->SceneLevel->Level_1) {
 	//	App->SceneLevel->sceneTimer = 3600;
 	//}
 	//if (App->input->keys[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN && App->sceneLevel2->lvl2) {
@@ -329,7 +314,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) || pad.left_x > 0.0f || pad.right) && position.x <= 237-15) //RIGHT
+		if (((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) || pad.left_x > 0.0f || pad.right) && position.x <= 237-13) //RIGHT
 		{
 			position.x += speed;
 			++MovKeyPressed;
@@ -914,12 +899,12 @@ update_status ModulePlayer::Update()
 
 	////F8 spawnea todos los enemigos
 	//if (App->input->keys[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN) {
-	//	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 100, 400);
-	//	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 370, 400);
+	//	App->enemies->AddEnemy(Enemy_Type::GREEN, 100, 400);
+	//	App->enemies->AddEnemy(Enemy_Type::PINK, 370, 400);
 	//}
 
 	////F9 Teimpo del nivel
-	//if (App->input->keys[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN && App->SceneLevel->lvl1) {
+	//if (App->input->keys[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN && App->SceneLevel->Level_1) {
 	//	App->SceneLevel->sceneTimer = 3600;
 	//}
 	//if (App->input->keys[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN && App->sceneLevel2->lvl2) {
@@ -927,26 +912,26 @@ update_status ModulePlayer::Update()
 	//}
 
 	////F3 mas el numero de la sala pasa a aquella sala
-	//if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_REPEAT && App->SceneLevel->lvl1)
+	//if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_REPEAT && App->SceneLevel->Level_1)
 	//	App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->SceneLevel, 20);
-	//if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_REPEAT && App->SceneLevel->lvl1)
+	//if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_REPEAT && App->SceneLevel->Level_1)
 	//	App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->sceneLevel2, 20);
-	///*if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_REPEAT && App->SceneLevel->lvl1)
+	///*if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_REPEAT && App->SceneLevel->Level_1)
 	//App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->BOSS, 20);		//Escena del boss per implementar  */
 
 	//if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_REPEAT && App->sceneLevel2->lvl2)
 	//	App->fade->FadeToBlack((Module*)App->sceneLevel2, (Module*)App->SceneLevel, 20);
 	//if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_REPEAT && App->sceneLevel2->lvl2)
 	//	App->fade->FadeToBlack((Module*)App->sceneLevel2, (Module*)App->sceneLevel2, 20);
-	/*if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_REPEAT && App->SceneLevel->lvl1)
+	/*if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_REPEAT && App->SceneLevel->Level_1)
 	App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->BOSS, 20);		//Escena del boss per implementar  */
 
 	/*//Escen del boss per implementar
-	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_REPEAT && App->SceneLevel->lvl1)
+	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_REPEAT && App->SceneLevel->Level_1)
 		App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->SceneLevel, 20);
-	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_REPEAT && App->SceneLevel->lvl1)
+	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_REPEAT && App->SceneLevel->Level_1)
 		App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->sceneLevel2, 20);
-	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_REPEAT && App->SceneLevel->lvl1)
+	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_REPEAT && App->SceneLevel->Level_1)
 	App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->BOSS, 20); */
 
 
@@ -955,7 +940,7 @@ update_status ModulePlayer::Update()
 		vides--;
 	}*/
 
-	//if (App->input->keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->SceneLevel->lvl1)
+	//if (App->input->keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->SceneLevel->Level_1)
 	//	App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->sceneWin, 20);
 
 	//if (App->input->keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->sceneLevel2->lvl2)
@@ -988,9 +973,6 @@ update_status ModulePlayer::PostUpdate()
 		App->render->Blit(textureDoorTop, -512 * topDoor, 0, nullptr);
 	//Si no li enviem rectangle (li enviem un 'nullptr'), es posa la mateixa mida que la pantalla.
 
-	// Draw UI (score) --------------------------------------
-	sprintf_s(scoreText, 10, "%7d", score);
-	App->fonts->BlitText(23, 47, scoreFont, scoreText);
 
 	return update_status::UPDATE_CONTINUE;
 }

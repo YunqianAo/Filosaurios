@@ -2,7 +2,13 @@
 #include"ModuleTextures.h"
 #include "Application.h"
 #include "ModuleCollisions.h"
-#include"ModuleRender.h"
+#include "ModulePlayer.h"
+#include "ModuleEnemies.h"
+#include "SceneLevel.h"
+#include "ModuleParticles.h"
+#include <time.h>
+#include <stdlib.h>
+
 
 Enemy_Green::Enemy_Green(int x, int y) : Enemy(x, y)
 {
@@ -10,57 +16,164 @@ Enemy_Green::Enemy_Green(int x, int y) : Enemy(x, y)
 	
 	green_up.PushBack({ 2,48,11,15 });
 	green_up.PushBack({ 17,48,13,15 });
-	green_up.speed = 0.2f;
+	green_up.speed = 0.05f;
 	green_up.loop = true;
 
-	green_down.PushBack({ 2,48,11,15 });
-	green_down.PushBack({ 17,48,13,15 });
-	green_down.speed = 0.2f;
+	green_down.PushBack({ 0,112,16,16 });
+	green_down.PushBack({ 16,112,16,16 });
+	green_down.speed = 0.05f;
 	green_down.loop = true;
 
 	green_r.PushBack({ 1,17,14,14 });
 	green_r.PushBack({ 16,16,15,14 });
-	green_r.speed = 0.2f;
+	green_r.speed = 0.05f;
 	green_r.loop = true;
 
-	green_l.PushBack({ 0,80,15,95 });
+	green_l.PushBack({ 0,80,15,15 });
 	green_l.PushBack({ 16,81,14,14 });
-	green_l.speed = 0.2f;
+	green_l.speed = 0.05f;
 	green_l.loop = true;
 
-	path.PushBack({ -0.3f, 0.0f }, 150, &green_r);
-	path.PushBack({ 0.0f, -0.3f }, 150, &green_down);
-	path.PushBack({ 1.2f, 0.0f }, 150, &green_l);
-	path.PushBack({ 0.0f, 1.2f }, 150, &green_up);
+	currentAnim = &green_down;
 
 	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
-bool Enemy_Green::Start() {
-	bool ret = true;
-	greenTexture = App->textures->Load("Resources/Sprites/Characters/green_e.png");
-	
-	colliderEnemyGreen = App->collisions->AddCollider({ 0,0,15,15 },Collider::Type::ENEMY);
 
-	return ret;
-}
 void Enemy_Green::Update()
 {
-	path.Update();
-	position = spawnPos + path.GetRelativePosition();
-	currentAnim = path.GetCurrentAnimation();
-	
-	// Call to the base class. It must be called at the end
-	// It will update the collider depending on the position
+	movementDelay++;
+	spawntimer++;
+
+	if (spawntimer <= 80) {
+		switch (App->sceneLevel->i) {
+		case 0:
+			position.y -= 0.5;
+			currentAnim = &green_up;
+			break;
+		case 1:
+			position.y += 0.5;
+			currentAnim = &green_down;
+			break;
+		case 2:
+			position.x += 0.5;
+			currentAnim = &green_r;
+			break;
+		case 3:
+			position.x -= 0.5;
+			currentAnim = &green_l;
+			break;
+		}
+	}
+
+	if (movementDelay >= 2 && spawntimer > 80 && movedelay == 0) {
+		if (position.x - App->player->position.x < 0)			//right
+		{
+			movementDirections++;
+			if (movementDirections < 2 && currentAnim != &green_r) {
+				currentAnim = &green_r;
+			}
+			position.x += 1.25;
+		}
+		else if (position.x - App->player->position.x > 0)		//left
+		{
+			movementDirections++;
+			if (movementDirections < 2 && currentAnim != &green_l) {
+				currentAnim = &green_l;
+			}
+			position.x -= 1.25;
+		}
+		else {
+			movementDirections = 0;
+		}
+
+		if (position.y - App->player->position.y < 0)			//down
+		{
+			movementDirections++;
+			if (movementDirections < 2 && currentAnim != &green_down) {
+				currentAnim = &green_down;
+			}
+			position.y += 1.25;
+		}
+		else if (position.y - App->player->position.y > 0)		//up
+		{
+			movementDirections++;
+			if (movementDirections < 2 && currentAnim != &green_up) {
+				currentAnim = &green_up;
+			}
+			position.y -= 1.25;
+		}
+		else {
+			movementDirections = 0;
+		}
+
+		movementDelay = 0;
+	}
+
+
+	if (randomMove == 37 && spawntimer > 80)		
+	{
+		if (position.x > 28)
+			position.x -= 1.0f;
+		if (position.y > 60)
+			position.y -= 1.0f;
+		movedelay++;
+		currentAnim = &green_r;
+		if (movedelay == 30) {
+			movedelay = 0;
+			randomMove = 0;
+		}
+	}
+	else if (randomMove == 73 && spawntimer > 80)		
+	{
+		if (position.x < 455)
+			position.x += 1.0f;
+		if (position.y < 390)
+			position.y += 1.0f;
+		movedelay++;
+		currentAnim = &green_r;
+		if (movedelay == 30) {
+			movedelay = 0;
+			randomMove = 0;
+		}
+	}
+	else if (randomMove == 123 && spawntimer > 80)	
+	{
+		if (position.x > 28)
+			position.x -= 1.0f;
+		if (position.y < 390)
+			position.y += 1.0f;
+		movedelay++;
+		currentAnim = &green_r;
+		if (movedelay == 30) {
+			movedelay = 0;
+			randomMove = 0;
+		}
+	}
+	else if (randomMove == 179 && spawntimer > 80)		
+	{
+		if (position.x < 455)
+			position.x += 1.0f;
+		if (position.y > 60)
+			position.y -= 1.0f;
+		movedelay++;
+
+		currentAnim = &green_r;
+		if (movedelay == 30) {
+			movedelay = 0;
+			randomMove = 0;
+		}
+	}
+	else
+	{
+		randomMove = (rand() % 700);
+	}
+
 	Enemy::Update();
 }
-void Enemy_Green::Draw()
-{
-	//path.Draw();
-	App->render->Blit(greenTexture,spawnPos.x,spawnPos.y,NULL);
 
-	// Call to the base class. It must be called at the end
-	// It will update the collider depending on the position
 
-}
+
+
+
 

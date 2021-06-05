@@ -14,13 +14,18 @@ public:
 	Enemy_Green(int x, int y);
 	SDL_Texture* greenTexture = nullptr;
 	// The enemy is going to perform a sinusoidal movement
-	bool Start() override;
 	void Update() override;
-	void Draw() override;
+
+	// Delay entre els moviments de l'enemic
+	int movementDelay = 0;
+
 private:
 
-	Path path;
+	int spawntimer = 0;
 
+	int randomMove = 0;
+
+	int movedelay = 0;
 
 	Animation* currentAnimation = nullptr;
 	// The enemy animation
@@ -30,7 +35,7 @@ private:
 	Animation green_l;
 	Animation green_r;
 	
-	Collider* colliderEnemyGreen = nullptr;
+	int movementDirections = 0;
 
 };
 

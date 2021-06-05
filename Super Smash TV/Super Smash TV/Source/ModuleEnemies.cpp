@@ -6,10 +6,18 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
+#include "ModuleCollisions.h"
+#include "ModuleInput.h"
+
 #include "Enemy.h"
 #include "Enemy_Pink.h"
 #include "Enemy_Green.h"
 #include "Enemy_Red.h"
+
+#include "SceneLevel.h"
+#include <time.h>
+#include <stdlib.h>
+#include <iostream>
 
 
 #define SPAWN_MARGIN 50
@@ -29,29 +37,15 @@ ModuleEnemies::~ModuleEnemies()
 
 bool ModuleEnemies::Start()
 {
-	texture = App->textures->Load("pink_e.png");
-	texture = App->textures->Load("green_e.png");
-	texture = App->textures->Load("red.png");
+	texture = App->textures->Load("Resources/Sprites/Characters/Enemies.png");
 
-	textureFont = App->textures->Load("Assets/SpritesSSTV/Font.png");
+	textureFont = App->textures->Load("Resources/Sprites/Characters/Font.png");
+
+	enemyNum = 0;
+
+	srand(time(NULL));
 
 	return true;
-}
-
-
-update_status ModuleEnemies::PreUpdate()
-{
-	// Remove all enemies scheduled for deletion
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if (enemies[i] != nullptr && enemies[i]->pendingToDelete)
-		{
-			delete enemies[i];
-			enemies[i] = nullptr;
-		}
-	}
-
-	return update_status::UPDATE_CONTINUE;
 }
 
 update_status ModuleEnemies::Update()
@@ -63,6 +57,8 @@ update_status ModuleEnemies::Update()
 		if (enemies[i] != nullptr)
 			enemies[i]->Update();
 	}
+
+
 
 	HandleEnemiesDespawn();
 
@@ -147,6 +143,8 @@ bool ModuleEnemies::CleanUp()
 		}
 	}
 
+	App->textures->Unload(texture);
+
 	return true;
 }
 
@@ -162,11 +160,38 @@ bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
 			spawnQueue[i].x = x;
 			spawnQueue[i].y = y;
 			ret = true;
+			enemyNum++;
 			break;
 		}
 	}
 
 	return ret;
+}
+
+void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
+{
+	// Find an empty slot in the enemies array
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] == nullptr)
+		{
+			switch (info.type)
+			{
+			case Enemy_Type::GREEN:
+				enemies[i] = new Enemy_Green(info.x, info.y);
+				break;
+			case Enemy_Type::PINK:
+				enemies[i] = new Enemy_Pink(info.x, info.y);
+				break;
+			case Enemy_Type::RED:
+				enemies[i] = new Enemy_Red(info.x, info.y);
+				break;
+			}
+			enemies[i]->texture = texture;
+			enemies[i]->destroyedFx = enemyDestroyedFx;
+			break;
+		}
+	}
 }
 
 void ModuleEnemies::HandleEnemiesSpawn()
@@ -200,46 +225,52 @@ void ModuleEnemies::HandleEnemiesDespawn()
 			{
 				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
 
-				enemies[i]->SetToDelete();
+				delete enemies[i];
+				enemies[i] = nullptr;
 			}
-		}
-	}
-}
-
-void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
-{
-	// Find an empty slot in the enemies array
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if (enemies[i] == nullptr)
-		{
-			switch (info.type)
-			{
-			case Enemy_Type::PINK:
-				enemies[i] = new Enemy_Pink(info.x, info.y);
-				break;
-			case Enemy_Type::GREEN:
-				enemies[i] = new Enemy_Green(info.x, info.y);
-				break;
-			case Enemy_Type::RED:
-				enemies[i] = new Enemy_Red(info.x, info.y);
-				break;
-			}
-			enemies[i]->texture = texture;
-			enemies[i]->destroyedFx = enemyDestroyedFx;
-			break;
 		}
 	}
 }
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
+	//mira si estas a Level_1 per matar d'un tir
+	if (App->sceneLevel->Level_1 == true /*&& App->sceneLevel2->lvl2 == false*/) {
+		for (uint i = 0; i < MAX_ENEMIES; ++i)
 		{
-			enemies[i]->OnCollision(c2); //Notify the enemy of a collision
-			break;
+			if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1 && ((c2->type == c2->PLAYER_SHOT)))
+			{
+				enemies[i]->OnCollision(c2); //Notify the enemy of a collision
+				enemyNum--;
+
+				delete enemies[i];
+				enemies[i] = nullptr;
+				break;
+			}
 		}
 	}
+	////mira si estas a lvl2 per matar de7 hits
+	//else if (App->sceneLevel2->lvl2 == true && App->sceneLevel_1->Level_1 == false)
+	//{
+	//	//cout << videsTorreta;
+	//	if (videsTorreta > 0 && (c2->type == c2->PLAYER_SHOT) || (c2->type == c2->PLAYER_TRIPLE_SHOT))
+	//		videsTorreta--;
+
+	//	if (videsTorreta == 0)
+	//	{
+	//		for (uint i = 0; i < MAX_ENEMIES; ++i)
+	//		{
+	//			if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1 && ((c2->type == c2->PLAYER_SHOT) || (c2->type == c2->PLAYER_TRIPLE_SHOT)))
+	//			{
+	//				enemies[i]->OnCollision(c2); //Notify the enemy of a collision
+
+	//				enemyNum--;
+
+	//				delete enemies[i];
+	//				enemies[i] = nullptr;
+	//				break;
+	//			}
+	//		}
+	//	}
+	//}
 }
