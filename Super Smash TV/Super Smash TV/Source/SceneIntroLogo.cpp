@@ -24,8 +24,7 @@ bool SceneIntroLogo::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Resources/Sprites/Intro/Intro_0.png");
-	App->audio->PlayMusic("Resources/Audio/Music/Title_Screen.ogg", 1.0f);
+	bgTexture = App->textures->Load("Resources/Sprites/Intro/IntroLogo.png");
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;

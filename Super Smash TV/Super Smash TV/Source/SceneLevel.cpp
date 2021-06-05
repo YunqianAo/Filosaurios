@@ -64,6 +64,45 @@ bool SceneLevel::Start()
 	scoreFont = App->fonts->Load("Resources/Sprites/Characters/Font.png", lookupTable, 1);
 
 
+<<<<<<< HEAD
+=======
+
+	//Map a
+	// X colliders
+
+	App->collisions->AddCollider({ 0 + 256, -256, 104, 39 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 104 + 256, -256, 48, 39 }, Collider::Type::DOOR);
+	App->collisions->AddCollider({ 152 + 256, -256, 104, 39 }, Collider::Type::WALL);
+
+	App->collisions->AddCollider({ 0 + 256 + 256, -256, 104, 39 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 104 + 256 + 256, -256, 48, 39 }, Collider::Type::DOOR);
+	App->collisions->AddCollider({ 152 + 256 + 256, -256, 104, 39 }, Collider::Type::WALL);
+
+	// Y colliders
+
+	// Y colliders  -217
+	App->collisions->AddCollider({ 238 + 256, -217, 37, 69 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 238 + 256, -217 + 106, 37, 72 }, Collider::Type::WALL);
+
+	App->collisions->AddCollider({ -18 + 256, -217, 37, 69 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ -18 + 256, -217 + 69, 37, 37 }, Collider::Type::DOOR);
+	App->collisions->AddCollider({ -18 + 256, -217 + 106, 37, 72 }, Collider::Type::WALL);
+
+	App->collisions->AddCollider({ 238 + 256 + 256, -217, 37,69 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 238 + 256 + 256, -217 + 69, 37, 37 }, Collider::Type::DOOR);
+	App->collisions->AddCollider({ 238 + 256 + 256, -217 + 106, 37, 72 }, Collider::Type::WALL);
+	*/
+
+	App->player->Enable();
+	//App->player_gun->Enable();
+	
+	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz", };
+	scoreFont = App->fonts->Load("Resources/Sprites/Characters/Font.png", lookupTable, 1);
+
+	App->enemies->AddEnemy(Enemy_Type::PINK, 29, 165);
+	App->enemies->AddEnemy(Enemy_Type::GREEN, 29, 165);
+	App->enemies->AddEnemy(Enemy_Type::RED, 29, 165);
+>>>>>>> 4ac512db0c34fe588df668cd58834d96285aa9a9
 	return ret;
 }
 
