@@ -25,7 +25,6 @@ bool SceneIntroUPC::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Resources/Sprites/Intro/IntroUPC.png");
-	App->audio->PlayMusic("Resources/Audio/Music/Title_Screen.ogg", 1.0f);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
