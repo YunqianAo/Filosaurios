@@ -15,7 +15,6 @@ class SceneIntroLogo;
 class SceneIntro;
 class ModuleFonts;
 class ModulePlayer;
-class ModulePlayer_Gun;
 class SceneLevel;
 class SceneLose;
 class SceneWin;

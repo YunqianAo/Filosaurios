@@ -73,12 +73,6 @@
     <ClInclude Include="ModuleTextures.h">
       <Filter>Source Files\Modules\Core</Filter>
     </ClInclude>
-    <ClInclude Include="ModulePlayer_Gun.h">
-      <Filter>Source Files\Modules\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="ModulePlayer_Legs.h">
-      <Filter>Source Files\Modules\Gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="SceneIntro.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
@@ -164,12 +158,6 @@
     </ClCompile>
     <ClCompile Include="ModuleTextures.cpp">
       <Filter>Source Files\Modules\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="ModulePlayer_Gun.cpp">
-      <Filter>Source Files\Modules\Gameplay</Filter>
-    </ClCompile>
-    <ClCompile Include="ModulePlayer_Legs.cpp">
-      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="SceneIntro.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>

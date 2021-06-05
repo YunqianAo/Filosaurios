@@ -88,8 +88,6 @@
     <ClInclude Include="ModuleFonts.h" />
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModulePlayer.h" />
-    <ClInclude Include="ModulePlayer_Gun.h" />
-    <ClInclude Include="ModulePlayer_Legs.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="SceneIntroLogo.h" />
     <ClInclude Include="SceneIntroUPC.h" />
@@ -122,8 +120,6 @@
     <ClCompile Include="ModuleFonts.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="ModulePlayer.cpp" />
-    <ClCompile Include="ModulePlayer_Gun.cpp" />
-    <ClCompile Include="ModulePlayer_Legs.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="SceneIntroLogo.cpp" />
     <ClCompile Include="SceneIntroUPC.cpp" />

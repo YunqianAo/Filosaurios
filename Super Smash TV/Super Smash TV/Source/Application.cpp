@@ -5,7 +5,6 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModulePlayer.h"
-#include "ModulePlayer_Gun.h"
 #include "ModuleAudio.h"
 #include "SceneIntroUPC.h"
 #include "SceneIntroLogo.h"
