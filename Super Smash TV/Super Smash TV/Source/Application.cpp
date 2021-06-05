@@ -32,19 +32,19 @@ Application::Application()
 	modules[3] = audio = new ModuleAudio(true);
 
 	modules[4] = sceneIntroUPC = new SceneIntroUPC(true);
-	modules[4] = sceneIntroLogo = new SceneIntroLogo(true);
-	modules[5] = sceneIntro = new SceneIntro(true);
-	modules[6] = sceneLevel = new SceneLevel(false);
-	modules[7] = sceneLose = new SceneLose(false);
-	modules[8] = sceneWin = new SceneWin(false);
-	modules[9] = player = new ModulePlayer(false);
-	modules[10] = particles = new ModuleParticles(true);
-	modules[11] =	enemies = new ModuleEnemies(true);
+	modules[5] = sceneIntroLogo = new SceneIntroLogo(true);
+	modules[6] = sceneIntro = new SceneIntro(true);
+	modules[7] = sceneLevel = new SceneLevel(false);
+	modules[8] = sceneLose = new SceneLose(false);
+	modules[9] = sceneWin = new SceneWin(false);
+	modules[10] = player = new ModulePlayer(false);
+	modules[11] = particles = new ModuleParticles(true);
+	modules[12] =	enemies = new ModuleEnemies(true);
 
-	modules[12] = collisions = new ModuleCollisions(true);
-	modules[13] = fade = new ModuleFadeToBlack(true);
-	modules[14] = fonts = new ModuleFonts(true);
-	modules[15] = render = new ModuleRender(true);
+	modules[13] = collisions = new ModuleCollisions(true);
+	modules[14] = fade = new ModuleFadeToBlack(true);
+	modules[15] = fonts = new ModuleFonts(true);
+	modules[16] = render = new ModuleRender(true);
 }
 
 Application::~Application()
