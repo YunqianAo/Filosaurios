@@ -118,6 +118,12 @@
     <ClInclude Include="ModulePlayer.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="SceneIntroUPC.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneIntroLogo.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -202,6 +208,12 @@
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="ModulePlayer.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneIntroUPC.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneIntroLogo.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>

@@ -91,6 +91,8 @@
     <ClInclude Include="ModulePlayer_Gun.h" />
     <ClInclude Include="ModulePlayer_Legs.h" />
     <ClInclude Include="Path.h" />
+    <ClInclude Include="SceneIntroLogo.h" />
+    <ClInclude Include="SceneIntroUPC.h" />
     <ClInclude Include="SceneLevel.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleRender.h" />
@@ -123,6 +125,8 @@
     <ClCompile Include="ModulePlayer_Gun.cpp" />
     <ClCompile Include="ModulePlayer_Legs.cpp" />
     <ClCompile Include="Path.cpp" />
+    <ClCompile Include="SceneIntroLogo.cpp" />
+    <ClCompile Include="SceneIntroUPC.cpp" />
     <ClCompile Include="SceneLevel.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
