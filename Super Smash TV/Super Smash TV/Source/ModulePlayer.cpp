@@ -282,7 +282,7 @@ update_status ModulePlayer::Update()
 
 
 	if (bandera_GodMode == false) {
-		if (((App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) || pad.left_x < 0.0f || pad.left) && position.x >= 28) //LEFT
+		if (((App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) || pad.left_x < 0.0f || pad.left) && position.x >= 19) //LEFT
 		{
 			position.x -= speed;
 			++MovKeyPressed;
@@ -325,7 +325,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) || pad.left_x > 0.0f || pad.right) && position.x <= 455) //RIGHT
+		if (((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) || pad.left_x > 0.0f || pad.right) && position.x <= 237-15) //RIGHT
 		{
 			position.x += speed;
 			++MovKeyPressed;
@@ -367,13 +367,9 @@ update_status ModulePlayer::Update()
 				}
 			}
 		}
-		/* MANDO PROVA
-		if (pad.left_y > 0.0f) {
-				App->input->keys[SDL_SCANCODE_S] = (SDL_SCANCODE_S == KEY_STATE::KEY_IDLE) ? KEY_STATE::KEY_DOWN : KEY_STATE::KEY_REPEAT;
-				App->input->keys[SDL_SCANCODE_S] = (SDL_SCANCODE_S == KEY_STATE::KEY_REPEAT || SDL_SCANCODE_S == KEY_STATE::KEY_DOWN) ? KEY_STATE::KEY_UP : KEY_STATE::KEY_IDLE;
-		}*/
 
-		if (((App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) || pad.left_y > 0.0f || pad.down) && position.y <= 390) //DOWN
+
+		if (((App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) || pad.left_y > 0.0f || pad.down) && position.y <= 214-25) //DOWN
 		{
 			position.y += speed;
 			++MovKeyPressed;
@@ -416,7 +412,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (((App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) || pad.left_y < 0.0f || pad.up) && position.y >= 60) //UP
+		if (((App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) || pad.left_y < 0.0f || pad.up) && position.y >= 37) //UP
 		{
 			position.y -= speed;
 			++MovKeyPressed;
@@ -1048,13 +1044,8 @@ update_status ModulePlayer::PostUpdate()
 }
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
-{		//Falta cambiar el sumatori de punts segons el tipus de objecte que agafes
+{	
 
-	//if (c2->type == c2->object_Triple)
-	//{
-	//	ShootGun = true;
-	//	cont_Tripel = 500;
-	//}
 
 	//if (c2->type == c2->object_Vida)
 	//{
