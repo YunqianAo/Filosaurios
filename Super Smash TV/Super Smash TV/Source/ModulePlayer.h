@@ -56,14 +56,6 @@ public:
 
 	//SDL_Texture* toptexture = nullptr;
 
-	int vides = 5;
-	int contadorVides = 0;
-
-	int money = 0;
-	int score = 0;
-	int scoreCopia = 0;
-
-	int scoreN[8] = { 0 }; //arrai de digits score
 
 	int topDoor = 0;
 
@@ -142,6 +134,11 @@ public:
 	// Sound effects indices
 	uint gunFx = 0;
 	uint explosionFx = 0;
+
+	// Font score index
+	uint score = 000;
+	int scoreFont = -1;
+	char scoreText[150] = { "\0" };
 
 };
 

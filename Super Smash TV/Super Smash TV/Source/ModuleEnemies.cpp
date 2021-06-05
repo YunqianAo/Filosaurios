@@ -71,7 +71,7 @@ update_status ModuleEnemies::Update()
 
 update_status ModuleEnemies::PostUpdate()
 {
-	
+	/*
 	//Render Font
 	SDL_Rect rect0 = { 0, 0, 10, 16 };
 	SDL_Rect rect1 = { 10, 0, 10, 16 };
@@ -123,6 +123,7 @@ update_status ModuleEnemies::PostUpdate()
 		posicioFont -= 15; //Separació entre nombres
 	}
 	posicioFont = 160; //Posició del primer element de la dreta
+	*/
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (enemies[i] != nullptr)

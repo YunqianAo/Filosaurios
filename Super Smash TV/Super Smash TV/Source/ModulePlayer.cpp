@@ -12,6 +12,7 @@ using namespace std;
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleFonts.h"
 
 
 #include "SDL/include/SDL_render.h"
@@ -234,12 +235,15 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Resources/Sprites/Characters/Player.png");
 	currentLegsAnimation = &legs_down_idle;
 	currentTopAnimation = &gun_down;
-
+	
+	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
+	scoreFont = App->fonts->Load("Resources/Sprites/Characters/Font.png", lookupTable, 3);
+	
 	//textureDoorTop = App->textures->Load("Assets/SpritesSSTV/EditSpritesSSTV_Portes.png");
 
 	//textureUI = App->textures->Load("Assets/SpritesSSTV/EditSpritesSSTV_UI.png");
 
-	textureFont = App->textures->Load("Resources/Sprites/Characters/Font.png"); //Font
+	//textureFont = App->textures->Load("Resources/Sprites/Characters/Font.png"); //Font
 
 	//textureMort = App->textures->Load("Assets/SpritesSSTV/Game_Over.png"); //Mort
 
@@ -883,7 +887,7 @@ update_status ModulePlayer::Update()
 	currentLegsAnimation->Update();
 	currentTopAnimation->Update();
 
-	//Gestió Array de la font
+	/*Gestió Array de la font
 	scoreCopia = score;
 
 	for (int i = 0; i < 8; ++i) {
@@ -895,7 +899,7 @@ update_status ModulePlayer::Update()
 	if (contadorVides < -100) {
 		contadorVides = -1;
 	}
-
+	*/
 	//F6 TripleShoot
 	if (App->input->keys[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT) {
 		ShootGun = true;
@@ -947,9 +951,9 @@ update_status ModulePlayer::Update()
 
 
 
-	if (App->input->keys[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN) { //necessita col·lidir amb un enemic al final per morir
+	/*if (App->input->keys[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN) { //necessita col·lidir amb un enemic al final per morir
 		vides--;
-	}
+	}*/
 
 	//if (App->input->keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->SceneLevel->lvl1)
 	//	App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->sceneWin, 20);
@@ -984,61 +988,9 @@ update_status ModulePlayer::PostUpdate()
 		App->render->Blit(textureDoorTop, -512 * topDoor, 0, nullptr);
 	//Si no li enviem rectangle (li enviem un 'nullptr'), es posa la mateixa mida que la pantalla.
 
-	//Render UI
-	App->render->Blit(textureUI, 0, 0, nullptr);
-
-	//Render Vides
-	SDL_Rect rect0v = { 0, 16, 10, 14 };
-	SDL_Rect rect1v = { 10, 16, 10, 14 };
-	SDL_Rect rect2v = { 20, 16, 10, 14 };
-	SDL_Rect rect3v = { 30, 16, 10, 14 };
-	SDL_Rect rect4v = { 40, 16, 10, 14 };
-	SDL_Rect rect5v = { 50, 16, 10, 14 };
-	SDL_Rect rect6v = { 60, 16, 10, 14 };
-	SDL_Rect rect7v = { 70, 16, 10, 14 };
-	SDL_Rect rect8v = { 80, 16, 10, 14 };
-	SDL_Rect rect9v = { 90, 16, 10, 14 };
-	SDL_Rect rect10v = { 0, 0, 512, 512 };
-
-	switch (vides) {
-	case 0:
-		App->render->Blit(textureFont, 43, 54, &rect0v, 1.5f);
-		break;
-	case 1:
-		App->render->Blit(textureFont, 43, 54, &rect1v, 1.5f);
-		break;
-	case 2:
-		App->render->Blit(textureFont, 43, 54, &rect2v, 1.5f);
-		break;
-	case 3:
-		App->render->Blit(textureFont, 43, 54, &rect3v, 1.5f);
-		break;
-	case 4:
-		App->render->Blit(textureFont, 43, 54, &rect4v, 1.5f);
-		break;
-	case 5:
-		App->render->Blit(textureFont, 43, 54, &rect5v, 1.5f);
-		break;
-	case 6:
-		App->render->Blit(textureFont, 43, 54, &rect6v, 1.5f);
-		break;
-	case 7:
-		App->render->Blit(textureFont, 43, 54, &rect7v, 1.5f);
-		break;
-	case 8:
-		App->render->Blit(textureFont, 43, 54, &rect8v, 1.5f);
-		break;
-	case 9:
-		App->render->Blit(textureFont, 43, 54, &rect9v, 1.5f);
-		break;
-	}
-
-
-	if (vides <= 0)
-	{
-		App->render->Blit(textureMort, 0, 0, &rect10v, 1);
-		//App->pause = true;
-	}
+	// Draw UI (score) --------------------------------------
+	sprintf_s(scoreText, 10, "%7d", score);
+	App->fonts->BlitText(23, 47, scoreFont, scoreText);
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -1057,7 +1009,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	//	App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->sceneSwap, 0); //sceneWin, sceneSwap
 	//}
 
-	//GESTIONAR LES VIDES I LA MORT
+	/*GESTIONAR LES VIDES I LA MORT
 	if ((c2->type == c2->ENEMY) && (contadorVides < 0) && (bandera_GodMode == false) && (destroyed == false)) {
 
 		if (vides > 0) {
@@ -1072,7 +1024,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			destroyed = false;
 		}
 		contadorVides = 50; //50 frames de delay
-	}
+	}*/
 }
 
 bool ModulePlayer::CleanUp() {
