@@ -80,6 +80,11 @@ public:
 	Particle shotgun_7;
 	Particle shotgun_8;
 
+	Particle blood;
+
+	Particle exit_arow;
+	Particle exit_words;
+
 	Particle inv;
 };
 

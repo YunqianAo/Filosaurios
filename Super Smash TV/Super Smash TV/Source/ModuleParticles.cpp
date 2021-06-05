@@ -90,8 +90,30 @@ bool ModuleParticles::Start()
 	shotgun_8.speed = iPoint(-2, -2);
 	shotgun_8.lifetime = 180;
 
-
+	shotgun_8.anim.PushBack({ 9, 113, 5, 5 });
+	shotgun_8.speed = iPoint(-2, -2);
+	shotgun_8.lifetime = 180;
 	
+	blood.anim.PushBack({ 37,96, 16, 16 });
+	blood.anim.PushBack({ 37+16,96, 16, 16 });
+	blood.anim.PushBack({ 37+16,96, 16, 16 });
+	blood.anim.PushBack({ 37,96+16, 16, 16 });
+	blood.anim.PushBack({ 37 + 16,96+16, 16, 16 });
+	blood.anim.PushBack({ 37 + 16,96+16, 16, 16 });
+	blood.anim.loop = false;
+	blood.anim.speed = 0.3f;
+	
+	exit_words.anim.PushBack({ 32, 48, 25, 7 });
+	exit_words.anim.PushBack({ 64 ,47, 25, 7 });
+	exit_words.anim.loop = true;
+	exit_words.anim.speed = 0.05f;
+
+	exit_arow.anim.PushBack({96,47, 8, 16 });
+	exit_arow.anim.PushBack({ 112,48, 8, 16 });
+	exit_arow.anim.loop = true;
+	exit_arow.anim.speed = 0.05f;
+
+
 
 	inv.anim.PushBack({ 0, 49, 32, 30 });
 	inv.lifetime = 180;
