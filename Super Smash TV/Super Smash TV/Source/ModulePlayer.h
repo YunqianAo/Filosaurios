@@ -135,11 +135,7 @@ public:
 	uint gunFx = 0;
 	uint explosionFx = 0;
 
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 4ac512db0c34fe588df668cd58834d96285aa9a9
 
 };
 

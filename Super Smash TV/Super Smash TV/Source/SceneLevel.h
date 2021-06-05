@@ -40,7 +40,6 @@ public:
 	// The sprite rectangle for the ground
 	SDL_Texture* starsTexture = nullptr;
 
-<<<<<<< HEAD
 	int mapaActual = 2;
 	int randomcont = 50;
 	int num = 0;
@@ -51,8 +50,6 @@ public:
 	int exitTimer = 0;
 	int levelcont = 0;
 
-=======
->>>>>>> 4ac512db0c34fe588df668cd58834d96285aa9a9
 	// Font score index
 	uint score = 000;
 	int scoreFont = -1;

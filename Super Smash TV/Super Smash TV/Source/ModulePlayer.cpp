@@ -235,20 +235,6 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Resources/Sprites/Characters/Player.png");
 	currentLegsAnimation = &legs_down_idle;
 	currentTopAnimation = &gun_down;
-<<<<<<< HEAD
-=======
-	
-	
-	//textureDoorTop = App->textures->Load("Assets/SpritesSSTV/EditSpritesSSTV_Portes.png");
-
-	//textureUI = App->textures->Load("Assets/SpritesSSTV/EditSpritesSSTV_UI.png");
-
-	//textureFont = App->textures->Load("Resources/Sprites/Characters/Font.png"); //Font
-
-	//textureMort = App->textures->Load("Assets/SpritesSSTV/Game_Over.png"); //Mort
-
-	//texturePickups = App->textures->Load("Assets/SpritesSSTV/Entity_Projectiles_and_gift.png");
->>>>>>> 4ac512db0c34fe588df668cd58834d96285aa9a9
 
 	gunFx = App->audio->LoadFx("Resources/Audio/SFX/In-Game Sounds/Weapons_Sounds/Pistol_Shot.wav");
 
