@@ -169,12 +169,14 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 
 	// Shoot Gun 
 	ShootGun_down.PushBack({ 128, 64 + 96, 32, 32 });
-
 	ShootGun_up.PushBack({ 224, 64 + 96, 32, 32 });
-
 	ShootGun_l.PushBack({ 64, 128 + 96, 32, 32 });
-
 	ShootGun_r.PushBack({ 64, 96 + 96, 32, 32 });
+	ShootGun_2.PushBack({ 32, 192 , 32, 32 });
+	ShootGun_4.PushBack({ 128, 192 , 32, 32 });
+	ShootGun_6.PushBack({ 32, 224 , 32, 32 });
+	ShootGun_8.PushBack({ 128, 224 , 32, 32 });
+
 
 	ShootGun_up_shoot.PushBack({ 192, 64 + 96, 32, 32 });
 	ShootGun_up_shoot.PushBack({ 224, 64 + 96, 32, 32 });
@@ -186,17 +188,35 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	ShootGun_down_shoot.loop = true;
 	ShootGun_down_shoot.speed = 0.1f;
 
-	// Shoot left
 	ShootGun_l_shoot.PushBack({ 64, 128 + 96, 32, 32 });
 	ShootGun_l_shoot.PushBack({ 96, 128 + 96, 32, 32 });
 	ShootGun_l_shoot.loop = true;
 	ShootGun_l_shoot.speed = 0.1f;
 
-	// Shoot right
 	ShootGun_r_shoot.PushBack({ 64, 96 + 96, 32, 32 });
 	ShootGun_r_shoot.PushBack({ 96, 96 + 96, 32, 32 });
 	ShootGun_r_shoot.loop = true;
 	ShootGun_r_shoot.speed = 0.1f;
+
+	ShootGun_2_shoot.PushBack({ 32, 192 , 32, 32 });
+	ShootGun_2_shoot.PushBack({ 0, 192 , 32, 32 });
+	ShootGun_2_shoot.loop = true;
+	ShootGun_2_shoot.speed = 0.1f;
+
+	ShootGun_4_shoot.PushBack({ 128, 192 , 32, 32 });
+	ShootGun_4_shoot.PushBack({ 160, 192 , 32, 32 });
+	ShootGun_4_shoot.loop = true;
+	ShootGun_4_shoot.speed = 0.1f;
+
+	ShootGun_6_shoot.PushBack({ 32, 224, 32, 32 });
+	ShootGun_6_shoot.PushBack({ 0, 224 , 32, 32 });
+	ShootGun_6_shoot.loop = true;
+	ShootGun_6_shoot.speed = 0.1f;
+
+	ShootGun_8_shoot.PushBack({ 128, 224 , 32, 32 });
+	ShootGun_8_shoot.PushBack({ 160, 224 , 32, 32 });
+	ShootGun_8_shoot.loop = true;
+	ShootGun_8_shoot.speed = 0.1f;
 
 }
 
@@ -232,7 +252,7 @@ bool ModulePlayer::Start()
 	position.x = 121;
 	position.y = 135;
 
-	bandera_trip = false;
+	ShootGun = false;
 
 	destroyed = false;
 
@@ -274,9 +294,9 @@ update_status ModulePlayer::Update()
 					currentLegsAnimation = &legs_8;
 
 					if (shooting == false) {
-						if (bandera_trip && cont_Tripel > 0)
+						if (ShootGun && cont_Tripel > 0)
 						{
-
+							currentTopAnimation = &ShootGun_8;
 						}
 						else
 						{
@@ -292,9 +312,9 @@ update_status ModulePlayer::Update()
 				currentLegsAnimation = &legs_l;
 
 				if (shooting == false) {
-					if (bandera_trip && cont_Tripel > 0)
+					if (ShootGun && cont_Tripel > 0)
 					{
-
+						currentTopAnimation = &ShootGun_l;
 					}
 					else
 					{
@@ -317,9 +337,9 @@ update_status ModulePlayer::Update()
 					currentLegsAnimation = &legs_4;
 
 					if (shooting == false) {
-						if (bandera_trip && cont_Tripel > 0)
+						if (ShootGun && cont_Tripel > 0)
 						{
-
+							currentTopAnimation = &ShootGun_4;
 						}
 						else
 						{
@@ -335,9 +355,9 @@ update_status ModulePlayer::Update()
 				currentLegsAnimation = &legs_r;
 
 				if (shooting == false) {
-					if (bandera_trip && cont_Tripel > 0)
+					if (ShootGun && cont_Tripel > 0)
 					{
-
+						currentTopAnimation = &ShootGun_r;
 					}
 					else
 					{
@@ -365,9 +385,9 @@ update_status ModulePlayer::Update()
 					currentLegsAnimation = &legs_6;
 
 					if (shooting == false) {
-						if (bandera_trip && cont_Tripel > 0)
+						if (ShootGun && cont_Tripel > 0)
 						{
-
+							currentTopAnimation = &ShootGun_6;
 						}
 						else
 						{
@@ -383,9 +403,9 @@ update_status ModulePlayer::Update()
 				currentLegsAnimation = &legs_down;
 
 				if (shooting == false) {
-					if (bandera_trip && cont_Tripel > 0)
+					if (ShootGun && cont_Tripel > 0)
 					{
-
+						currentTopAnimation = &ShootGun_down;
 					}
 					else
 					{
@@ -408,9 +428,9 @@ update_status ModulePlayer::Update()
 					currentLegsAnimation = &legs_2;
 
 					if (shooting == false) {
-						if (bandera_trip && cont_Tripel > 0)
+						if (ShootGun && cont_Tripel > 0)
 						{
-
+							currentTopAnimation = &ShootGun_2;
 						}
 						else
 						{
@@ -426,9 +446,9 @@ update_status ModulePlayer::Update()
 				currentLegsAnimation = &legs_up;
 
 				if (shooting == false) {
-					if (bandera_trip && cont_Tripel > 0)
+					if (ShootGun && cont_Tripel > 0)
 					{
-
+						currentTopAnimation = &ShootGun_up;
 					}
 					else
 					{
@@ -457,9 +477,9 @@ update_status ModulePlayer::Update()
 					currentLegsAnimation = &legs_8;
 
 					if (shooting == false) {
-						if (bandera_trip && cont_Tripel > 0)
+						if (ShootGun && cont_Tripel > 0)
 						{
-
+							currentTopAnimation = &ShootGun_8;
 						}
 						else
 						{
@@ -475,9 +495,9 @@ update_status ModulePlayer::Update()
 				currentLegsAnimation = &legs_l;
 
 				if (shooting == false) {
-					if (bandera_trip && cont_Tripel > 0)
+					if (ShootGun && cont_Tripel > 0)
 					{
-
+						currentTopAnimation = &ShootGun_l;
 					}
 					else
 					{
@@ -500,9 +520,9 @@ update_status ModulePlayer::Update()
 					currentLegsAnimation = &legs_4;
 
 					if (shooting == false) {
-						if (bandera_trip && cont_Tripel > 0)
+						if (ShootGun && cont_Tripel > 0)
 						{
-
+							currentTopAnimation = &ShootGun_4;
 						}
 						else
 						{
@@ -518,9 +538,9 @@ update_status ModulePlayer::Update()
 				currentLegsAnimation = &legs_r;
 
 				if (shooting == false) {
-					if (bandera_trip && cont_Tripel > 0)
+					if (ShootGun && cont_Tripel > 0)
 					{
-
+						currentTopAnimation = &ShootGun_r;
 					}
 					else
 					{
@@ -543,9 +563,9 @@ update_status ModulePlayer::Update()
 					currentLegsAnimation = &legs_6;
 
 					if (shooting == false) {
-						if (bandera_trip && cont_Tripel > 0)
+						if (ShootGun && cont_Tripel > 0)
 						{
-
+							currentTopAnimation = &ShootGun_6;
 						}
 						else
 						{
@@ -561,9 +581,9 @@ update_status ModulePlayer::Update()
 				currentLegsAnimation = &legs_down;
 
 				if (shooting == false) {
-					if (bandera_trip && cont_Tripel > 0)
+					if (ShootGun && cont_Tripel > 0)
 					{
-
+						currentTopAnimation = &ShootGun_down;
 					}
 					else
 					{
@@ -586,9 +606,9 @@ update_status ModulePlayer::Update()
 					currentLegsAnimation = &legs_2;
 
 					if (shooting == false) {
-						if (bandera_trip && cont_Tripel > 0)
+						if (ShootGun && cont_Tripel > 0)
 						{
-
+							currentTopAnimation = &ShootGun_2;
 						}
 						else
 						{
@@ -605,9 +625,9 @@ update_status ModulePlayer::Update()
 
 				if (shooting == false) {
 					if (bandera) {
-						if (bandera_trip && cont_Tripel > 0)
+						if (ShootGun && cont_Tripel > 0)
 						{
-							cont = 0;
+							currentTopAnimation = &ShootGun_up;
 						}
 						else
 
@@ -624,7 +644,7 @@ update_status ModulePlayer::Update()
 		MovKeyPressed = 0;
 	}
 
-	if (bandera_trip == true)
+	if (ShootGun == true)
 	{
 		cont_Tripel--;
 	}
@@ -660,19 +680,20 @@ update_status ModulePlayer::Update()
 		
 
 		if (bandera) {
-			if (bandera_trip && cont_Tripel > 0)
+			if (ShootGun && cont_Tripel > 0)
 			{
 
 
-				App->particles->AddParticle(App->particles->shotgun_1, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->shotgun_2, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->shotgun_3, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_1, position.x + 14, position.y-5, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_2, position.x + 14, position.y-5, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_3, position.x + 14, position.y-5, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
 				cont = 0;
+				currentTopAnimation = &ShootGun_2_shoot;
 			}
 			else
 			{
-				App->particles->AddParticle(App->particles->bullet_2, position.x + 7, position.y - 12, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->bullet_2, position.x + 7, position.y - 5, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
 				currentTopAnimation = &gun_2_shoot;
 			}
@@ -684,13 +705,14 @@ update_status ModulePlayer::Update()
 		
 
 		if (bandera) {
-			if (bandera_trip && cont_Tripel > 0)
+			if (ShootGun && cont_Tripel > 0)
 			{
-				App->particles->AddParticle(App->particles->shotgun_7, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->shotgun_8, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->shotgun_1, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_7, position.x - 5, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_8, position.x - 5, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_1, position.x -5, position.y-10, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
 				cont = 0;
+				currentTopAnimation = &ShootGun_8_shoot;
 			}
 			else
 			{
@@ -703,20 +725,19 @@ update_status ModulePlayer::Update()
 	else if ((App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) || (pad.right_x < 0.0f && pad.right_y > 0.0f)) //Esq, avall
 	{
 		if (bandera) {
-			if (bandera_trip && cont_Tripel > 0)
+			if (ShootGun && cont_Tripel > 0)
 			{
 
-
-
-				App->particles->AddParticle(App->particles->shotgun_7, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->shotgun_6, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->shotgun_5, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_7, position.x - 8, position.y + 11, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_6, position.x - 8, position.y + 11, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_5, position.x - 8, position.y + 11, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
 				cont = 0;
+				currentTopAnimation = &ShootGun_6_shoot;
 			}
 			else
 			{
-				App->particles->AddParticle(App->particles->bullet_6, position.x - 12, position.y + 11, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->bullet_6, position.x - 8, position.y + 11, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
 				currentTopAnimation = &gun_6_shoot;
 			}
@@ -728,16 +749,14 @@ update_status ModulePlayer::Update()
 		
 
 		if (bandera) {
-			if (bandera_trip && cont_Tripel > 0)
+			if (ShootGun && cont_Tripel > 0)
 			{
-
-
-
-				App->particles->AddParticle(App->particles->shotgun_3, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->shotgun_4, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->shotgun_5, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_3, position.x + 15, position.y + 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_4, position.x + 15, position.y + 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_5, position.x + 15, position.y + 10, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
 				cont = 0;
+				currentTopAnimation = &ShootGun_4_shoot;
 			}
 			else
 			{
@@ -753,19 +772,18 @@ update_status ModulePlayer::Update()
 		
 
 		if (bandera) {
-			if (bandera_trip && cont_Tripel > 0)
+			if (ShootGun && cont_Tripel > 0)
 			{
-;
-
-			App->particles->AddParticle(App->particles->shotgun_8, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->shotgun_1, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->shotgun_2, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
-			App->audio->PlayFx(gunFx);
+				App->particles->AddParticle(App->particles->shotgun_8, position.x + 5, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_1, position.x + 5, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_2, position.x + 5, position.y - 10, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(gunFx);
 				cont = 0;
+				currentTopAnimation = &ShootGun_up_shoot;
 			}
 			else
 			{
-				App->particles->AddParticle(App->particles->bullet_up, position.x + 14, position.y, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->bullet_up, position.x + 5, position.y-10, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
 				currentTopAnimation = &gun_up_shoot;
 			}
@@ -778,19 +796,18 @@ update_status ModulePlayer::Update()
 		
 
 		if (bandera) {
-			if (bandera_trip && cont_Tripel > 0)
+			if (ShootGun && cont_Tripel > 0)
 			{
-
-
-				App->particles->AddParticle(App->particles->shotgun_8, position.x - 4, position.y + 10, Collider::Type::PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->shotgun_7, position.x - 4, position.y + 10, Collider::Type::PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->shotgun_6, position.x - 4, position.y + 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_8, position.x - 18, position.y + 4, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_7, position.x - 18, position.y + 4, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_6, position.x - 18, position.y + 4, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
 				cont = 0;
+				currentTopAnimation = &ShootGun_l_shoot;
 			}
 			else
 			{
-				App->particles->AddParticle(App->particles->bullet_l, position.x - 4, position.y + 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->bullet_l, position.x-18, position.y + 4, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
 				currentTopAnimation = &gun_l_shoot;
 			}
@@ -802,19 +819,18 @@ update_status ModulePlayer::Update()
 		
 
 		if (bandera) {
-			if (bandera_trip && cont_Tripel > 0)
+			if (ShootGun && cont_Tripel > 0)
 			{
-
-
-				App->particles->AddParticle(App->particles->shotgun_4, position.x + 16, position.y + 20, Collider::Type::PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->shotgun_5, position.x + 16, position.y + 20, Collider::Type::PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->shotgun_6, position.x + 16, position.y + 20, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_4, position.x + 5, position.y + 8, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_5, position.x + 5, position.y + 12, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_6, position.x + 5, position.y + 12, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
 				cont = 0;
+				currentTopAnimation = &ShootGun_down_shoot;
 			}
 			else
 			{
-				App->particles->AddParticle(App->particles->bullet_down, position.x + 16, position.y + 20, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->bullet_down, position.x + 5, position.y + 12, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
 				currentTopAnimation = &gun_down_shoot;
 			}
@@ -826,20 +842,19 @@ update_status ModulePlayer::Update()
 		
 
 		if (bandera) {
-			if (bandera_trip && cont_Tripel > 0)
+			if (ShootGun && cont_Tripel > 0)
 			{
-
-
-				App->particles->AddParticle(App->particles->shotgun_2, position.x + 28, position.y + 10, Collider::Type::PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->shotgun_3, position.x + 28, position.y + 10, Collider::Type::PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->shotgun_4, position.x + 28, position.y + 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_2, position.x + 20, position.y + 4, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_3, position.x + 20, position.y + 4, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->shotgun_4, position.x + 20, position.y + 4, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
 				cont = 0;
+				currentTopAnimation = &ShootGun_r_shoot;
 			}
 			else
 			{
 
-				App->particles->AddParticle(App->particles->bullet_r, position.x + 28, position.y + 10, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->bullet_r, position.x + 20, position.y + 4, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(gunFx);
 				currentTopAnimation = &gun_r_shoot;
 			}
@@ -854,9 +869,9 @@ update_status ModulePlayer::Update()
 
 		currentLegsAnimation = &legs_down_idle;
 		if (!shooting) {
-			if (bandera_trip && cont_Tripel > 0)
+			if (ShootGun && cont_Tripel > 0)
 			{
-
+				currentTopAnimation = &ShootGun_down;
 			}
 			else
 			{
@@ -887,7 +902,7 @@ update_status ModulePlayer::Update()
 
 	//F6 TripleShoot
 	if (App->input->keys[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT) {
-		bandera_trip = true;
+		ShootGun = true;
 		cont_Tripel = 500;
 	}
 
@@ -1037,7 +1052,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	//if (c2->type == c2->object_Triple)
 	//{
-	//	bandera_trip = true;
+	//	ShootGun = true;
 	//	cont_Tripel = 500;
 	//}
 
