@@ -236,8 +236,6 @@ bool ModulePlayer::Start()
 	currentLegsAnimation = &legs_down_idle;
 	currentTopAnimation = &gun_down;
 	
-	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
-	scoreFont = App->fonts->Load("Resources/Sprites/Characters/Font.png", lookupTable, 3);
 	
 	//textureDoorTop = App->textures->Load("Assets/SpritesSSTV/EditSpritesSSTV_Portes.png");
 
@@ -988,9 +986,6 @@ update_status ModulePlayer::PostUpdate()
 		App->render->Blit(textureDoorTop, -512 * topDoor, 0, nullptr);
 	//Si no li enviem rectangle (li enviem un 'nullptr'), es posa la mateixa mida que la pantalla.
 
-	// Draw UI (score) --------------------------------------
-	sprintf_s(scoreText, 10, "%7d", score);
-	App->fonts->BlitText(23, 47, scoreFont, scoreText);
 
 	return update_status::UPDATE_CONTINUE;
 }

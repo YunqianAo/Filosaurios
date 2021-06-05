@@ -134,6 +134,8 @@ bool SceneLevel::Start()
 	App->player->Enable();
 	//App->player_gun->Enable();
 	
+	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
+	scoreFont = App->fonts->Load("Resources/Sprites/Characters/Font.png", lookupTable, 3);
 
 	App->enemies->AddEnemy(Enemy_Type::PINK, 29, 165);
 	App->enemies->AddEnemy(Enemy_Type::GREEN, 29, 165);
@@ -155,6 +157,10 @@ update_status SceneLevel::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, -256, -255, NULL);
+
+	// Draw UI (score) --------------------------------------
+	sprintf_s(scoreText, 10, "%7d", score);
+	App->fonts->BlitText(23, 47, scoreFont, scoreText);
 
 	return update_status::UPDATE_CONTINUE;
 }

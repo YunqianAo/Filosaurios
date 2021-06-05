@@ -38,6 +38,11 @@ public:
 	// The sprite rectangle for the ground
 	SDL_Texture* starsTexture = nullptr;
 
+	// Font score index
+	uint score = 000;
+	int scoreFont = -1;
+	char scoreText[150] = { "\0" };
+
 };
 
 #endif
