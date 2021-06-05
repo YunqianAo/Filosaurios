@@ -10,6 +10,7 @@
 #include "ModuleFonts.h"
 #include "ModuleEnemies.h"
 #include "ModuleAudio.h"
+#include "ModuleParticles.h"
 
 #include <stdio.h>
 
@@ -31,11 +32,14 @@ bool SceneLevel::Start()
 
 	bool ret = true;
 
+	App->enemies->Enable();
+	App->particles->Enable();
+	App->collisions->Enable();
+	App->player->Enable();
+
 	bgTexture = App->textures->Load("Resources/Sprites/Mapa/Map.png");
 	App->audio->PlayMusic("Resources/Audio/Music/Circuit_Theme 01.ogg", 1.0f);
 
-	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
-	scoreFont = App->fonts->Load("Resources/Sprites/Effects/Font.png", lookupTable, 2);
 	App->enemies->AddEnemy(Enemy_Type::GREEN,100,200);
 	//Map 1b
 	// X colliders
@@ -152,20 +156,16 @@ update_status SceneLevel::PostUpdate()
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, -256, -255, NULL);
 
-	sprintf_s(scoreText, 10, "%7d", score);
-
-	App->fonts->BlitText(24, 47, scoreFont, scoreText);
-	App->fonts->BlitText(24, 47, scoreFont, "press start");
-
 	return update_status::UPDATE_CONTINUE;
 }
 
 bool SceneLevel::CleanUp()
 {
-
+	App->textures->Unload(bgTexture);
 	App->player->Disable();
-	//App->player_gun->Disable();
 	App->enemies->Disable();
+	App->particles->Disable();
+	App->collisions->Disable();
 
 	return true;
 }

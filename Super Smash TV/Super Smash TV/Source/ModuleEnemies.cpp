@@ -5,7 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
-
+#include "ModulePlayer.h"
 #include "Enemy.h"
 #include "Enemy_Pink.h"
 #include "Enemy_Green.h"
@@ -32,6 +32,9 @@ bool ModuleEnemies::Start()
 	texture = App->textures->Load("pink_e.png");
 	texture = App->textures->Load("green_e.png");
 	texture = App->textures->Load("red.png");
+
+	textureFont = App->textures->Load("Assets/SpritesSSTV/Font.png");
+
 	return true;
 }
 
@@ -68,6 +71,58 @@ update_status ModuleEnemies::Update()
 
 update_status ModuleEnemies::PostUpdate()
 {
+	
+	//Render Font
+	SDL_Rect rect0 = { 0, 0, 10, 16 };
+	SDL_Rect rect1 = { 10, 0, 10, 16 };
+	SDL_Rect rect2 = { 20, 0, 10, 16 };
+	SDL_Rect rect3 = { 30, 0, 10, 16 };
+	SDL_Rect rect4 = { 40, 0, 10, 16 };
+	SDL_Rect rect5 = { 50, 0, 10, 16 };
+	SDL_Rect rect6 = { 60, 0, 10, 16 };
+	SDL_Rect rect7 = { 70, 0, 10, 16 };
+	SDL_Rect rect8 = { 80, 0, 10, 16 };
+	SDL_Rect rect9 = { 90, 0, 10, 16 };
+
+
+	for (int i = 0; i < 8; ++i) {
+
+		switch (App->player->scoreN[i]) {
+		case 0:
+			App->render->Blit(textureFont, posicioFont, 100, &rect0, 1.5f);
+			break;
+		case 1:
+			App->render->Blit(textureFont, posicioFont, 100, &rect1, 1.5f);
+			break;
+		case 2:
+			App->render->Blit(textureFont, posicioFont, 100, &rect2, 1.5f);
+			break;
+		case 3:
+			App->render->Blit(textureFont, posicioFont, 100, &rect3, 1.5f);
+			break;
+		case 4:
+			App->render->Blit(textureFont, posicioFont, 100, &rect4, 1.5f);
+			break;
+		case 5:
+			App->render->Blit(textureFont, posicioFont, 100, &rect5, 1.5f);
+			break;
+		case 6:
+			App->render->Blit(textureFont, posicioFont, 100, &rect6, 1.5f);
+			break;
+		case 7:
+			App->render->Blit(textureFont, posicioFont, 100, &rect7, 1.5f);
+			break;
+		case 8:
+			App->render->Blit(textureFont, posicioFont, 100, &rect8, 1.5f);
+			break;
+		case 9:
+			App->render->Blit(textureFont, posicioFont, 100, &rect9, 1.5f);
+			break;
+		}
+
+		posicioFont -= 15; //Separació entre nombres
+	}
+	posicioFont = 160; //Posició del primer element de la dreta
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (enemies[i] != nullptr)
