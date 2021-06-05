@@ -239,7 +239,7 @@ bool ModulePlayer::Start()
 
 	//textureUI = App->textures->Load("Assets/SpritesSSTV/EditSpritesSSTV_UI.png");
 
-	textureFont = App->textures->Load("Resources/Sprites/Characters/Numbers_And_Letters.png"); //Font
+	textureFont = App->textures->Load("Resources/Sprites/Characters/Font.png"); //Font
 
 	//textureMort = App->textures->Load("Assets/SpritesSSTV/Game_Over.png"); //Mort
 
