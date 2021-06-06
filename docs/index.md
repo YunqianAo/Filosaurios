@@ -90,7 +90,7 @@ V -> Orb Powerup
 
 ### LAST RELEASE
 
-To see the last release of the game [Click Here]()
+To see the last release of the game [Click Here](https://github.com/YunqianAo/Filosaurios/releases/tag/1.0)
 
 
 ### Jekyll Themes
