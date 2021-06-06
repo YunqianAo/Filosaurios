@@ -53,7 +53,7 @@ update_status ModuleRender::PreUpdate()
 update_status ModuleRender::Update()
 {
 
-	/*
+	
 	//Handle positive vertical movement
 	if (App->input->keys[SDL_SCANCODE_I] == KEY_REPEAT)
 		camera.y -= cameraSpeed;
@@ -68,7 +68,7 @@ update_status ModuleRender::Update()
 	if (App->input->keys[SDL_SCANCODE_L] == KEY_REPEAT)
 		camera.x += cameraSpeed;
 
-	*/
+	
 	return update_status::UPDATE_CONTINUE;
 }
 

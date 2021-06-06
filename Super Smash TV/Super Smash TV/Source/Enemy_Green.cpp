@@ -45,28 +45,28 @@ void Enemy_Green::Update()
 	movementDelay++;
 	spawntimer++;
 
-	if (spawntimer <= 80) {
+	if (spawntimer <= 1) {
 		switch (App->sceneLevel->i) {
 		case 0:
-			position.y -= 0.5;
+			position.y -= 1;
 			currentAnim = &green_up;
 			break;
 		case 1:
-			position.y += 0.5;
+			position.y += 1;
 			currentAnim = &green_down;
 			break;
 		case 2:
-			position.x += 0.5;
+			position.x += 1;
 			currentAnim = &green_r;
 			break;
 		case 3:
-			position.x -= 0.5;
+			position.x -= 1;
 			currentAnim = &green_l;
 			break;
 		}
 	}
 
-	if (movementDelay >= 2 && spawntimer > 80 && movedelay == 0) {
+	if (movementDelay >= 3 && spawntimer > 1 && movedelay == 0) {
 		if (position.x - App->player->position.x < 0)			//right
 		{
 			movementDirections++;
@@ -119,7 +119,7 @@ void Enemy_Green::Update()
 			position.y -= 1.0f;
 		movedelay++;
 		currentAnim = &green_r;
-		if (movedelay == 30) {
+		if (movedelay == 5) {
 			movedelay = 0;
 			randomMove = 0;
 		}
@@ -132,7 +132,7 @@ void Enemy_Green::Update()
 			position.y += 1.0f;
 		movedelay++;
 		currentAnim = &green_r;
-		if (movedelay == 30) {
+		if (movedelay == 5) {
 			movedelay = 0;
 			randomMove = 0;
 		}
@@ -145,7 +145,7 @@ void Enemy_Green::Update()
 			position.y += 1.0f;
 		movedelay++;
 		currentAnim = &green_r;
-		if (movedelay == 30) {
+		if (movedelay == 5) {
 			movedelay = 0;
 			randomMove = 0;
 		}
@@ -159,7 +159,7 @@ void Enemy_Green::Update()
 		movedelay++;
 
 		currentAnim = &green_r;
-		if (movedelay == 30) {
+		if (movedelay == 5) {
 			movedelay = 0;
 			randomMove = 0;
 		}

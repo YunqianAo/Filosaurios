@@ -12,6 +12,7 @@
 #include "ModuleAudio.h"
 #include "ModuleParticles.h"
 
+
 #include <stdio.h>
 
 
@@ -44,7 +45,7 @@ bool SceneLevel::Start()
 	bgTexture = App->textures->Load("Resources/Sprites/Mapa/Map.png");
 	App->audio->PlayMusic("Resources/Audio/Music/Circuit_Theme 01.ogg", 1.0f);
 
-	App->enemies->AddEnemy(Enemy_Type::GREEN,100,200);
+
 	//Map 1b
 	// X colliders
 	App->collisions->AddCollider({ 0, 215, 256, 75 }, Collider::Type::WALL);
@@ -63,7 +64,6 @@ bool SceneLevel::Start()
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz", };
 	scoreFont = App->fonts->Load("Resources/Sprites/Characters/Font.png", lookupTable, 1);
 
-
 	return ret;
 }
 
@@ -73,35 +73,35 @@ update_status SceneLevel::Update()
 	++num;
 	if (sceneTimer < 3601)	++sceneTimer;
 
-	if (sceneTimer % 80 == 0 && sceneTimer <= 3600) {//3600frames, 6 rondes, 24 aparicions random (sceneTimer % 150)
-		randomEnemySpawn = (rand() % 10);
+	if (sceneTimer % 80 == 0 && sceneTimer <= 3600) {//3600frames, 6 rounds, 24 aparicions random (sceneTimer % 150)
+		randomEnemySpawn = (rand() % 5);
 
 
-		if (i == 0) { //porta de dalt
+		if (i == 0) { //up door
 			for (int j = 0; j < 9; ++j) {
-				portesSpawn[i][j][0] = (rand() % 80 + 210); //porta adalt X
-				portesSpawn[i][j][1] = (rand() % 30 - 20); //porta adalt Y
+				portesSpawn[i][j][0] = (rand() % 42 + 107); //porta adalt X
+				portesSpawn[i][j][1] = (rand() % 10 + 26); //porta adalt Y
 			}
 		}
 
-		if (i == 1) { //porta esquerra
+		if (i == 1) { //left door
 			for (int j = 0; j < 9; ++j) {
-				portesSpawn[i][j][0] = (rand() % 30 - 5);
-				portesSpawn[i][j][1] = (rand() % 65 + 185);
+				portesSpawn[i][j][0] = (rand() % 6 + 15);
+				portesSpawn[i][j][1] = (rand() % 41 + 105);
 			}
 		}
 
-		if (i == 2) { //porta dreta
-			for (int j = 0; j < 9; ++j) {
-				portesSpawn[i][j][0] = (rand() % 30 + 500);
-				portesSpawn[i][j][1] = (rand() % 65 + 185);
+		if (i == 2) { //right door
+			for (int j = 0; j <9; ++j) {
+				portesSpawn[i][j][0] = (rand() % 6 + 238);
+				portesSpawn[i][j][1] = (rand() % 41 + 105);
 			}
 		}
 
-		if (i == 3) { //porta abaix
+		if (i == 3) { //down door
 			for (int j = 0; j < 9; ++j) {
-				portesSpawn[i][j][0] = (rand() % 80 + 210); //porta abaix X
-				portesSpawn[i][j][1] = (rand() % 30 + 400); //porta abaix Y
+				portesSpawn[i][j][0] = (rand() % 48 + 104); //porta abaix X
+				portesSpawn[i][j][1] = (rand() % 5 + 210); //porta abaix Y
 			}
 		}
 
@@ -152,6 +152,16 @@ update_status SceneLevel::PostUpdate()
 	// Draw UI (score) --------------------------------------
 	sprintf_s(scoreText, 10, "%7d", score);
 	App->fonts->BlitText(23, 49, scoreFont, scoreText);
+
+
+	if (sceneTimer > 3600 && exitTimer < 20 && App->enemies->enemyNum == 0) {	//La textura va fent pampallugues.
+		App->particles->AddParticle(App->particles->exit_arow, 140, 119, Collider::Type::PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->exit_words, 15, 10, Collider::Type::PLAYER_SHOT);
+	}
+	else if (sceneTimer > 3600 && App->enemies->enemyNum == 0) {
+		App->particles->AddParticle(App->particles->exit_arow, 15, 10, Collider::Type::PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->exit_words, 15, 10, Collider::Type::PLAYER_SHOT);
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }
