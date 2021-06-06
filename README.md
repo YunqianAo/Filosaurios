@@ -15,7 +15,6 @@ https://yunqianao.github.io/Filosaurios/
 * A -> Left
 * S -> Down
 * D -> Right
-* B -> Change Weapon
 * Arrows Keys -> Shooting
 
 ## Debug Funcionality
