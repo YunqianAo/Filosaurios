@@ -932,13 +932,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c2->type == c2->ENEMY && bandera_GodMode == false && destroyed == false) {
 
 		if (vides > 0) {
-			App->player->Disable();
+
 			destroyed = false;
 			--vides;
 		}
 		else if (vides == 0) {
 
-		/*	App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLose, 0);*/
+			App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLose, 0);
 			destroyed = true;
 
 		}
