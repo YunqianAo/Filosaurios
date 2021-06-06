@@ -24,6 +24,7 @@ The game is about two contestants who are in a television program where violence
 
 * Design & Audio
 * Gameplay
+* Scene Intro 
 
 **Enric Arxer Cortés:**    [Luxary-92](https://github.com/Luxary-92)
 
