@@ -15,6 +15,7 @@
 #include "Enemy_Red.h"
 
 #include "SceneLevel.h"
+#include "SceneLevel2.h"
 #include <time.h>
 #include <stdlib.h>
 #include <iostream>
@@ -67,59 +68,7 @@ update_status ModuleEnemies::Update()
 
 update_status ModuleEnemies::PostUpdate()
 {
-	/*
-	//Render Font
-	SDL_Rect rect0 = { 0, 0, 10, 16 };
-	SDL_Rect rect1 = { 10, 0, 10, 16 };
-	SDL_Rect rect2 = { 20, 0, 10, 16 };
-	SDL_Rect rect3 = { 30, 0, 10, 16 };
-	SDL_Rect rect4 = { 40, 0, 10, 16 };
-	SDL_Rect rect5 = { 50, 0, 10, 16 };
-	SDL_Rect rect6 = { 60, 0, 10, 16 };
-	SDL_Rect rect7 = { 70, 0, 10, 16 };
-	SDL_Rect rect8 = { 80, 0, 10, 16 };
-	SDL_Rect rect9 = { 90, 0, 10, 16 };
 
-
-	for (int i = 0; i < 8; ++i) {
-
-		switch (App->player->scoreN[i]) {
-		case 0:
-			App->render->Blit(textureFont, posicioFont, 100, &rect0, 1.5f);
-			break;
-		case 1:
-			App->render->Blit(textureFont, posicioFont, 100, &rect1, 1.5f);
-			break;
-		case 2:
-			App->render->Blit(textureFont, posicioFont, 100, &rect2, 1.5f);
-			break;
-		case 3:
-			App->render->Blit(textureFont, posicioFont, 100, &rect3, 1.5f);
-			break;
-		case 4:
-			App->render->Blit(textureFont, posicioFont, 100, &rect4, 1.5f);
-			break;
-		case 5:
-			App->render->Blit(textureFont, posicioFont, 100, &rect5, 1.5f);
-			break;
-		case 6:
-			App->render->Blit(textureFont, posicioFont, 100, &rect6, 1.5f);
-			break;
-		case 7:
-			App->render->Blit(textureFont, posicioFont, 100, &rect7, 1.5f);
-			break;
-		case 8:
-			App->render->Blit(textureFont, posicioFont, 100, &rect8, 1.5f);
-			break;
-		case 9:
-			App->render->Blit(textureFont, posicioFont, 100, &rect9, 1.5f);
-			break;
-		}
-
-		posicioFont -= 15; //Separació entre nombres
-	}
-	posicioFont = 160; //Posició del primer element de la dreta
-	*/
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (enemies[i] != nullptr)
@@ -234,7 +183,7 @@ void ModuleEnemies::HandleEnemiesDespawn()
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
-	//mira si estas a Level_1 per matar d'un tir
+
 	if (App->sceneLevel->Level_1 == true /*&& App->sceneLevel2->lvl2 == false*/) {
 		for (uint i = 0; i < MAX_ENEMIES; ++i)
 		{
@@ -249,28 +198,30 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 		}
 	}
-	////mira si estas a lvl2 per matar de7 hits
-	//else if (App->sceneLevel2->lvl2 == true && App->sceneLevel_1->Level_1 == false)
-	//{
-	//	//cout << videsTorreta;
-	//	if (videsTorreta > 0 && (c2->type == c2->PLAYER_SHOT) || (c2->type == c2->PLAYER_TRIPLE_SHOT))
-	//		videsTorreta--;
 
-	//	if (videsTorreta == 0)
-	//	{
-	//		for (uint i = 0; i < MAX_ENEMIES; ++i)
-	//		{
-	//			if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1 && ((c2->type == c2->PLAYER_SHOT) || (c2->type == c2->PLAYER_TRIPLE_SHOT)))
-	//			{
-	//				enemies[i]->OnCollision(c2); //Notify the enemy of a collision
+	else if (App->sceneLevel2->Level_2 == true && App->sceneLevel->Level_1 == false)
+	{
+		
+		//Enemy_Type::RED:;
+		//cout << Red_Hits;
+		if (Red_Hits > 0 && c2->type == c2->PLAYER_SHOT)
+			Red_Hits--;
 
-	//				enemyNum--;
+		if (Red_Hits == 0)
+		{
+			for (uint i = 0; i < MAX_ENEMIES; ++i)
+			{
+				if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1 && c2->type == c2->PLAYER_SHOT)
+				{
+					enemies[i]->OnCollision(c2); //Notify the enemy of a collision
 
-	//				delete enemies[i];
-	//				enemies[i] = nullptr;
-	//				break;
-	//			}
-	//		}
-	//	}
-	//}
+					enemyNum--;
+
+					delete enemies[i];
+					enemies[i] = nullptr;
+					break;
+				}
+			}
+		}
+	}
 }

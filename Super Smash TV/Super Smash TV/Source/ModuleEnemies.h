@@ -66,6 +66,8 @@ public:
 
 	int enemyNum = 0;
 
+	int Red_Hits = 3;
+
 private:
 
 	// Spawns a new enemy using the data from the queue

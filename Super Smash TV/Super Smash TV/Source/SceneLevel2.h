@@ -19,7 +19,7 @@ public:
 	// Loads the necessary textures for the map background
 	bool Start() override;
 
-	bool Level_2;
+	bool Level_2 = true;
 
 	// Called at the middle of the application loop
 	// Updates the scene's background animations
