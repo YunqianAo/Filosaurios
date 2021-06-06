@@ -15,6 +15,7 @@
 
 #include "SceneWin.h"
 #include "SceneLevel.h"
+#include "SceneLevel2.h"
 #include "SceneLose.h"
 #include "ModuleParticles.h"
 #include "ModuleCollisions.h"
@@ -34,16 +35,17 @@ Application::Application()
 	modules[5] = sceneIntroLogo = new SceneIntroLogo(false);
 	modules[6] = sceneIntro = new SceneIntro(false);
 	modules[7] = sceneLevel = new SceneLevel(false);
-	modules[8] = sceneLose = new SceneLose(false);
-	modules[9] = sceneWin = new SceneWin(false);
-	modules[10] = player = new ModulePlayer(false);
-	modules[11] = particles = new ModuleParticles(true);
-	modules[12] =	enemies = new ModuleEnemies(true);
+	modules[8] = sceneLevel2 = new SceneLevel2(false);
+	modules[9] = sceneLose = new SceneLose(false);
+	modules[10] = sceneWin = new SceneWin(false);
+	modules[11] = player = new ModulePlayer(false);
+	modules[12] = particles = new ModuleParticles(true);
+	modules[13] =	enemies = new ModuleEnemies(true);
 
-	modules[13] = collisions = new ModuleCollisions(true);
-	modules[14] = fade = new ModuleFadeToBlack(true);
-	modules[15] = fonts = new ModuleFonts(true);
-	modules[16] = render = new ModuleRender(true);
+	modules[14] = collisions = new ModuleCollisions(true);
+	modules[15] = fade = new ModuleFadeToBlack(true);
+	modules[16] = fonts = new ModuleFonts(true);
+	modules[17] = render = new ModuleRender(true);
 }
 
 Application::~Application()

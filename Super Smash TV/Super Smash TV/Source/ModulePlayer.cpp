@@ -974,10 +974,10 @@ update_status ModulePlayer::PostUpdate()
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {	
 
-	//if (c2->type == c2->DOOR && App->sceneLevel->sceneTimer >= 3600 && App->enemies->enemyNum == 0) {
+	if (c2->type == c2->DOOR && App->sceneLevel->sceneTimer >= 3600 && App->enemies->enemyNum == 0) {
 
-	//	App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneSwap, 0);
-	//}
+		App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLevel2, 0);
+	}
 
 
 	if ((c2->type == c2->ENEMY) && (contadorVides < 0) && (bandera_GodMode == false) && (destroyed == false)) {
