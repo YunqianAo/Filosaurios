@@ -1041,6 +1041,16 @@ update_status ModulePlayer::Update()
 		Orv_Contador = 500;
 		currentOrv = &Orv_1;
 	}
+	
+	// F3 Direct Win
+	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && App->sceneLevel->Level_1) {
+		App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneWin, 0);
+	}
+
+	// F4 Direct Lose
+	if (App->input->keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->sceneLevel->Level_1) {
+		App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLose, 0);
+	}
 
 	//F7 spawnea todos los objetos
 	if (App->input->keys[SDL_SCANCODE_F7] == KEY_STATE::KEY_REPEAT) {
