@@ -70,9 +70,9 @@ F1 -> Show Collisions
 
 F2 -> God Mode 
 
-F3 -> Direct Lose
+F3 -> Direct Win
 
-F4 -> Direct Win
+F4 -> Direct Lose
 
 F5 -> Direct Level 2
 
@@ -83,6 +83,14 @@ F7 -> Spawn All Objects
 B -> Shotgun 
 
 V -> Orb Powerup
+
+### GAMEPLAY TRAILER
+
+[Click Here]()
+
+### LAST RELEASE
+
+To see the last release of the game [Click Here]()
 
 ### Markdown
 

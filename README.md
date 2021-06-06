@@ -21,8 +21,8 @@ https://yunqianao.github.io/Filosaurios/
 
 * F1 -> Show Collisions 
 * F2 -> God Mode 
-* F3 -> Direct Lose
-* F4 -> Direct Win
+* F3 -> Direct Win
+* F4 -> Direct Lose
 * F5 -> Direct Level 2
 * F6 -> Spawn All Enemies 
 * F7 -> Spawn All Objects
