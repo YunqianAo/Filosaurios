@@ -84,6 +84,14 @@ B -> Shotgun
 
 V -> Orb Powerup
 
+### GAMEPLAY TRAILER
+
+[Click Here]()
+
+### LAST RELEASE
+
+To see the last release of the game [Click Here]()
+
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
