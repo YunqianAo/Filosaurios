@@ -7,7 +7,7 @@ https://yunqianao.github.io/Filosaurios/
 ## Key Features 
 
 * 1 player
-* Control with the keyboard
+* Control with the keyboard / Gamepad
 
 ## Controls
 
@@ -24,6 +24,11 @@ https://yunqianao.github.io/Filosaurios/
 * F2 -> God Mode 
 * F3 -> Direct Lose
 * F4 -> Direct Win
+* F5 -> Direct Level 2
+* F6 -> Spawn All Enemies 
+* F7 -> Spawn All Objects
+* B -> Shotgun 
+* V -> Orb Powerup 
 
 ## Developers
 
