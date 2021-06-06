@@ -70,9 +70,9 @@ F1 -> Show Collisions
 
 F2 -> God Mode 
 
-F3 -> Direct Lose
+F3 -> Direct Win
 
-F4 -> Direct Win
+F4 -> Direct Lose
 
 F5 -> Direct Level 2
 
