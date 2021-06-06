@@ -17,7 +17,7 @@ SceneIntroLogo::~SceneIntroLogo()
 
 }
 
-// Load assets
+// Load assets 
 bool SceneIntroLogo::Start()
 {
 	LOG("Loading background assets");
