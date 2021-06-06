@@ -104,7 +104,7 @@ bool ModuleParticles::Start()
 	blood.anim.speed = 0.3f;
 	
 	exit_words.anim.PushBack({ 32, 48, 25, 7 });
-	exit_words.anim.PushBack({ 64 ,47, 25, 7 });
+	exit_words.anim.PushBack({ 64 ,48, 25, 7 });
 	exit_words.anim.loop = true;
 	exit_words.anim.speed = 0.05f;
 
@@ -113,7 +113,8 @@ bool ModuleParticles::Start()
 	exit_arow.anim.loop = true;
 	exit_arow.anim.speed = 0.05f;
 
-
+	ShootGun_PowerUp.anim.PushBack({ 98, 17, 14, 14 });
+	ShootGun_PowerUp.lifetime = 500;
 
 	inv.anim.PushBack({ 0, 49, 32, 30 });
 	inv.lifetime = 180;

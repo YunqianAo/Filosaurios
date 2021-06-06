@@ -867,26 +867,13 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	// L6: DONE 4: Update collider position to player position
 	collider->SetPos(position.x, position.y);
 
 	currentLegsAnimation->Update();
 	currentTopAnimation->Update();
 
-	/*Gestió Array de la font
-	scoreCopia = score;
 
-	for (int i = 0; i < 8; ++i) {
-		scoreN[i] = scoreCopia % 10;
-		scoreCopia /= 10;
-	}
-
-	--contadorVides;
-	if (contadorVides < -100) {
-		contadorVides = -1;
-	}
-	*/
-	//F6 TripleShoot
+	//
 	if (App->input->keys[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT) {
 		ShootGun = true;
 		ShootGun_Contador = 500;
@@ -904,54 +891,10 @@ update_status ModulePlayer::Update()
 	//	App->enemies->AddEnemy(Enemy_Type::PINK, 370, 400);
 	//}
 
-	////F9 Teimpo del nivel
-	//if (App->input->keys[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN && App->SceneLevel->Level_1) {
-	//	App->SceneLevel->sceneTimer = 3600;
-	//}
-	//if (App->input->keys[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN && App->sceneLevel2->lvl2) {
-	//	App->sceneLevel2->sceneTimer = 3600;
-	//}
-
-	////F3 mas el numero de la sala pasa a aquella sala
-	//if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_REPEAT && App->SceneLevel->Level_1)
-	//	App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->SceneLevel, 20);
-	//if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_REPEAT && App->SceneLevel->Level_1)
-	//	App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->sceneLevel2, 20);
-	///*if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_REPEAT && App->SceneLevel->Level_1)
-	//App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->BOSS, 20);		//Escena del boss per implementar  */
-
-	//if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_REPEAT && App->sceneLevel2->lvl2)
-	//	App->fade->FadeToBlack((Module*)App->sceneLevel2, (Module*)App->SceneLevel, 20);
-	//if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_REPEAT && App->sceneLevel2->lvl2)
-	//	App->fade->FadeToBlack((Module*)App->sceneLevel2, (Module*)App->sceneLevel2, 20);
-	/*if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_REPEAT && App->SceneLevel->Level_1)
-	App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->BOSS, 20);		//Escena del boss per implementar  */
-
-	/*//Escen del boss per implementar
-	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_REPEAT && App->SceneLevel->Level_1)
-		App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->SceneLevel, 20);
-	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_REPEAT && App->SceneLevel->Level_1)
-		App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->sceneLevel2, 20);
-	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_REPEAT && App->SceneLevel->Level_1)
-	App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->BOSS, 20); */
-
-
-
-	/*if (App->input->keys[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN) { //necessita col·lidir amb un enemic al final per morir
-		vides--;
-	}*/
-
-	//if (App->input->keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->SceneLevel->Level_1)
-	//	App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->sceneWin, 20);
-
-	//if (App->input->keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->sceneLevel2->lvl2)
-	//	App->fade->FadeToBlack((Module*)App->sceneLevel2, (Module*)App->sceneWin, 20);
-	/*if (pad.enabled)
-	{
-		if (pad.left_x == 0.0f && pad.left_y == 0.0f) currentLegsAnimation = &idleAnim;
+	// F5 Pasar segundo nivel
+	if (App->input->keys[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN && App->sceneLevel->Level_1) {
+		App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLevel2, 0);
 	}
-	else if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE &&
-		App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) currentLegsAnimation = &idleAnim;*/
 
 	collider->SetPos(position.x, position.y);
 
@@ -979,18 +922,25 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLevel2, 0);
 	}
 
+	if (c2->type == c2->SHOOTGUN_POWERUP) {
 
-	if ((c2->type == c2->ENEMY) && (contadorVides < 0) && (bandera_GodMode == false) && (destroyed == false)) {
+		ShootGun = true;
+		ShootGun_Contador = 500;
+	}
+
+
+	if (c2->type == c2->ENEMY && bandera_GodMode == false && destroyed == false) {
 
 		if (vides > 0) {
+			App->player->Disable();
+			destroyed = false;
 			--vides;
 		}
-		else if (vides <= 0) {
+		else if (vides == 0) {
 
-			App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLose, 90);
+		/*	App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLose, 0);*/
 			destroyed = true;
 
-			destroyed = false;
 		}
 		contadorVides = 50; //50 frames de delay
 	}

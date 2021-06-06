@@ -73,59 +73,69 @@ update_status SceneLevel::Update()
 	++num;
 	if (sceneTimer < 3601)	++sceneTimer;
 
-	if (sceneTimer % 80 == 0 && sceneTimer <= 3600) {//3600frames, 6 rounds, 24 aparicions random (sceneTimer % 150)
+	if (sceneTimer == 240) 
+	{
+		App->particles->AddParticle(App->particles->ShootGun_PowerUp, 60, 171, Collider::Type::SHOOTGUN_POWERUP);
+	}
+
+	if (sceneTimer == 1200)
+	{
+		App->particles->AddParticle(App->particles->ShootGun_PowerUp, 185, 170, Collider::Type::SHOOTGUN_POWERUP);
+	}
+
+	if (sceneTimer % 70 == 0 && sceneTimer <= 3600) {
 		randomEnemySpawn = (rand() % 5);
 
 
 		if (i == 0) { //up door
 			for (int j = 0; j < 9; ++j) {
-				portesSpawn[i][j][0] = (rand() % 42 + 107); //porta adalt X
-				portesSpawn[i][j][1] = (rand() % 10 + 26); //porta adalt Y
+				SpawnEnemies[i][j][0] = (rand() % 42 + 107); //porta adalt X
+				SpawnEnemies[i][j][1] = (rand() % 10 + 26); //porta adalt Y
 			}
 		}
 
 		if (i == 1) { //left door
 			for (int j = 0; j < 9; ++j) {
-				portesSpawn[i][j][0] = (rand() % 6 + 15);
-				portesSpawn[i][j][1] = (rand() % 41 + 105);
+				SpawnEnemies[i][j][0] = (rand() % 6 + 15);
+				SpawnEnemies[i][j][1] = (rand() % 41 + 105);
 			}
 		}
 
 		if (i == 2) { //right door
 			for (int j = 0; j <9; ++j) {
-				portesSpawn[i][j][0] = (rand() % 6 + 238);
-				portesSpawn[i][j][1] = (rand() % 41 + 105);
+				SpawnEnemies[i][j][0] = (rand() % 6 + 238);
+				SpawnEnemies[i][j][1] = (rand() % 41 + 105);
 			}
 		}
 
 		if (i == 3) { //down door
 			for (int j = 0; j < 9; ++j) {
-				portesSpawn[i][j][0] = (rand() % 48 + 104); //porta abaix X
-				portesSpawn[i][j][1] = (rand() % 5 + 210); //porta abaix Y
+				SpawnEnemies[i][j][0] = (rand() % 48 + 104); //porta abaix X
+				SpawnEnemies[i][j][1] = (rand() % 5 + 210); //porta abaix Y
 			}
 		}
 
 
 		switch (randomEnemySpawn) {
 		case 9:
-			App->enemies->AddEnemy(Enemy_Type::GREEN, portesSpawn[i][0][0], portesSpawn[i][0][1]);
-			App->enemies->AddEnemy(Enemy_Type::GREEN, portesSpawn[i][1][0], portesSpawn[i][1][1]);
-			App->enemies->AddEnemy(Enemy_Type::GREEN, portesSpawn[i][2][0], portesSpawn[i][2][1]);
+			App->enemies->AddEnemy(Enemy_Type::GREEN, SpawnEnemies[i][0][0], SpawnEnemies[i][0][1]);
+			App->enemies->AddEnemy(Enemy_Type::GREEN, SpawnEnemies[i][1][0], SpawnEnemies[i][1][1]);
+			App->enemies->AddEnemy(Enemy_Type::GREEN, SpawnEnemies[i][2][0], SpawnEnemies[i][2][1]);
 		case 8:
 		case 7:
-			App->enemies->AddEnemy(Enemy_Type::GREEN, portesSpawn[i][3][0], portesSpawn[i][3][1]);
-			App->enemies->AddEnemy(Enemy_Type::PINK, portesSpawn[i][4][0], portesSpawn[i][4][1]);
+			App->enemies->AddEnemy(Enemy_Type::GREEN, SpawnEnemies[i][3][0], SpawnEnemies[i][3][1]);
+			App->enemies->AddEnemy(Enemy_Type::PINK, SpawnEnemies[i][4][0], SpawnEnemies[i][4][1]);
 		case 6:
-			App->enemies->AddEnemy(Enemy_Type::GREEN, portesSpawn[i][5][0], portesSpawn[i][5][1]);
+			App->enemies->AddEnemy(Enemy_Type::GREEN, SpawnEnemies[i][5][0], SpawnEnemies[i][5][1]);
 		case 5:
 		case 4:
 		case 3:
 		case 2:
-			App->enemies->AddEnemy(Enemy_Type::GREEN, portesSpawn[i][6][0], portesSpawn[i][6][1]);
+			App->enemies->AddEnemy(Enemy_Type::GREEN, SpawnEnemies[i][6][0], SpawnEnemies[i][6][1]);
 		case 1:
-			App->enemies->AddEnemy(Enemy_Type::PINK, portesSpawn[i][7][0], portesSpawn[i][7][1]);
+			App->enemies->AddEnemy(Enemy_Type::PINK, SpawnEnemies[i][7][0], SpawnEnemies[i][7][1]);
 		case 0:
-			App->enemies->AddEnemy(Enemy_Type::PINK, portesSpawn[i][8][0], portesSpawn[i][8][1]);
+			App->enemies->AddEnemy(Enemy_Type::PINK, SpawnEnemies[i][8][0], SpawnEnemies[i][8][1]);
 			break;
 		}
 
@@ -154,13 +164,9 @@ update_status SceneLevel::PostUpdate()
 	App->fonts->BlitText(23, 49, scoreFont, scoreText);
 
 
-	if (sceneTimer > 3600 && exitTimer < 20 && App->enemies->enemyNum == 0) {	//La textura va fent pampallugues.
-		App->particles->AddParticle(App->particles->exit_arow, 140, 119, Collider::Type::PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->exit_words, 15, 10, Collider::Type::PLAYER_SHOT);
-	}
-	else if (sceneTimer > 3600 && App->enemies->enemyNum == 0) {
-		App->particles->AddParticle(App->particles->exit_arow, 15, 10, Collider::Type::PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->exit_words, 15, 10, Collider::Type::PLAYER_SHOT);
+	if (sceneTimer > 3600 && App->enemies->enemyNum == 0) {
+		App->particles->AddParticle(App->particles->exit_arow, 140, 119, Collider::Type::NONE);
+		App->particles->AddParticle(App->particles->exit_words, 127, 122, Collider::Type::NONE);
 	}
 
 	return update_status::UPDATE_CONTINUE;
