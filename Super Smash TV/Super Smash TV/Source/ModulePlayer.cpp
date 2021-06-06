@@ -900,7 +900,6 @@ update_status ModulePlayer::Update()
 					App->particles->AddParticle(App->particles->shotgun_7, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->shotgun_6, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->shotgun_5, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
-					App->audio->PlayFx(gunFx);
 
 				}
 				else
@@ -996,7 +995,6 @@ update_status ModulePlayer::Update()
 				{
 
 					App->particles->AddParticle(App->particles->bullet_r, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
-					App->audio->PlayFx(gunFx);
 				}
 			}
 		}

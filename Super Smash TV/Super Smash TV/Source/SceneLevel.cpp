@@ -94,7 +94,7 @@ update_status SceneLevel::Update()
 	}
 
 	if (sceneTimer % 70 == 0 && sceneTimer <= 3600) {
-		randomEnemySpawn = (rand() % 5);
+		randomEnemySpawn = (rand() % 10);
 
 
 		if (i == 0) { //up door
