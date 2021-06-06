@@ -1108,6 +1108,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLevel2, 0);
 	}
 
+	if (c2->type == c2->DOOR && App->sceneLevel2->sceneTimer >= 3600 && App->enemies->enemyNum == 0) {
+
+		App->fade->FadeToBlack((Module*)App->sceneLevel2, (Module*)App->sceneWin, 0);
+	}
+
 	if (c2->type == c2->SHOOTGUN_POWERUP) {
 
 		ShootGun = true;
