@@ -5,6 +5,7 @@
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 #include "SceneLevel.h"
+#include "SceneLevel2.h"
 #include "ModuleParticles.h"
 #include <time.h>
 #include <stdlib.h>
@@ -47,6 +48,26 @@ void Enemy_Pink::Update()
 
 	if (spawntimer <= 1) {
 		switch (App->sceneLevel->i) {
+		case 0:
+			position.y -= 0.5;
+			currentAnim = &pink_up;
+			break;
+		case 1:
+			position.y += 0.5;
+			currentAnim = &pink_down;
+			break;
+		case 2:
+			position.x += 0.5;
+			currentAnim = &pink_r;
+			break;
+		case 3:
+			position.x -= 0.5;
+			currentAnim = &pink_l;
+			break;
+		}
+	}
+	else if (spawntimer <= 1) {
+		switch (App->sceneLevel2->i) {
 		case 0:
 			position.y -= 0.5;
 			currentAnim = &pink_up;

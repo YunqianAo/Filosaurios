@@ -73,12 +73,12 @@ update_status SceneLevel::Update()
 	++num;
 	if (sceneTimer < 3601)	++sceneTimer;
 
-	if (sceneTimer == 240) 
+	if (sceneTimer == 1200)
 	{
 		App->particles->AddParticle(App->particles->ShootGun_PowerUp, 60, 171, Collider::Type::SHOOTGUN_POWERUP);
 	}
 
-	if (sceneTimer == 1200)
+	if (sceneTimer == 300)
 	{
 		App->particles->AddParticle(App->particles->Orv_PowerUp, 185, 170, Collider::Type::ORV_POWERUP);
 	}
