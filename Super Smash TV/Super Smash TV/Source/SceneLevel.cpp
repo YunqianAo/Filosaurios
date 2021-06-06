@@ -83,6 +83,16 @@ update_status SceneLevel::Update()
 		App->particles->AddParticle(App->particles->Orv_PowerUp, 185, 170, Collider::Type::ORV_POWERUP);
 	}
 
+	if (sceneTimer == 2000)
+	{
+		App->particles->AddParticle(App->particles->Orv_PowerUp, 164, 75, Collider::Type::ORV_POWERUP);
+	}
+
+	if (sceneTimer == 2800)
+	{
+		App->particles->AddParticle(App->particles->ShootGun_PowerUp, 56, 121, Collider::Type::SHOOTGUN_POWERUP);
+	}
+
 	if (sceneTimer % 70 == 0 && sceneTimer <= 3600) {
 		randomEnemySpawn = (rand() % 5);
 

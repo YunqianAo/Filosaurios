@@ -111,54 +111,49 @@ void Enemy_Pink::Update()
 	}
 
 
-	if (randomMove == 200 && spawntimer > 80)
+	if (randomMove == 200 && spawntimer > 1)
 	{
-		if (position.x > 28)
-			position.x -= 1.0f;
-		if (position.y > 60)
-			position.y -= 1.0f;
+		if (position.x > 19)
+			position.x -= 2.0f;
+		if (position.y > 37)
+			position.y -= 2.0f;
 		movedelay++;
-		currentAnim = &pink_r;
 		if (movedelay == 5) {
 			movedelay = 0;
 			randomMove = 0;
 		}
 	}
-	else if (randomMove == 300 && spawntimer > 80)
+	else if (randomMove == 300 && spawntimer > 1)
 	{
-		if (position.x < 455)
-			position.x += 1.0f;
-		if (position.y < 390)
-			position.y += 1.0f;
+		if (position.x < 237 - 13)
+			position.x += 2.0f;
+		if (position.y < 214 - 25)
+			position.y += 2.0f;
 		movedelay++;
-		currentAnim = &pink_r;
 		if (movedelay == 5) {
 			movedelay = 0;
 			randomMove = 0;
 		}
 	}
-	else if (randomMove == 400 && spawntimer > 80)
+	else if (randomMove == 400 && spawntimer > 1)
 	{
-		if (position.x > 28)
-			position.x -= 1.0f;
-		if (position.y < 390)
-			position.y += 1.0f;
+		if (position.x > 19)
+			position.x -= 2.0f;
+		if (position.y < 214 - 25)
+			position.y += 2.0f;
 		movedelay++;
-		currentAnim = &pink_r;
 		if (movedelay == 5) {
 			movedelay = 0;
 			randomMove = 0;
 		}
 	}
-	else if (randomMove == 500 && spawntimer > 80)
+	else if (randomMove == 500 && spawntimer > 1)
 	{
-		if (position.x < 455)
-			position.x += 1.0f;
-		if (position.y > 60)
-			position.y -= 1.0f;
+		if (position.x < 237 - 13)
+			position.x += 2.0f;
+		if (position.y > 37)
+			position.y -= 2.0f;
 		movedelay++;
-
-		currentAnim = &pink_r;
 		if (movedelay == 5) {
 			movedelay = 0;
 			randomMove = 0;

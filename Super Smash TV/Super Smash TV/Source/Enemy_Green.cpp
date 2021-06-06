@@ -111,54 +111,49 @@ void Enemy_Green::Update()
 	}
 
 
-	if (randomMove == 37 && spawntimer > 80)		
+	if (randomMove == 37 && spawntimer > 1)		
 	{
-		if (position.x > 28)
-			position.x -= 1.0f;
-		if (position.y > 60)
-			position.y -= 1.0f;
+		if (position.x > 19)
+			position.x -= 2.0f;
+		if (position.y > 37)
+			position.y -= 2.0f;
 		movedelay++;
-		currentAnim = &green_r;
 		if (movedelay == 5) {
 			movedelay = 0;
 			randomMove = 0;
 		}
 	}
-	else if (randomMove == 73 && spawntimer > 80)		
+	else if (randomMove == 73 && spawntimer > 1)		
 	{
-		if (position.x < 455)
-			position.x += 1.0f;
-		if (position.y < 390)
-			position.y += 1.0f;
+		if (position.x < 237-13)
+			position.x += 2.0f;
+		if (position.y < 214-25)
+			position.y += 2.0f;
 		movedelay++;
-		currentAnim = &green_r;
 		if (movedelay == 5) {
 			movedelay = 0;
 			randomMove = 0;
 		}
 	}
-	else if (randomMove == 123 && spawntimer > 80)	
+	else if (randomMove == 123 && spawntimer > 1)	
 	{
-		if (position.x > 28)
-			position.x -= 1.0f;
-		if (position.y < 390)
-			position.y += 1.0f;
+		if (position.x > 19)
+			position.x -= 2.0f;
+		if (position.y < 214-25)
+			position.y += 2.0f;
 		movedelay++;
-		currentAnim = &green_r;
 		if (movedelay == 5) {
 			movedelay = 0;
 			randomMove = 0;
 		}
 	}
-	else if (randomMove == 179 && spawntimer > 80)		
+	else if (randomMove == 179 && spawntimer > 1)		
 	{
-		if (position.x < 455)
-			position.x += 1.0f;
-		if (position.y > 60)
-			position.y -= 1.0f;
+		if (position.x < 237-13)
+			position.x += 2.0f;
+		if (position.y > 37)
+			position.y -= 2.0f;
 		movedelay++;
-
-		currentAnim = &green_r;
 		if (movedelay == 5) {
 			movedelay = 0;
 			randomMove = 0;

@@ -1034,20 +1034,6 @@ update_status ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN) {
 		bandera_GodMode = !bandera_GodMode;
 	}
-
-	//
-	if (App->input->keys[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT) {
-		ShootGun = true;
-		ShootGun_Contador = 500;
-	}
-
-
-
-	if (App->input->keys[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT) {
-		bandera_Orv = true;
-		Orv_Contador = 500;
-
-	}
 	
 	// F3 Direct Win
 	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && App->sceneLevel->Level_1) {
@@ -1064,11 +1050,9 @@ update_status ModulePlayer::Update()
 	else if (App->input->keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->sceneLevel2->Level_2) {
 		App->fade->FadeToBlack((Module*)App->sceneLevel2, (Module*)App->sceneLose, 0);
 	}
-
-	//F7 spawnea todos los objetos
-	if (App->input->keys[SDL_SCANCODE_F7] == KEY_STATE::KEY_REPEAT) {
-		App->particles->AddParticle(App->particles->ShootGun_PowerUp, 58, 126, Collider::Type::SHOOTGUN_POWERUP);
-		App->particles->AddParticle(App->particles->Orv_PowerUp, 200, 126, Collider::Type::ORV_POWERUP);
+	// F5 Pasar segundo nivel
+	if (App->input->keys[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN && App->sceneLevel->Level_1) {
+		App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLevel2, 0);
 	}
 
 	//F6 spawnea todos los enemigos
@@ -1077,12 +1061,22 @@ update_status ModulePlayer::Update()
 		App->enemies->AddEnemy(Enemy_Type::PINK, 231, 45);
 	}
 
-	// F5 Pasar segundo nivel
-	if (App->input->keys[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN && App->sceneLevel->Level_1) {
-		App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLevel2, 0);
+	//F7 spawnea todos los objetos
+	if (App->input->keys[SDL_SCANCODE_F7] == KEY_STATE::KEY_REPEAT) {
+		App->particles->AddParticle(App->particles->ShootGun_PowerUp, 58, 126, Collider::Type::SHOOTGUN_POWERUP);
+		App->particles->AddParticle(App->particles->Orv_PowerUp, 200, 126, Collider::Type::ORV_POWERUP);
 	}
 
+	if (App->input->keys[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT) {
+		ShootGun = true;
+		ShootGun_Contador = 500;
+	}
 
+	if (App->input->keys[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT) {
+		bandera_Orv = true;
+		Orv_Contador = 500;
+
+	}
 
 	collider->SetPos(position.x, position.y);
 
