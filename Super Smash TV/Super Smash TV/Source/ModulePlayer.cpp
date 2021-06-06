@@ -220,6 +220,11 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	ShootGun_8_shoot.loop = true;
 	ShootGun_8_shoot.speed = 0.1f;
 
+
+	Orv_1.PushBack({ 16, 496 , 7, 7 });
+	Orv_2.PushBack({ 172,440 , 1, 1 });
+
+	//Orv_2.PushBack({ 0, 300 , 32, 30 });
 }
 
 ModulePlayer::~ModulePlayer()
@@ -236,6 +241,7 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Resources/Sprites/Characters/Player.png");
 	currentLegsAnimation = &legs_down_idle;
 	currentTopAnimation = &gun_down;
+	currentOrv = &Orv_2;
 
 	gunFx = App->audio->LoadFx("Resources/Audio/SFX/In-Game Sounds/Weapons_Sounds/Pistol_Shot.wav");
 
@@ -243,6 +249,8 @@ bool ModulePlayer::Start()
 	position.y = 135;
 
 	ShootGun = false;
+
+	bandera_Orv = false;
 
 	destroyed = false;
 
@@ -257,18 +265,6 @@ update_status ModulePlayer::Update()
 
 	GamePad& pad = App->input->pads[0];
 
-	// Moving the player with the camera scroll
-	//App->player->position.x += 0;
-	if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN) {
-		bandera_GodMode = !bandera_GodMode;
-	}
-
-	//if (App->input->keys[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN && App->SceneLevel->Level_1) {
-	//	App->SceneLevel->sceneTimer = 3600;
-	//}
-	//if (App->input->keys[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN && App->sceneLevel2->lvl2) {
-	//	App->sceneLevel2->sceneTimer = 3600;
-	//}
 
 
 	if (bandera_GodMode == false) {
@@ -634,6 +630,8 @@ update_status ModulePlayer::Update()
 	{
 		ShootGun_Contador--;
 	}
+
+
 	//Direccion de donde va la bala
 		//DIAGONALS
 	cont++;
@@ -847,6 +845,160 @@ update_status ModulePlayer::Update()
 		}
 	}
 
+	if (bandera_Orv = true)
+	{
+		Orv_Contador--;
+	}
+
+	if ( bandera_Orv = true && Orv_Contador > 0 )
+	{
+		if ((App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) || (pad.right_x > 0.0f && pad.right_y < 0.0f)) //drt, amunt
+		{
+			if (bandera) {
+				if (ShootGun && ShootGun_Contador > 0)
+				{
+					App->particles->AddParticle(App->particles->shotgun_1, position.x -12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->shotgun_2, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->shotgun_3, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+				}
+				else
+				{
+					App->particles->AddParticle(App->particles->bullet_2, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+				}
+			}
+		}
+		else if ((App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) || (pad.right_x < 0.0f && pad.right_y < 0.0f)) //Esq, amunt
+		{
+			if (bandera) {
+				if (ShootGun && ShootGun_Contador > 0)
+				{
+					App->particles->AddParticle(App->particles->shotgun_7, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->shotgun_8, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->shotgun_1, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+
+				}
+				else
+				{
+					App->particles->AddParticle(App->particles->bullet_8, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+
+				}
+			}
+		}
+		else if ((App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) || (pad.right_x < 0.0f && pad.right_y > 0.0f)) //Esq, avall
+		{
+			if (bandera) {
+				if (ShootGun && ShootGun_Contador > 0)
+				{
+
+					App->particles->AddParticle(App->particles->shotgun_7, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->shotgun_6, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->shotgun_5, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->audio->PlayFx(gunFx);
+
+				}
+				else
+				{
+					App->particles->AddParticle(App->particles->bullet_6, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+				}
+			}
+		}
+		else if ((App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) || (pad.right_x > 0.0f && pad.right_y > 0.0f)) //drt, avall
+		{
+			if (bandera) {
+				if (ShootGun && ShootGun_Contador > 0)
+				{
+					App->particles->AddParticle(App->particles->shotgun_3, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->shotgun_4, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->shotgun_5, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+				}
+				else
+				{
+					App->particles->AddParticle(App->particles->bullet_4, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+
+				}
+			}
+		}
+		//RECTES
+		else if (App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT || pad.right_y < 0.0f || pad.y) //amunt
+		{
+
+
+			if (bandera) {
+				if (ShootGun && ShootGun_Contador > 0)
+				{
+					App->particles->AddParticle(App->particles->shotgun_8, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->shotgun_1, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->shotgun_2, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+				}
+				else
+				{
+					App->particles->AddParticle(App->particles->bullet_up, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+
+				}
+			}
+
+		}
+		else if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT || pad.right_x < 0.0f || pad.x) //Esq
+		{
+
+
+
+			if (bandera) {
+				if (ShootGun && ShootGun_Contador > 0)
+				{
+					App->particles->AddParticle(App->particles->shotgun_8, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->shotgun_7, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->shotgun_6, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+
+				}
+				else
+				{
+					App->particles->AddParticle(App->particles->bullet_l, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+
+				}
+			}
+		}
+		else if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT || pad.right_y > 0.0f || pad.a) // avall
+		{
+			if (bandera) {
+				if (ShootGun && ShootGun_Contador > 0)
+				{
+					App->particles->AddParticle(App->particles->shotgun_4, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->shotgun_5, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->shotgun_6, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+				}
+				else
+				{
+					App->particles->AddParticle(App->particles->bullet_down, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+				}
+			}
+		}
+		else if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT || pad.right_x > 0.0f || pad.b) //drt
+		{
+
+
+
+			if (bandera) {
+				if (ShootGun && ShootGun_Contador > 0)
+				{
+					App->particles->AddParticle(App->particles->shotgun_2, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->shotgun_3, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->shotgun_4, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+				}
+				else
+				{
+
+					App->particles->AddParticle(App->particles->bullet_r, position.x - 12, position.y - 7, Collider::Type::PLAYER_SHOT);
+					App->audio->PlayFx(gunFx);
+				}
+			}
+		}
+	}
+
+
+
+
+
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
@@ -872,6 +1024,9 @@ update_status ModulePlayer::Update()
 	currentLegsAnimation->Update();
 	currentTopAnimation->Update();
 
+	if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN) {
+		bandera_GodMode = !bandera_GodMode;
+	}
 
 	//
 	if (App->input->keys[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT) {
@@ -879,22 +1034,31 @@ update_status ModulePlayer::Update()
 		ShootGun_Contador = 500;
 	}
 
-	////F7 spawnea todos los objetos
-	//if (App->input->keys[SDL_SCANCODE_F7] == KEY_STATE::KEY_REPEAT) {
-	//	App->particles->AddParticle(App->particles->Triple, 235, 190, 6, Collider::Type::object_Triple);
-	//	App->particles->AddParticle(App->particles->vidaUp, 370, 190, 6, Collider::Type::object_Vida);
-	//}
 
-	////F8 spawnea todos los enemigos
-	//if (App->input->keys[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN) {
-	//	App->enemies->AddEnemy(Enemy_Type::GREEN, 100, 400);
-	//	App->enemies->AddEnemy(Enemy_Type::PINK, 370, 400);
-	//}
+
+	if (App->input->keys[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT) {
+		bandera_Orv = true;
+		Orv_Contador = 500;
+		currentOrv = &Orv_1;
+	}
+
+	//F7 spawnea todos los objetos
+	if (App->input->keys[SDL_SCANCODE_F7] == KEY_STATE::KEY_REPEAT) {
+		App->particles->AddParticle(App->particles->ShootGun_PowerUp, 80, 171, Collider::Type::SHOOTGUN_POWERUP);
+	}
+
+	//F6 spawnea todos los enemigos
+	if (App->input->keys[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN) {
+		App->enemies->AddEnemy(Enemy_Type::GREEN, 26, 63);
+		App->enemies->AddEnemy(Enemy_Type::PINK, 231, 45);
+	}
 
 	// F5 Pasar segundo nivel
 	if (App->input->keys[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN && App->sceneLevel->Level_1) {
 		App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLevel2, 0);
 	}
+
+
 
 	collider->SetPos(position.x, position.y);
 
@@ -905,6 +1069,10 @@ update_status ModulePlayer::Update()
 
 update_status ModulePlayer::PostUpdate()
 {
+	SDL_Rect Orv = currentOrv->GetCurrentFrame();
+	App->render->Blit(texture, position.x -15, position.y - 10, &Orv, 1.5f);
+
+
 	SDL_Rect rect = currentLegsAnimation->GetCurrentFrame();
 	App->render->Blit(texture, position.x-2, position.y+10, &rect, 1.5f);
 
@@ -932,7 +1100,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c2->type == c2->ENEMY && bandera_GodMode == false && destroyed == false) {
 
 		if (vides > 0) {
-
 			destroyed = false;
 			--vides;
 		}
@@ -952,11 +1119,11 @@ bool ModulePlayer::CleanUp() {
 
 	//desinicialitzar tots els sprites
 	App->textures->Unload(texture);
-	App->textures->Unload(textureDoorTop);
+	
 	App->textures->Unload(textureUI);
 	App->textures->Unload(textureFont);
-	App->textures->Unload(textureMort);
-	App->textures->Unload(texturePickups);
+
+
 
 	//App->audio->CleanFX(laserFx);
 
