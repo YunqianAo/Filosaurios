@@ -17,18 +17,29 @@ The game is about two contestants who are in a television program where violence
 **Yunqian Ao:**   [Yunqian Ao](https://github.com/YunqianAo)
 
 * Welcome Page & General Analysis
+* Enemies
+* Website Page
 
 **Sergio Corona Gómez:**   [Seregero00](https://github.com/seregero00)
 
 * Design & Audio
+* Gameplay
 
 **Enric Arxer Cortés:**    [Luxary-92](https://github.com/Luxary-92)
 
 * Art
+* Minimum debug functionality (F1, F2, F3 keys): god mode, display colliders, direct win/lose
+* Gameplay
+* Player
+* Colision
+* Enemies
 
 **Luis Fernández Díaz:**   [Ludef26](https://github.com/Ludef26)
 
 * UI & Design
+*  Minimum debug functionality (F1, F2, F3 keys): god mode, display colliders, direct win/lose
+*  Gameplay
+*  Scene Transicions
 
 ## Controls
 ### Initial animation:
