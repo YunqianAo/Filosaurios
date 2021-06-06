@@ -14,6 +14,7 @@ using namespace std;
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 #include "SceneLevel.h"
+#include "SceneLevel2.h"
 
 
 #include "SDL/include/SDL_render.h"
@@ -1046,10 +1047,16 @@ update_status ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && App->sceneLevel->Level_1) {
 		App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneWin, 0);
 	}
+	else if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && App->sceneLevel2->Level_2) {
+		App->fade->FadeToBlack((Module*)App->sceneLevel2, (Module*)App->sceneWin, 0);
+	}
 
 	// F4 Direct Lose
 	if (App->input->keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->sceneLevel->Level_1) {
 		App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLose, 0);
+	}
+	else if (App->input->keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->sceneLevel2->Level_2) {
+		App->fade->FadeToBlack((Module*)App->sceneLevel2, (Module*)App->sceneLose, 0);
 	}
 
 	//F7 spawnea todos los objetos
