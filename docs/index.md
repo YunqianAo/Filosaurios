@@ -40,6 +40,7 @@ The game is about two contestants who are in a television program where violence
 *  Minimum debug functionality (F1, F2, F3 keys): god mode, display colliders, direct win/lose
 *  Gameplay
 *  Scene Transicions
+*  Full Screen
 
 ## Controls
 ### Initial animation:
