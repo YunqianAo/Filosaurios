@@ -91,8 +91,3 @@ V -> Orb Powerup
 ### LAST RELEASE
 
 To see the last release of the game [click Here.](https://github.com/YunqianAo/Filosaurios/releases/download/1.0/Filosaurios_Super_Smash_TV_v1.0.zip)
-
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/YunqianAo/Filosaurios/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
