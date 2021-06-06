@@ -62,7 +62,7 @@ bool SceneLevel::Start()
 	App->collisions->AddCollider({ -18, 146, 37, 69 }, Collider::Type::WALL);
 
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz", };
-	scoreFont = App->fonts->Load("Resources/Sprites/Characters/Font.png", lookupTable, 1);
+	scoreFont = App->fonts->Load("Resources/Sprites/Characters/Font.png", lookupTable, 0);
 
 	return ret;
 }
