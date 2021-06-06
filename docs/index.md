@@ -86,7 +86,7 @@ V -> Orb Powerup
 
 ### GAMEPLAY TRAILER
 
-[Click Here]()
+[Click Here](https://www.youtube.com/watch?v=WaLwHwW3XWU)
 
 ### LAST RELEASE
 
