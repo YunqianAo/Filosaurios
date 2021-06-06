@@ -17,11 +17,16 @@ public:
 	// The enemy is going to perform a sinusoidal movement
 	void Update() override;
 
+	// Delay entre els moviments de l'enemic
+	int movementDelay = 0;
+
 private:
 
-	Path path;
+	int spawntimer = 0;
 
+	int randomMove = 0;
 
+	int movedelay = 0;
 
 	// The enemy animation
 	Animation red_up;
@@ -29,7 +34,7 @@ private:
 	Animation red_l;
 	Animation red_r;
 
-	Collider* colliderred = nullptr;
+	int movementDirections = 0;
 
 };
 

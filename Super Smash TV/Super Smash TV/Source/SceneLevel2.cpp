@@ -73,37 +73,53 @@ update_status SceneLevel2::Update()
 	++num;
 	if (sceneTimer < 3601)	++sceneTimer;
 
-	//if (sceneTimer % 80 == 0 && sceneTimer <= 3600) {//3600frames, 6 rounds, 24 aparicions random (sceneTimer % 150)
-	//	randomEnemySpawn = (rand() % 5);
+	if (sceneTimer == 240)
+	{
+		App->particles->AddParticle(App->particles->ShootGun_PowerUp, 60, 171, Collider::Type::SHOOTGUN_POWERUP);
+	}
 
+	if (sceneTimer == 1200)
+	{
+		App->particles->AddParticle(App->particles->Orv_PowerUp, 185, 170, Collider::Type::ORV_POWERUP);
+	}
 
-	//	if (i == 0) { //up door
-	//		for (int j = 0; j < 9; ++j) {
-	//			SpawnEnemies[i][j][0] = (rand() % 42 + 107); //porta adalt X
-	//			SpawnEnemies[i][j][1] = (rand() % 10 + 26); //porta adalt Y
-	//		}
-	//	}
+	if (sceneTimer == 2000)
+	{
+		App->particles->AddParticle(App->particles->Orv_PowerUp, 164, 75, Collider::Type::ORV_POWERUP);
+	}
 
-	//	if (i == 1) { //left door
-	//		for (int j = 0; j < 9; ++j) {
-	//			SpawnEnemies[i][j][0] = (rand() % 6 + 15);
-	//			SpawnEnemies[i][j][1] = (rand() % 41 + 105);
-	//		}
-	//	}
+	if (sceneTimer == 2800)
+	{
+		App->particles->AddParticle(App->particles->ShootGun_PowerUp, 56, 121, Collider::Type::SHOOTGUN_POWERUP);
+	}
 
-	//	if (i == 2) { //right door
-	//		for (int j = 0; j < 9; ++j) {
-	//			SpawnEnemies[i][j][0] = (rand() % 6 + 238);
-	//			SpawnEnemies[i][j][1] = (rand() % 41 + 105);
-	//		}
-	//	}
+		if (i == 0) { //up door
+			for (int j = 0; j < 9; ++j) {
+				SpawnEnemies[i][j][0] = (rand() % 42 + 107); //porta adalt X
+				SpawnEnemies[i][j][1] = (rand() % 10 + 26); //porta adalt Y
+			}
+		}
 
-	//	if (i == 3) { //down door
-	//		for (int j = 0; j < 9; ++j) {
-	//			SpawnEnemies[i][j][0] = (rand() % 48 + 104); //porta abaix X
-	//			SpawnEnemies[i][j][1] = (rand() % 5 + 210); //porta abaix Y
-	//		}
-	//	}
+		if (i == 1) { //left door
+			for (int j = 0; j < 9; ++j) {
+				SpawnEnemies[i][j][0] = (rand() % 6 + 15);
+				SpawnEnemies[i][j][1] = (rand() % 41 + 105);
+			}
+		}
+
+		if (i == 2) { //right door
+			for (int j = 0; j < 9; ++j) {
+				SpawnEnemies[i][j][0] = (rand() % 6 + 238);
+				SpawnEnemies[i][j][1] = (rand() % 41 + 105);
+			}
+		}
+
+		if (i == 3) { //down door
+			for (int j = 0; j < 9; ++j) {
+				SpawnEnemies[i][j][0] = (rand() % 48 + 104); //porta abaix X
+				SpawnEnemies[i][j][1] = (rand() % 5 + 210); //porta abaix Y
+			}
+		}
 
 
 	//	switch (randomEnemySpawn) {
