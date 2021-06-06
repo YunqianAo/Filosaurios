@@ -37,12 +37,15 @@ public:
 	// Position of the player in the map
 	iPoint position;
 
+	int vides = 5;
+	int contadorVides = 0;
+
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
 	int cont = 25;
 	bool bandera = true;
 
-	int cont_Tripel = 0;
+	int ShootGun_Contador = 0;
 	bool ShootGun = false;
 	//bool bandera_GodMode = false;
 

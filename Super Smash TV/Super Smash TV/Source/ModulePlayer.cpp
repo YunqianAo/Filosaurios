@@ -13,6 +13,7 @@ using namespace std;
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "SceneLevel.h"
 
 
 #include "SDL/include/SDL_render.h"
@@ -283,7 +284,7 @@ update_status ModulePlayer::Update()
 					currentLegsAnimation = &legs_8;
 
 					if (shooting == false) {
-						if (ShootGun && cont_Tripel > 0)
+						if (ShootGun && ShootGun_Contador > 0)
 						{
 							currentTopAnimation = &ShootGun_8;
 						}
@@ -301,7 +302,7 @@ update_status ModulePlayer::Update()
 				currentLegsAnimation = &legs_l;
 
 				if (shooting == false) {
-					if (ShootGun && cont_Tripel > 0)
+					if (ShootGun && ShootGun_Contador > 0)
 					{
 						currentTopAnimation = &ShootGun_l;
 					}
@@ -326,7 +327,7 @@ update_status ModulePlayer::Update()
 					currentLegsAnimation = &legs_4;
 
 					if (shooting == false) {
-						if (ShootGun && cont_Tripel > 0)
+						if (ShootGun && ShootGun_Contador > 0)
 						{
 							currentTopAnimation = &ShootGun_4;
 						}
@@ -344,7 +345,7 @@ update_status ModulePlayer::Update()
 				currentLegsAnimation = &legs_r;
 
 				if (shooting == false) {
-					if (ShootGun && cont_Tripel > 0)
+					if (ShootGun && ShootGun_Contador > 0)
 					{
 						currentTopAnimation = &ShootGun_r;
 					}
@@ -370,7 +371,7 @@ update_status ModulePlayer::Update()
 					currentLegsAnimation = &legs_6;
 
 					if (shooting == false) {
-						if (ShootGun && cont_Tripel > 0)
+						if (ShootGun && ShootGun_Contador > 0)
 						{
 							currentTopAnimation = &ShootGun_6;
 						}
@@ -388,7 +389,7 @@ update_status ModulePlayer::Update()
 				currentLegsAnimation = &legs_down;
 
 				if (shooting == false) {
-					if (ShootGun && cont_Tripel > 0)
+					if (ShootGun && ShootGun_Contador > 0)
 					{
 						currentTopAnimation = &ShootGun_down;
 					}
@@ -413,7 +414,7 @@ update_status ModulePlayer::Update()
 					currentLegsAnimation = &legs_2;
 
 					if (shooting == false) {
-						if (ShootGun && cont_Tripel > 0)
+						if (ShootGun && ShootGun_Contador > 0)
 						{
 							currentTopAnimation = &ShootGun_2;
 						}
@@ -431,7 +432,7 @@ update_status ModulePlayer::Update()
 				currentLegsAnimation = &legs_up;
 
 				if (shooting == false) {
-					if (ShootGun && cont_Tripel > 0)
+					if (ShootGun && ShootGun_Contador > 0)
 					{
 						currentTopAnimation = &ShootGun_up;
 					}
@@ -462,7 +463,7 @@ update_status ModulePlayer::Update()
 					currentLegsAnimation = &legs_8;
 
 					if (shooting == false) {
-						if (ShootGun && cont_Tripel > 0)
+						if (ShootGun && ShootGun_Contador > 0)
 						{
 							currentTopAnimation = &ShootGun_8;
 						}
@@ -480,7 +481,7 @@ update_status ModulePlayer::Update()
 				currentLegsAnimation = &legs_l;
 
 				if (shooting == false) {
-					if (ShootGun && cont_Tripel > 0)
+					if (ShootGun && ShootGun_Contador > 0)
 					{
 						currentTopAnimation = &ShootGun_l;
 					}
@@ -505,7 +506,7 @@ update_status ModulePlayer::Update()
 					currentLegsAnimation = &legs_4;
 
 					if (shooting == false) {
-						if (ShootGun && cont_Tripel > 0)
+						if (ShootGun && ShootGun_Contador > 0)
 						{
 							currentTopAnimation = &ShootGun_4;
 						}
@@ -523,7 +524,7 @@ update_status ModulePlayer::Update()
 				currentLegsAnimation = &legs_r;
 
 				if (shooting == false) {
-					if (ShootGun && cont_Tripel > 0)
+					if (ShootGun && ShootGun_Contador > 0)
 					{
 						currentTopAnimation = &ShootGun_r;
 					}
@@ -548,7 +549,7 @@ update_status ModulePlayer::Update()
 					currentLegsAnimation = &legs_6;
 
 					if (shooting == false) {
-						if (ShootGun && cont_Tripel > 0)
+						if (ShootGun && ShootGun_Contador > 0)
 						{
 							currentTopAnimation = &ShootGun_6;
 						}
@@ -566,7 +567,7 @@ update_status ModulePlayer::Update()
 				currentLegsAnimation = &legs_down;
 
 				if (shooting == false) {
-					if (ShootGun && cont_Tripel > 0)
+					if (ShootGun && ShootGun_Contador > 0)
 					{
 						currentTopAnimation = &ShootGun_down;
 					}
@@ -591,7 +592,7 @@ update_status ModulePlayer::Update()
 					currentLegsAnimation = &legs_2;
 
 					if (shooting == false) {
-						if (ShootGun && cont_Tripel > 0)
+						if (ShootGun && ShootGun_Contador > 0)
 						{
 							currentTopAnimation = &ShootGun_2;
 						}
@@ -610,7 +611,7 @@ update_status ModulePlayer::Update()
 
 				if (shooting == false) {
 					if (bandera) {
-						if (ShootGun && cont_Tripel > 0)
+						if (ShootGun && ShootGun_Contador > 0)
 						{
 							currentTopAnimation = &ShootGun_up;
 						}
@@ -631,7 +632,7 @@ update_status ModulePlayer::Update()
 
 	if (ShootGun == true)
 	{
-		cont_Tripel--;
+		ShootGun_Contador--;
 	}
 	//Direccion de donde va la bala
 		//DIAGONALS
@@ -665,7 +666,7 @@ update_status ModulePlayer::Update()
 		
 
 		if (bandera) {
-			if (ShootGun && cont_Tripel > 0)
+			if (ShootGun && ShootGun_Contador > 0)
 			{
 
 
@@ -690,7 +691,7 @@ update_status ModulePlayer::Update()
 		
 
 		if (bandera) {
-			if (ShootGun && cont_Tripel > 0)
+			if (ShootGun && ShootGun_Contador > 0)
 			{
 				App->particles->AddParticle(App->particles->shotgun_7, position.x - 5, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->shotgun_8, position.x - 5, position.y - 10, Collider::Type::PLAYER_SHOT);
@@ -710,7 +711,7 @@ update_status ModulePlayer::Update()
 	else if ((App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) || (pad.right_x < 0.0f && pad.right_y > 0.0f)) //Esq, avall
 	{
 		if (bandera) {
-			if (ShootGun && cont_Tripel > 0)
+			if (ShootGun && ShootGun_Contador > 0)
 			{
 
 				App->particles->AddParticle(App->particles->shotgun_7, position.x - 8, position.y + 11, Collider::Type::PLAYER_SHOT);
@@ -734,7 +735,7 @@ update_status ModulePlayer::Update()
 		
 
 		if (bandera) {
-			if (ShootGun && cont_Tripel > 0)
+			if (ShootGun && ShootGun_Contador > 0)
 			{
 				App->particles->AddParticle(App->particles->shotgun_3, position.x + 15, position.y + 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->shotgun_4, position.x + 15, position.y + 10, Collider::Type::PLAYER_SHOT);
@@ -757,7 +758,7 @@ update_status ModulePlayer::Update()
 		
 
 		if (bandera) {
-			if (ShootGun && cont_Tripel > 0)
+			if (ShootGun && ShootGun_Contador > 0)
 			{
 				App->particles->AddParticle(App->particles->shotgun_8, position.x + 5, position.y - 10, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->shotgun_1, position.x + 5, position.y - 10, Collider::Type::PLAYER_SHOT);
@@ -781,7 +782,7 @@ update_status ModulePlayer::Update()
 		
 
 		if (bandera) {
-			if (ShootGun && cont_Tripel > 0)
+			if (ShootGun && ShootGun_Contador > 0)
 			{
 				App->particles->AddParticle(App->particles->shotgun_8, position.x - 18, position.y + 4, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->shotgun_7, position.x - 18, position.y + 4, Collider::Type::PLAYER_SHOT);
@@ -804,7 +805,7 @@ update_status ModulePlayer::Update()
 		
 
 		if (bandera) {
-			if (ShootGun && cont_Tripel > 0)
+			if (ShootGun && ShootGun_Contador > 0)
 			{
 				App->particles->AddParticle(App->particles->shotgun_4, position.x + 5, position.y + 8, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->shotgun_5, position.x + 5, position.y + 12, Collider::Type::PLAYER_SHOT);
@@ -827,7 +828,7 @@ update_status ModulePlayer::Update()
 		
 
 		if (bandera) {
-			if (ShootGun && cont_Tripel > 0)
+			if (ShootGun && ShootGun_Contador > 0)
 			{
 				App->particles->AddParticle(App->particles->shotgun_2, position.x + 20, position.y + 4, Collider::Type::PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->shotgun_3, position.x + 20, position.y + 4, Collider::Type::PLAYER_SHOT);
@@ -854,7 +855,7 @@ update_status ModulePlayer::Update()
 
 		currentLegsAnimation = &legs_down_idle;
 		if (!shooting) {
-			if (ShootGun && cont_Tripel > 0)
+			if (ShootGun && ShootGun_Contador > 0)
 			{
 				currentTopAnimation = &ShootGun_down;
 			}
@@ -888,7 +889,7 @@ update_status ModulePlayer::Update()
 	//F6 TripleShoot
 	if (App->input->keys[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT) {
 		ShootGun = true;
-		cont_Tripel = 500;
+		ShootGun_Contador = 500;
 	}
 
 	////F7 spawnea todos los objetos
@@ -961,18 +962,11 @@ update_status ModulePlayer::Update()
 
 update_status ModulePlayer::PostUpdate()
 {
-
 	SDL_Rect rect = currentLegsAnimation->GetCurrentFrame();
 	App->render->Blit(texture, position.x-2, position.y+10, &rect, 1.5f);
 
 	SDL_Rect rectTop = currentTopAnimation->GetCurrentFrame();
 	App->render->Blit(texture, position.x - 10, position.y - 7, &rectTop, 1.5f);
-
-	//Render Portes
-	if (ImprimirPortes)
-		App->render->Blit(textureDoorTop, -512 * topDoor, 0, nullptr);
-	//Si no li enviem rectangle (li enviem un 'nullptr'), es posa la mateixa mida que la pantalla.
-
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -980,25 +974,18 @@ update_status ModulePlayer::PostUpdate()
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {	
 
+	//if (c2->type == c2->DOOR && App->sceneLevel->sceneTimer >= 3600 && App->enemies->enemyNum == 0) {
 
-	//if (c2->type == c2->object_Vida)
-	//{
-	//	vides++;
+	//	App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneSwap, 0);
 	//}
 
-	//if (c2->type == c2->Door && App->SceneLevel->sceneTimer >= 3600 && App->enemies->enemyNum == 0) {
-	//	//	WIN CONDITION
-	//	App->fade->FadeToBlack((Module*)App->SceneLevel, (Module*)App->sceneSwap, 0); //sceneWin, sceneSwap
-	//}
 
-	/*GESTIONAR LES VIDES I LA MORT
 	if ((c2->type == c2->ENEMY) && (contadorVides < 0) && (bandera_GodMode == false) && (destroyed == false)) {
 
 		if (vides > 0) {
 			--vides;
 		}
-		else if (vides <= 0) {		//FALTA PULIR MOLTISSIM!!!!!
-			App->audio->PlayFx(explosionFx);
+		else if (vides <= 0) {
 
 			App->fade->FadeToBlack((Module*)App->sceneLevel, (Module*)App->sceneLose, 90);
 			destroyed = true;
@@ -1006,7 +993,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			destroyed = false;
 		}
 		contadorVides = 50; //50 frames de delay
-	}*/
+	}
 }
 
 bool ModulePlayer::CleanUp() {
