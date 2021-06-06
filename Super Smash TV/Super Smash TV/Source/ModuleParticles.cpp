@@ -116,6 +116,9 @@ bool ModuleParticles::Start()
 	ShootGun_PowerUp.anim.PushBack({ 98, 17, 14, 14 });
 	ShootGun_PowerUp.lifetime = 500;
 
+	Orv_PowerUp.anim.PushBack({ 2, 17, 14, 14 });
+	Orv_PowerUp.lifetime = 500;
+
 	inv.anim.PushBack({ 0, 49, 32, 30 });
 	inv.lifetime = 180;
 

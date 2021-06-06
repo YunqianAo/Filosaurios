@@ -845,9 +845,15 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (bandera_Orv = true)
+	if (bandera_Orv == true)
 	{
 		Orv_Contador--;
+		currentOrv = &Orv_1;
+	}
+
+	if (bandera_Orv ==false)
+	{
+		currentOrv = &Orv_2;
 	}
 
 	if ( bandera_Orv = true && Orv_Contador > 0 )
@@ -1039,7 +1045,7 @@ update_status ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT) {
 		bandera_Orv = true;
 		Orv_Contador = 500;
-		currentOrv = &Orv_1;
+
 	}
 	
 	// F3 Direct Win
@@ -1054,7 +1060,8 @@ update_status ModulePlayer::Update()
 
 	//F7 spawnea todos los objetos
 	if (App->input->keys[SDL_SCANCODE_F7] == KEY_STATE::KEY_REPEAT) {
-		App->particles->AddParticle(App->particles->ShootGun_PowerUp, 80, 171, Collider::Type::SHOOTGUN_POWERUP);
+		App->particles->AddParticle(App->particles->ShootGun_PowerUp, 58, 126, Collider::Type::SHOOTGUN_POWERUP);
+		App->particles->AddParticle(App->particles->Orv_PowerUp, 200, 126, Collider::Type::ORV_POWERUP);
 	}
 
 	//F6 spawnea todos los enemigos
@@ -1104,6 +1111,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		ShootGun = true;
 		ShootGun_Contador = 500;
+	}
+
+	if (c2->type == c2->ORV_POWERUP) {
+
+		bandera_Orv = true;
+		Orv_Contador = 500;
 	}
 
 

@@ -17,6 +17,7 @@ struct Collider
 		ENEMY_SHOT,
 		DOOR,
 		SHOOTGUN_POWERUP,
+		ORV_POWERUP,
 
 		MAX
 	};

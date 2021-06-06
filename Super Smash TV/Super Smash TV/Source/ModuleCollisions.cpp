@@ -26,6 +26,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_SHOT] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::DOOR] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::SHOOTGUN_POWERUP] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::ORV_POWERUP] = true;
 
 	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = true;
@@ -66,6 +67,13 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::SHOOTGUN_POWERUP][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::SHOOTGUN_POWERUP][Collider::Type::ENEMY_SHOT] = false;
 	matrix[Collider::Type::SHOOTGUN_POWERUP][Collider::Type::SHOOTGUN_POWERUP] = false;
+
+	matrix[Collider::Type::ORV_POWERUP][Collider::Type::WALL] = false;
+	matrix[Collider::Type::ORV_POWERUP][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ORV_POWERUP][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::ORV_POWERUP][Collider::Type::PLAYER_SHOT] = false;
+	matrix[Collider::Type::ORV_POWERUP][Collider::Type::ENEMY_SHOT] = false;
+	matrix[Collider::Type::ORV_POWERUP][Collider::Type::ORV_POWERUP] = false;
 
 
 }

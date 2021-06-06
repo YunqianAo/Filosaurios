@@ -83,6 +83,7 @@ public:
 	Particle blood;
 
 	Particle ShootGun_PowerUp;
+	Particle Orv_PowerUp;
 
 	Particle exit_arow;
 	Particle exit_words;
