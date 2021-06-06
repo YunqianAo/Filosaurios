@@ -1124,6 +1124,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (vides > 0) {
 			destroyed = false;
 			--vides;
+			bandera_GodMode = true;
+			bandera_GodMode_Contador = 100;
 		}
 		else if (vides == 0) {
 

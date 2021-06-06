@@ -52,6 +52,7 @@ public:
 	int Orv_Contador = 0;
 
 	bool bandera_GodMode = false;
+	int bandera_GodMode_Contador = 0;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
