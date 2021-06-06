@@ -1065,6 +1065,8 @@ update_status ModulePlayer::Update()
 		App->particles->AddParticle(App->particles->Orv_PowerUp, 200, 126, Collider::Type::ORV_POWERUP);
 	}
 
+
+
 	if (App->input->keys[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT) {
 		ShootGun = true;
 		ShootGun_Contador = 500;
@@ -1124,8 +1126,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (vides > 0) {
 			destroyed = false;
 			--vides;
-			bandera_GodMode = true;
-			bandera_GodMode_Contador = 100;
 		}
 		else if (vides == 0) {
 

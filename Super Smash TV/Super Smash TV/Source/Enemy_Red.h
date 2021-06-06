@@ -22,7 +22,9 @@ public:
 
 private:
 
-	int spawntimer = 0;
+	Path path;
+
+	int spawntimer = 1;
 
 	int randomMove = 0;
 

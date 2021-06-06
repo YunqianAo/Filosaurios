@@ -93,6 +93,9 @@ update_status SceneLevel2::Update()
 		App->particles->AddParticle(App->particles->ShootGun_PowerUp, 56, 121, Collider::Type::SHOOTGUN_POWERUP);
 	}
 
+	if (sceneTimer % 70 == 0 && sceneTimer <= 3600) {
+		randomEnemySpawn = (rand() % 10);
+
 		if (i == 0) { //up door
 			for (int j = 0; j < 9; ++j) {
 				SpawnEnemies[i][j][0] = (rand() % 42 + 107); //porta adalt X
@@ -120,35 +123,33 @@ update_status SceneLevel2::Update()
 				SpawnEnemies[i][j][1] = (rand() % 5 + 210); //porta abaix Y
 			}
 		}
+		switch (randomEnemySpawn) {
+		case 9:
+			App->enemies->AddEnemy(Enemy_Type::PINK, SpawnEnemies[i][0][0], SpawnEnemies[i][0][1]);
+			App->enemies->AddEnemy(Enemy_Type::PINK, SpawnEnemies[i][1][0], SpawnEnemies[i][1][1]);
+			App->enemies->AddEnemy(Enemy_Type::PINK, SpawnEnemies[i][2][0], SpawnEnemies[i][2][1]);
+		case 8:
+		case 7:
+			App->enemies->AddEnemy(Enemy_Type::GREEN, SpawnEnemies[i][3][0], SpawnEnemies[i][3][1]);
+			App->enemies->AddEnemy(Enemy_Type::PINK, SpawnEnemies[i][4][0], SpawnEnemies[i][4][1]);
+		case 6:
+			App->enemies->AddEnemy(Enemy_Type::PINK, SpawnEnemies[i][5][0], SpawnEnemies[i][5][1]);
+		case 5:
+		case 4:
+		case 3:
+		case 2:
+			App->enemies->AddEnemy(Enemy_Type::GREEN, SpawnEnemies[i][6][0], SpawnEnemies[i][6][1]);
+		case 1:
+			App->enemies->AddEnemy(Enemy_Type::PINK, SpawnEnemies[i][7][0], SpawnEnemies[i][7][1]);
+		case 0:
+			App->enemies->AddEnemy(Enemy_Type::PINK, SpawnEnemies[i][8][0], SpawnEnemies[i][8][1]);
+			break;
+		}
 
+		++i;
+		if (i == 4) i = 0;
 
-	//	switch (randomEnemySpawn) {
-	//	case 9:
-	//		App->enemies->AddEnemy(Enemy_Type::GREEN, SpawnEnemies[i][0][0], SpawnEnemies[i][0][1]);
-	//		App->enemies->AddEnemy(Enemy_Type::GREEN, SpawnEnemies[i][1][0], SpawnEnemies[i][1][1]);
-	//		App->enemies->AddEnemy(Enemy_Type::GREEN, SpawnEnemies[i][2][0], SpawnEnemies[i][2][1]);
-	//	case 8:
-	//	case 7:
-	//		App->enemies->AddEnemy(Enemy_Type::GREEN, SpawnEnemies[i][3][0], SpawnEnemies[i][3][1]);
-	//		App->enemies->AddEnemy(Enemy_Type::PINK, SpawnEnemies[i][4][0], SpawnEnemies[i][4][1]);
-	//	case 6:
-	//		App->enemies->AddEnemy(Enemy_Type::GREEN, SpawnEnemies[i][5][0], SpawnEnemies[i][5][1]);
-	//	case 5:
-	//	case 4:
-	//	case 3:
-	//	case 2:
-	//		App->enemies->AddEnemy(Enemy_Type::GREEN, SpawnEnemies[i][6][0], SpawnEnemies[i][6][1]);
-	//	case 1:
-	//		App->enemies->AddEnemy(Enemy_Type::PINK, SpawnEnemies[i][7][0], SpawnEnemies[i][7][1]);
-	//	case 0:
-	//		App->enemies->AddEnemy(Enemy_Type::PINK, SpawnEnemies[i][8][0], SpawnEnemies[i][8][1]);
-	//		break;
-	//	}
-
-	//	++i;
-	//	if (i == 4) i = 0;
-
-	//}
+	}
 	if (i == 1) mapaActual = 7;
 	else mapaActual = 0;
 
@@ -170,13 +171,9 @@ update_status SceneLevel2::PostUpdate()
 	App->fonts->BlitText(23, 49, scoreFont, scoreText);
 
 
-	if (sceneTimer > 3600 && exitTimer < 20 && App->enemies->enemyNum == 0) {	//La textura va fent pampallugues.
-		App->particles->AddParticle(App->particles->exit_arow, 140, 119, Collider::Type::PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->exit_words, 15, 10, Collider::Type::PLAYER_SHOT);
-	}
-	else if (sceneTimer > 3600 && App->enemies->enemyNum == 0) {
-		App->particles->AddParticle(App->particles->exit_arow, 15, 10, Collider::Type::PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->exit_words, 15, 10, Collider::Type::PLAYER_SHOT);
+	if (sceneTimer > 3600 && App->enemies->enemyNum == 0) {
+		App->particles->AddParticle(App->particles->exit_arow, 140, 119, Collider::Type::NONE);
+		App->particles->AddParticle(App->particles->exit_words, 127, 122, Collider::Type::NONE);
 	}
 
 	return update_status::UPDATE_CONTINUE;
