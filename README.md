@@ -32,7 +32,7 @@ https://yunqianao.github.io/Filosaurios/
 ## Developers
 
 * Luis Fernández - Github: [Ludef26](https://github.com/Ludef26)
-* Enric Arxer - Github: [Luxary-92](https://github.com/Luxary-92)
+* Enric Arxer - Github: [Luxary](https://github.com/Luxary-Arxer)
 * Sergio Corona - Github: [Seregero00](https://github.com/seregero00)
 * Yunqian Ao - Github: [Yunqian Ao](https://github.com/YunqianAo)
 
